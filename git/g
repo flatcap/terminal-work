@@ -1,0 +1,141 @@
+#!/bin/bash
+
+DATA_FILE="git.txt"
+CGIT_REPO="cgit.repo"
+
+source ~/bin/function.d/title.sh
+
+function log()
+{
+	echo -e "\e[32m$1\e[0m"
+}
+
+function usage()
+{
+	echo "Usage:"
+	echo "    ${0##*/} [pull|push|fetch|status|clean|prune|clone|wipe]"
+	exit 1
+}
+
+function get_dirs()
+{
+	local dir_list="$(find . -type d -name .git | sort | cut -b3-)"
+	for i in $dir_list; do
+		DIRS="$DIRS ${i%/*}"
+	done
+	DIRS="$DIRS $(find . -type d -name "?*.git" | sort | cut -b3-)"
+}
+
+function git_simple()
+{
+	local CMD=$1
+	for i in $DIRS; do
+		title git $CMD $i
+		log $i
+		pushd $i > /dev/null
+		git $CMD
+		popd > /dev/null
+	done
+}
+
+function git_status()
+{
+	for i in $DIRS; do
+		title git status $i
+		log $i
+		pushd $i > /dev/null
+		git stash list
+		git status -s
+		popd > /dev/null
+	done
+}
+
+function git_clean()
+{
+	for i in $DIRS; do
+		title git clean $i
+		log $i
+		pushd $i > /dev/null
+		git clean -dxf
+		popd > /dev/null
+	done
+}
+
+function git_prune()
+{
+	for i in $DIRS; do
+		title git prune $i
+		log $i
+		pushd $i > /dev/null
+		git prune
+		git gc --aggressive
+		git fsck --full --strict
+		popd > /dev/null
+	done
+}
+
+function git_clone()
+{
+	cat "$DATA_FILE" | while read DIR GIT; do
+		if [ -d $DIR ]; then
+			echo $DIR already exists
+		else
+			title git clone $DIR
+			log $DIR
+			git clone $GIT $DIR
+
+			if [ ! -f "$CGIT_REPO" ]; then
+				echo "repo.group=terminal"		>  "$CGIT_REPO"
+				echo "#repo.owner=rich@flatcap.org"	>> "$CGIT_REPO"
+				echo					>> "$CGIT_REPO"
+			fi
+
+			echo "repo.url=$DIR"				>> "$CGIT_REPO"
+			echo "repo.path=/home/work/terminal/git/$DIR/.git"	>> "$CGIT_REPO"
+			echo "repo.desc=$DIR"				>> "$CGIT_REPO"
+			echo						>> "$CGIT_REPO"
+		fi
+	done
+
+	chmod 664 "$CGIT_REPO"
+	chcon -t public_content_t "$CGIT_REPO"
+}
+
+function git_wipe()
+{
+	local SURE
+	read -p "Are you sure [y/N]?" -t 3 -n 1 SURE
+	echo
+	[ "$SURE" != "y" ] && return
+	for i in $DIRS; do
+		title git wipe $i
+		log $i
+		rm -fr $i
+	done
+}
+
+
+[ $# -ne 1 ] && usage
+
+umask 0002
+get_dirs
+
+case $1 in
+	push|pull|fetch)
+		git_simple $1 ;;
+	status)
+		git_status ;;
+	clean)
+		git_clean ;;
+	prune)
+		git_prune ;;
+	clone)
+		git_clone ;;
+	wipe)
+		git_wipe ;;
+	*)
+		usage ;;
+esac
+
+title
+

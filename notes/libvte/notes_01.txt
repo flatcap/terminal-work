@@ -1,0 +1,26 @@
+VteStream
+	reset		calls ftruncate on fd[0], fd[1]
+	append		seed to end, write len bytes to fd[0]
+	read		check against off[0,1], read from fd[1], then fd[0]
+	truncate	ftrunc fd[1], fd[0], swapfds (maybe)
+	new_page	? swap fds
+	head		= offset[0]
+	write_contents
+
+offset of stream is logical start of data - before offset has been lost? sparse?
+rolling buffer?  fixed size
+swap_fsd: why?
+
+Text stream(n) - just text
+Attr stream(16) - ring -> last_attr (16 bytes)	VteCellAttrChange
+Row stream(16) - VteRowRecord
+
+Attrs: 0 = default
+	256 = default foreground
+	257 = default background
+	index into palette
+		where is the palette defined?
+
+Route from vte_terminal_process_incoming to _vte_ring_freeze_row ?
+
+

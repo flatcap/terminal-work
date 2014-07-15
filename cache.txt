@@ -1,0 +1,58 @@
+cache
+	C = cache handle
+	R = list of rows
+	n = row number
+
+startup
+	C = cache_new (rows)
+	R = cache_get_rows (C, x, num)
+		R = NULL
+
+add text
+	n = cache_add_row (C, "line 1")
+	n = cache_add_row (C, "line 2")
+	n = cache_add_row (C, "line 3")
+	n = cache_add_row (C, "line 4")
+
+ctrl-l
+	n = cache_add_row (C, "$ ")
+	R = cache_get_rows (R, n, 1)
+
+reset
+	num = cache_get_num_rows (C)
+	cache_drop (C, 1, num)
+
+clone
+	C = cache_clone (C)
+
+page up
+	R = cache_get_rows (R, x-num, num)
+
+page down
+	R = cache_get_rows (R, x+num, num)
+
+redraw
+	R = cache_get_rows (R) - just in case of reset?
+
+
+resize rows?
+need locking on the lines - doesn't need to be fast - shouldn't happen often
+
+struct ROWS
+{
+	attrs
+	flags
+	refcount
+	start
+	rowcount
+	LINES[0]
+}
+
+cache_get_active
+cache_get_changed (since)
+
+what about
+	massively overlapping views?
+	birdseye views?
+	search views?
+

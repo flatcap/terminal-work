@@ -1,0 +1,19 @@
+obj		VteTerminal : GtkWidget
+	|
+	V
+struct *	VteTerminalPrivate *pvt
+	|
+	V
+struct *	_VteScreen *screen
+	|
+	V
+struct		VteRing row_data
+	|
+	V
+struct *	VteRowData *array
+struct *	VteStream *attr_stream
+struct *	VteStream *text_stream
+struct *	VteStream *row_stream
+obj *		GString *utf8_buffer
+struct		VteRowData cached_row
+

@@ -1,0 +1,25 @@
+0x9e6280: TerminalWindow(1)
+0x9c6210:     GtkVBox(2)
+0xa85800:         GtkMenuBar(6)
+0xa71000:         GtkNotebook(3)
+0xb23e30:             TerminalTabLabel(2)
+0xb33a90:                 GtkLabel '[dev] apple'
+0xb23ef0:                 GtkButton
+0xb35c20:                     GtkImage type 4
+0xab0d10:             GtkHBox(2)
+0xb3fca0:                 TerminalScreen
+0xb79000:                 GtkVScrollbar
+0xb38be0:             TerminalTabLabel(2)
+0xc4e860:                 GtkLabel '[dev] banana'
+0xb38ca0:                 GtkButton
+0xc300c0:                     GtkImage type 4
+0xab0ec0:             GtkHBox(2)
+0xc43e90:                 TerminalScreen
+0xb79170:                 GtkVScrollbar
+0xc15010:             TerminalTabLabel(2)
+0xc4e930:                 GtkLabel '[dev] cherry'
+0xc150d0:                 GtkButton
+0xc30170:                     GtkImage type 4
+0xa80010:             GtkHBox(2)
+0xc25fe0:                 TerminalScreen
+0xb792e0:                 GtkVScrollbar

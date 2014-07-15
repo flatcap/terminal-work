@@ -1,0 +1,40 @@
+#0  process_control (...) at iso2022.c:1330
+#1  process_block (...) bt
+#0  process_control (...) at iso2022.c:1330
+#1  process_block (...) at iso2022.c:1655
+#2  _vte_iso2022_process (...) at iso2022.c:1737
+#3  vte_terminal_process_incoming (...) at vte.c:3957
+#4  vte_terminal_set_pty_object (...) at vte.c:14202
+#5  vte_terminal_catch_child_exited (...) at vte.c:3327
+#6  rich_marshal_VOID__INT_INT (...) at marshal.c:91
+#7  IA__g_closure_invoke (...) at gclosure.c:767
+#8  signal_emit_unlocked_R (...) at gsignal.c:3247
+#9  IA__g_signal_emit_valist (...) at gsignal.c:2980
+#10 IA__g_signal_emit_by_name (...) at gsignal.c:3074
+#11 vte_reaper_child_watch_cb (...) at reaper.c :32
+#12 g_child_watch_dispatch (...) at gmain.c:3774
+#13 g_main_dispatch (...) at gmain.c:1960
+#14 IA__g_main_context_dispatch (...) at gmain.c:2513
+#15 g_main_context_iterate (...) at gmain.c:2591
+#16 IA__g_main_loop_run (...) at gmain.c:2799
+#17 IA__gtk_main (...) at gtkmain.c:1218
+#18 main (...) at app.c:112
+
+#0  _vte_matcher_match (...) at matcher.c:199
+#1  vte_terminal_process_incoming (...) at vte.c:4029
+#2  vte_terminal_set_pty_object (...) at vte.c:14202
+#3  vte_terminal_catch_child_exited (...) at vte.c:3327
+#4  rich_marshal_VOID__INT_INT (...) at marshal.c:91
+#5  IA__g_closure_invoke (...) at gclosure.c:767
+#6  signal_emit_unlocked_R (...) at gsignal.c:3247
+#7  IA__g_signal_emit_valist (...) at gsignal.c:2980
+#8  IA__g_signal_emit_by_name (...) at gsignal.c:3074
+#9  vte_reaper_child_watch_cb (...) at reaper.c :32
+#10 g_child_watch_dispatch (...) at gmain.c:3774
+#11 g_main_dispatch (...) at gmain.c:1960
+#12 IA__g_main_context_dispatch (...) at gmain.c:2513
+#13 g_main_context_iterate (...) at gmain.c:2591
+#14 IA__g_main_loop_run (...) at gmain.c:2799
+#15 IA__gtk_main (...) at gtkmain.c:1218
+#16 main (...) at app.c:112
+

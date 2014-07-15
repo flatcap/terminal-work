@@ -1,0 +1,38 @@
+
+A separate panel that constantly shows the contents of the current directory
+and allows you to change directory by clicking in it. Would stop me having to
+constantly type cd and ls. This would need keyboard navigation as well as mouse of course.
+	tie in to nautilus, via dbus?
+	have nautilus control our current directory?
+
+Command history in a separate panel. No more typing !xxx and hoping. Looking
+in the history panel you can expand it to show the previous command output
+instead of using the scrollback. Or edit and re-execute.
+
+use a "set window title"-like escape sequence
+
+create the above two as a type of view
+	how?
+
+[needs to be keyboard navigable]
+But please, please, make this usable with keyboard only.
+
+Just a quick note: reading your article I was thinking "MVC"!
+1 Terminal(view in/out) = view
+2 Process = controller
+3 Process,File(data in/out) = model
+
+Managing multiple jobs at once is one such example.
+Using &, fg, bg in a Terminal session is almost impossible because they're sharing the same I/O.
+With a rich and interactive frontend you can easily work with multiple jobs at once.
+
+Multiple sessions, all commands are run asynchronously and forked into another window.
+To save bandwidth and increase performance, windows can be minimized so that the output doesn't need to be outputted.
+
+Aterm is an rxvt based terminal emulator application for Linux designed to
+provide pleasing visual effects, while performing all basic functionalities you
+expect in a terminal emulator. Extra features include fast pseudo-transparency,
+optional off-focus fading of text among others
+
+Wterm is another light weight terminal emulator based on rxvt code. Features of
+wterm include background images, transparency, and reverse transparency. 

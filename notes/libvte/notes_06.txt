@@ -1,0 +1,14 @@
+VteCellAttr (32 bits)
+	fragment	1	ANSI escape seq
+	columns		4
+	bold		1	1m
+	fore		9
+	back		9
+	standout	1
+	underline	1	4m
+	strikethrough	1	9m
+	reverse		1	7m
+	blink		1
+	half		1
+	invisible	1
+

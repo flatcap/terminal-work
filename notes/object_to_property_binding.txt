@@ -1,0 +1,46 @@
+* Glade         id = "allow-bold-checkbutton"
+* UI            id = "allow-bold-checkbutton"
+
+gtk_builder_add_from_file  checkbutton named "allow-bold-checkbutton"
+[profile-editor.c]
+
+terminal_profile_class_init [terminal-profile.c]
+ |
+ V
+terminal_profile property (bool) id=1 name "allow-bold" (also Gconf name)
+R/W                 (enum PROP_ALLOW_BOLD)       TERMINAL_PROFILE_ALLOW_BOLD
+g_object_class_install_property
+
+CONNECT ("allow-bold-checkbutton", TERMINAL_PROFILE_ALLOW_BOLD)
+ |
+ V
+terminal_util_bind_object_property_to_widget
+(G_OBJECT (profile),
+TERMINAL_PROFILE_ALLOW_BOLD,    // = "allow-bold"
+GTK_WIDGET (checkbutton),       // from the builder by name "allow-bold-checkbutton"
+0);
+ |
+ V
+Checkbutton property GT:PCD = 
+PropertyChange
+{
+        GObject *object;
+        char *propname;
+        GtkWidget *widget;
+        long obj_notify_id;
+        long wid_notify_id;
+        long flags;
+}
+
+signal_connect (widget, change, widget_notify_cb)
+signal_connect (object, property change, object_notify_cb);
+
+widget_notify_cb:
+        set the *object's* value
+
+object_notify_cb
+        set the *widget's* value
+
+terminal_profile_gconf_notify_cb
+        if values differ, set object property value
+

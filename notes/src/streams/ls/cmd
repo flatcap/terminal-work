@@ -1,0 +1,1 @@
+reset; ls -l --color=yes ~/bin; for i in $(seq 50); do echo; done

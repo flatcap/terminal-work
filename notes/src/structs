@@ -1,0 +1,67 @@
+ char_class
+ char_class_data
+ EggDesktopFile
+_EggSMClientPrivate
+ font_info
+_fudge_cell_props
+ selection_cell_coords
+ selection_event_coords
+_TerminalAppClass
+_TerminalScreenPopupInfo
+ trie_path
+ unistr_info
+_VteBg
+ VteBgCacheItem
+_VteBgClass
+ VteBgNative
+ VteBgPrivate
+_vte_buffer
+_vte_capability_quark
+_vte_capability_string
+_VteCharAttributes
+ vte_char_attributes
+ vte_charcell
+ vte_charcell_attr
+_VteConv
+ vte_cursor_position
+_vte_draw
+_vte_draw_impl
+_vte_draw_text_request
+_vte_incoming_chunk
+_vte_iso2022_block
+_vte_iso2022_map
+_vte_iso2022_state
+_vte_keymap_entry
+_vte_keymap_group
+_vte_matcher
+_vte_matcher_class
+_vte_matcher_impl
+ vte_match_regex
+ vte_palette_entry
+_vte_pangocairo_data
+ vte_pty_child_setup_data
+_vte_real_buffer
+_VteReaper
+_VteReaperClass
+_vte_regex
+_vte_regex_match
+_VteRing
+_VteRowData
+_VteScreen
+ vte_scrolling_region
+_vte_table
+_vte_table_arginfo
+_vte_table_arginfo_head
+_VteTerminal
+_VteTerminalAccessible
+_VteTerminalAccessibleClass
+_VteTerminalAccessibleFactory
+_VteTerminalAccessibleFactoryClass
+_VteTerminalAccessiblePrivate
+_VteTerminalClass
+ vte_terminal_flags
+_VteTerminalPrivate
+_VteTree
+_vte_trie
+ VteUnistrDecomp
+_VteWordCharRange

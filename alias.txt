@@ -1,0 +1,2 @@
+alias m="make; pkill -9 -x rte; pkill -9 -x rash; rte"
+alias m='clear; make; pkill -9 -x rte; pkill -9 -x rash; rte'

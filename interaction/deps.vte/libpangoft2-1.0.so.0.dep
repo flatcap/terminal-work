@@ -1,0 +1,13 @@
+/usr/lib64/libpango-1.0.so.0
+/lib64/libgobject-2.0.so.0
+/lib64/libgthread-2.0.so.0
+/lib64/libgmodule-2.0.so.0
+/lib64/librt.so.1
+/lib64/libglib-2.0.so.0
+/usr/lib64/libfreetype.so.6
+/usr/lib64/libfontconfig.so.1
+/lib64/libm.so.6
+/lib64/libpthread.so.0
+/lib64/libc.so.6
+/lib64/libdl.so.2
+/lib64/libexpat.so.1

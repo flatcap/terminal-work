@@ -1,0 +1,29 @@
+if [ -z "$DEBUG_APP" ]; then
+	# debugging
+	#alias c="cgdb ./gnome-terminal"
+	#alias cr="cgdb --pid=$(pidof gnome-terminal)"
+	alias m="make -s"
+	alias g='make -s && ./app'
+	alias todo="vi ~/todo/todo.txt +"
+	#source /etc/bash_completion.d/git
+	export GIT_PAGER="cat"
+
+	#alias log="git log --pretty=oneline --abbrev-commit | expand | side"
+	alias log="git log --pretty=oneline --abbrev-commit | sed 's/^....... //' | tac | nl -w3 -s '  ' | expand | side"
+	alias p="cd /proc/$(pidof app)/fd; clear; ls"
+
+	export LD_LIBRARY_PATH=.
+	#export VTE_DEBUG="misc,io,adj,updates,events,parse,signals,selection,substitution,ring,pty,cursor,keyboard,lifecycle,trie,work,cells,timeout,draw,ally,pangocairo,widget-size"
+
+	shopt -s histappend
+	PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -n"
+	export PKG_CONFIG_PATH=/home/work/terminal/install/lib/pkgconfig
+
+	#cd src
+	[ -f ~/.work_dir ] && cd $(cat ~/.work_dir)
+	clear
+	ls
+else
+	export PS1="\\T\\$ "
+fi
+

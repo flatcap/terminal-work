@@ -1,0 +1,1 @@
+ps fx -o user,pid,rss,tty,stat,command | grep -v -e /usr/libexec -e /usr/bin

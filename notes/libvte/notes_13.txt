@@ -1,0 +1,26 @@
+keyboard
+	generates scancodes
+	DATA: 0x39, 0xB9
+
+kernel
+	converts to keycodes
+	FILTER: sysreq, etc
+	DATA: ' ', 'w'
+
+xorg
+	converts to events (ascii)
+	FILTER: Ctrl-Alt-1, etc
+	DATA: keypress (57), keyrelease (57)
+
+application
+	FILTER: Alt-F, etc
+
+ibus (plugins)
+	converts to utf8 chars
+
+
+ibus
+entry	} im_preedit*
+app	} commit
+bash / readline
+

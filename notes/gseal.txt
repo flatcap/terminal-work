@@ -1,0 +1,43 @@
+     45 GtkObject/flags
+     41 GtkWidget/window
+     33 GtkWidget/allocation
+     13 GtkWidget/parent
+      8 GtkSelectionData/length
+      7 GtkAdjustment/upper
+      7 GtkAdjustment/lower
+      5 GtkSelectionData/data
+      4 GtkWidget/style
+      4 GtkAdjustment/value
+      4 GtkAdjustment/page_size
+      4 GtkAdjustment/page_increment
+      3 GtkSelectionData/format
+      3 GtkAdjustment/step_increment
+      2 GtkSelectionData/target
+      2 GtkMessageDialog/label
+      1 GtkNotebook/first_tab
+      1 GtkBin/child
+
+GtkAdjustment/lower
+GtkAdjustment/page_increment
+GtkAdjustment/page_size
+GtkAdjustment/step_increment
+GtkAdjustment/upper
+GtkAdjustment/value
+
+GtkBin/child
+
+GtkMessageDialog/label
+
+GtkNotebook/first_tab
+
+GtkObject/flags
+
+GtkSelectionData/data
+GtkSelectionData/format
+GtkSelectionData/length
+GtkSelectionData/target
+
+GtkWidget/allocation
+GtkWidget/parent
+GtkWidget/style
+GtkWidget/window

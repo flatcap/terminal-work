@@ -1,0 +1,40 @@
+FIND OBJECT
+
+struct TerminalFind	// typedef
+{
+	parent gobject
+	members
+	priv *		// private stuff
+}
+
+struct TerminalFindClass	// typedef
+{
+	parent gobjectclass
+	methods			// for signals
+	...			// stuff that can be overridden
+}
+
+#defines
+	TERMINAL_TYPE_FIND
+	TERMINAL_FIND
+	TERMINAL_FIND_CLASS
+	TERMINAL_IS_FIND
+	TERMINAL_IS_FIND_CLASS
+	TEMRINAL_FIND_GET_CLASS
+
+init
+get_type	G_DEFINE_TYPE
+finalize
+getprop
+setprop
+class_init	signals, install properties
+
+struct find_private
+{
+	private stuff...
+}
+
+enum signals
+
+bind object prop to widget
+

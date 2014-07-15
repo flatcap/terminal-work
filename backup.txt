@@ -1,0 +1,62 @@
+cd git
+cd glib/
+git clean -dxn
+cd gnome-terminal/
+cd gtk+
+cd vte
+git clean -dxf
+cd examples/
+cd demo/
+cd cairo
+ls dlopen/
+cd dlopen/
+make clean 
+ls fork/
+cd for
+cd fork
+rm fork pipe
+ls gperf/
+ls idle/
+cd idle/
+ls object/
+cd object/
+ls ref/
+cd ref
+ls sqlite/
+cd sqlite/
+rm ludDB.sqlite3 
+ls tbb
+cd tbb
+rm t
+ls thread/
+cd thread/
+tree
+rm sqlite/s
+ls readline
+ls -AC
+rm -fr .cache/ .ccache/ .thumbnails/ .xsession-errors* 
+rm -fr .mozilla/firefox/default/Cache/*
+du -sh .
+baobab .
+cd readline/
+ls bash-4.2
+cd bash-4.2/
+ls -C
+rm rash 
+cd ncurses-5.8/
+cd readline
+cd readline-6.2/
+rm jim tgetstr
+find . -type f -perm +700
+find . -type f -perm -700
+fff file | grep -w ELF 
+cd rte
+cd ../vte
+make clean
+make distclean
+du -sh 
+tar cfv terminal_2011_04_21.tar terminal
+chown flatcap.flatcap terminal_2011_04_21.tar 
+rm -fr terminal
+xz -9v terminal_2011_04_21.tar 
+ls -l

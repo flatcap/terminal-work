@@ -1,0 +1,11 @@
+disk
+
+disk_new
+disk_clone?
+disk_drop_page
+	read-only, not in use
+disk_commit_page
+	read-write, not in use
+
+thaw/freeze?
+

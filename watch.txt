@@ -1,0 +1,3 @@
+watch -tn1 "ps fx -o user,pid,rss,tty,stat,command | grep -v -e /usr/libexec -e /usr/bin -e 'ps fx'"
+watch -tn1 "echo; echo; ps fx -o user,pid,ppid,pgid,sid,tty,stat,command | grep -v -e /usr/libexec -e /usr/bin -e 'ps fx'; echo; ls -l /dev/pts"
+watch -tn1 "echo; ps fx -o user,pid,ppid,pgid,sid,tty,stat,command | grep -B2 '\<pts/' | grep -v -e grep -e 'ps fx'; echo; ls -l /dev/pts"

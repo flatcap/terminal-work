@@ -1,0 +1,42 @@
+VteRowData
+
+	s*	VteCell *cells
+	i	guint len
+	s	VteRowAttr attr
+
+VteCell
+
+	i	vteunistr c
+	s	VteCellAttr attr
+
+VteCellAttr
+
+	i	union characteristics
+
+VteRowAttr
+
+	i	guint8 soft_wrapped
+
+VteFileStream : VteStream
+VteStream : GObject
+
+	i	fd[2]
+	i	offset[2]
+
+File (attr_stream)
+
+VteCellAttrChange
+
+	i	text_offset
+	s	VteIntCellAttr attr
+
+VteIntCellAttr (Union)
+
+	s	VteCellAttr s
+	i	guint32 i
+
+VteRowRecord (16 bytes)
+
+	i	text_offset
+	i	attr_offset
+

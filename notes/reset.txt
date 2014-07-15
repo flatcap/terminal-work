@@ -1,0 +1,31 @@
+$ reset
+
+[3g			- Tab Clear (TBC) - Clear All
+        H		- CUP - cursor position (1,1)
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+        H
+
+c			- RIS - Reset terminal to initial state
+[!p			- Soft terminal reset (DECSTR)
+[?3;4l		- 3 = 80 Column Mode (DECCOLM); 4 = Jump (Fast) Scroll (DECSCLM)
+[4l			- 4 = Replace Mode (IRM)
+>			- Normal Keypad (DECPNM)
+

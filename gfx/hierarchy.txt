@@ -1,0 +1,15 @@
+
+            app   ---------->  profile manager ---> profile1
+                               encodings            profile2
+          /  |  \              shortcuts            profile3
+         /   |   \             find
+        /    |    \
+       /     |     \
+      V      V      V
+  Window  Window   Window
+
+  |  | |   |  |    | | | |
+  |  | |   |  |    | | | |
+  V  V V   V  V    V V V V
+
+  T  T T   T  T    T T T T

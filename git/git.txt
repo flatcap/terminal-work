@@ -1,0 +1,2 @@
+work_gt  file:///home/work/src/gnome-terminal
+work_vte file:///home/work/src/vte

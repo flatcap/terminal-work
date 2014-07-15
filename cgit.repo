@@ -1,0 +1,10 @@
+repo.url=work/vte2
+repo.path=/home/flatcap/work/terminal/vte2/.git
+repo.desc=vte2
+
+repo.url=work/rte
+repo.desc=rte
+repo.path=/home/flatcap/work/terminal/rte/.git
+
+include=/home/flatcap/work/terminal/git/cgit.repo
+

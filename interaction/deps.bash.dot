@@ -1,0 +1,3 @@
+digraph "bla" {
+	"bash" -> "libtinfo";
+};

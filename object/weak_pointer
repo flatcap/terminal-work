@@ -1,0 +1,2 @@
+use weak pointers to auto nullify object pointers
+gtk_widget_destroyed to nullify object pointers

@@ -1,0 +1,322 @@
+# vte makefile
+
+# Tools
+ARCH	= $(shell uname -m)
+CC	= gcc
+RM	= rm -f
+LN	= ln
+MV	= mv
+CP	= cp
+CAT	= cat
+GREP	= grep
+MKDIR	= mkdir -p
+GPERF	= gperf
+SED	= sed
+SORT	= LANG=C sort
+GEN_GGM	= glib-genmarshal
+GEN_GME	= glib-mkenums
+NM	= nm
+
+# Things to build
+APP_DYN	= app
+APP_STAT= app2
+APP_RICH= app3
+LIB_VTE	= libvte.so.9
+LIB_RICH= librich.so.1
+
+OUT	= $(APP_DYN) $(APP_STAT) $(APP_RICH) $(LIB_VTE) $(LIB_RICH)
+
+VTE_DIR	= ../vte
+VTE_SRC_DIR = $(VTE_DIR)/src
+
+# General compiler flags
+CFLAGS	+= -g
+#CFLAGS	+= -O2
+CFLAGS	+= -fno-common
+
+# For shared libraries
+CFLAGS	+= -fPIC
+CFLAGS	+= -DPIC
+
+# Warning flags
+CFLAGS_WARN	+= -Waggregate-return
+CFLAGS_WARN	+= -Wall
+CFLAGS_WARN	+= -Wcast-align
+#CFLAGS_WARN	+= -Wdeclaration-after-statement
+CFLAGS_WARN	+= -Werror-implicit-function-declaration
+CFLAGS_WARN	+= -Wextra
+CFLAGS_WARN	+= -Wimplicit
+CFLAGS_WARN	+= -Winit-self
+CFLAGS_WARN	+= -Wmissing-declarations
+CFLAGS_WARN	+= -Wmissing-format-attribute
+CFLAGS_WARN	+= -Wmissing-prototypes
+CFLAGS_WARN	+= -Wnested-externs
+CFLAGS_WARN	+= -Wno-missing-field-initializers
+CFLAGS_WARN	+= -Wno-switch-enum
+CFLAGS_WARN	+= -Wno-unused-parameter
+CFLAGS_WARN	+= -Wold-style-definition
+CFLAGS_WARN	+= -Wpacked
+CFLAGS_WARN	+= -Wpointer-arith
+CFLAGS_WARN	+= -Wshadow
+CFLAGS_WARN	+= -Wsign-compare
+CFLAGS_WARN	+= -Wstrict-aliasing=2
+CFLAGS_WARN	+= -Wstrict-prototypes
+CFLAGS_WARN	+= -Wunsafe-loop-optimizations
+CFLAGS_WARN	+= -Wwrite-strings
+
+# Basic include dirs
+CFLAGS_INC	+= -I.
+CFLAGS_INC	+= -I/usr/include/gio-unix-2.0
+CFLAGS_INC	+= -I/usr/include/glib-2.0
+
+# Extra include dirs
+CFLAGS_INC	+= -I/usr/include/atk-1.0
+CFLAGS_INC	+= -I/usr/include/cairo
+CFLAGS_INC	+= -I/usr/include/freetype2
+CFLAGS_INC	+= -I/usr/include/gtk-2.0
+CFLAGS_INC	+= -I/usr/include/libpng12
+CFLAGS_INC	+= -I/usr/include/pango-1.0
+CFLAGS_INC	+= -I/usr/include/pixman-1
+#CFLAGS_INC	+= -I$(VTE_SRC_DIR)
+
+ifeq ($(ARCH),i686)
+CFLAGS_INC	+= -I/usr/lib/glib-2.0/include
+CFLAGS_INC	+= -I/usr/lib/gtk-2.0/include
+else
+CFLAGS_INC	+= -I/usr/lib64/glib-2.0/include
+CFLAGS_INC	+= -I/usr/lib64/gtk-2.0/include
+endif
+
+# Definitions
+CFLAGS_DEF	+= -DATK_DISABLE_DEPRECATED=1
+CFLAGS_DEF	+= -DATK_DISABLE_SINGLE_INCLUDES=1
+CFLAGS_DEF	+= -DGDK_DISABLE_DEPRECATED=1
+CFLAGS_DEF	+= -DGDK_DISABLE_SINGLE_INCLUDES=1
+CFLAGS_DEF	+= -DGDK_PIXBUF_DISABLE_DEPRECATED=1
+CFLAGS_DEF	+= -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES=1
+CFLAGS_DEF	+= -DGTK_DISABLE_DEPRECATED=1
+CFLAGS_DEF	+= -DGTK_DISABLE_SINGLE_INCLUDES=1
+CFLAGS_DEF	+= -DG_DISABLE_DEPRECATED=1
+CFLAGS_DEF	+= -DG_DISABLE_SINGLE_INCLUDES=1
+CFLAGS_DEF	+= -DPANGO_DISABLE_DEPRECATED=1
+CFLAGS_DEF	+= -DPANGO_DISABLE_SINGLE_INCLUDES=1
+
+#CFLAGS_DEF	+= -DVTE_DISABLE_DEPRECATED=1
+
+CFLAGS_DEF	+= -DDATADIR='"/usr/local/share"'
+#CFLAGS_DEF	+= -DG_DISABLE_ASSERT
+CFLAGS_DEF	+= -DG_LOG_DOMAIN='"Vte"'
+CFLAGS_DEF	+= -DHAVE_CONFIG_H
+#CFLAGS_DEF	+= -DLIBEXECDIR='"/usr/local/libexec"'
+CFLAGS_DEF	+= -DLIBEXECDIR='"/usr/lib64/vte"'
+CFLAGS_DEF	+= -DLOCALEDIR='"/usr/local/share/locale"'
+CFLAGS_DEF	+= -DVTE_COMPILATION
+#CFLAGS_DEF	+= -D_GNU_SOURCE
+CFLAGS_DEF	+= -DVTE_DEBUG
+
+# Basic linker libs
+LDFLAGS	+= -lgio-2.0
+LDFLAGS	+= -lglib-2.0
+
+# Extra linker libs
+LDFLAGS	+= -latk-1.0
+LDFLAGS	+= -lcairo
+LDFLAGS	+= -lfontconfig
+LDFLAGS	+= -lfreetype
+LDFLAGS	+= -lgdk_pixbuf-2.0
+LDFLAGS	+= -lgdk-x11-2.0
+LDFLAGS	+= -lgmodule-2.0
+LDFLAGS	+= -lgobject-2.0
+LDFLAGS	+= -lgtk-x11-2.0
+LDFLAGS	+= -lm
+LDFLAGS	+= -lncurses
+LDFLAGS	+= -lpango-1.0
+LDFLAGS	+= -lpangocairo-1.0
+LDFLAGS	+= -lpangoft2-1.0
+
+# libvte linker flags
+LDFLAGS_VTE += -Wl,-soname
+LDFLAGS_VTE += -Wl,libvte.so.9
+LDFLAGS_VTE += -Wl,-version-script
+LDFLAGS_VTE += -Wl,libvte.ver
+
+# librich linker flags
+LDFLAGS_RICH += -Wl,-soname
+LDFLAGS_RICH += -Wl,librich.so.1
+LDFLAGS_RICH += -Wl,-version-script
+LDFLAGS_RICH += -Wl,librich.ver
+
+CONFIG	= config.h
+
+# Source directly linked from the vte dir
+VTE_SRC	= app.c caps.c debug.c iso2022.c keymap.c matcher.c pty.c reaper.c \
+	  ring.c table.c trie.c vte.c vteaccess.c vtebg.c vteconv.c vtedraw.c \
+	  vteregex.c vteseq.c vtetc.c vtetree.c vteunistr.c vterowdata.c \
+	  vtestream.c
+
+VTE_HDR	= buffer.h caps.h debug.h iso2022.h keymap.h matcher.h pty.h reaper.h \
+	  ring.h table.h trie.h vte.h vteaccess.h vtebg.h vteconv.h vtedraw.h \
+	  vteint.h vte-private.h vtepty.h vtepty-private.h vteregex.h vtetc.h \
+	  vtetree.h vteunistr.h vterowdata.h vtestream-base.h vtestream-file.h \
+	  vtestream.h vtedeprecated.h
+
+# Generated source, to be compiled
+GEN_SRC	= marshal.c vtetypebuiltins.c
+
+GEN_HDR	= marshal.h vteseq-list.h vtetypebuiltins.h vteversion.h gnome-pty.h
+
+# Generated and then #included
+INC_SRC	= vteseq-2.c vteseq-n.c gnome-pty.h
+
+# Source copied and #included
+COPY_SRC = keysyms.c \
+	   unitable.CP437
+#	   unitable.CNS11643 \
+#	   unitable.GB12345 \
+#	   unitable.GB2312 \
+#	   unitable.JIS0201 \
+#	   unitable.JIS0208 \
+#	   unitable.JIS0212 \
+#	   unitable.KSX1001
+
+# Library definitions
+LIB_VTE_DEFS	= libvte.exp libvte.ver
+LIB_RICH_DEFS	= librich.exp librich.ver
+
+# Things we need to compile
+COMPILE_SRC	= $(VTE_SRC) $(GEN_SRC)
+COMPILE_HDR	= $(VTE_HDR) $(GEN_HDR)
+
+COMPILE_OBJ	= $(COMPILE_SRC:.c=.o)
+
+SOURCE	= $(VTE_SRC) $(VTE_HDR) $(GEN_SRC) $(GEN_HDR) $(INC_SRC) $(COPY_SRC)
+
+# Make targets
+all:    $(OUT) tags
+
+source:	$(SOURCE)
+
+.c.o:
+	$(CC) $(CFLAGS) $(CFLAGS_WARN) $(CFLAGS_INC) $(CFLAGS_DEF) -c $< -o $@
+
+$(LIB_VTE): $(COMPILE_OBJ) $(LIB_VTE_DEFS)
+	$(CC) -shared $(COMPILE_OBJ) $(LDFLAGS) $(LDFLAGS_VTE) -o $@
+
+LIB_RICH_OBJ	= caps.o debug.o iso2022.o marshal.o matcher.o pty.o reaper.o \
+		  ring.o table.o trie.o vteconv.o vteregex.o vterowdata.o \
+		  vtestream.o vtetc.o vtetree.o vteunistr.o
+
+$(LIB_RICH):	$(LIB_RICH_OBJ) $(LIB_RICH_DEFS)
+	$(CC) -shared $(LIB_RICH_OBJ) $(LDFLAGS_RICH) -lgio-2.0 -lglib-2.0 -o $@
+
+$(APP_DYN):	app.o $(LIB_VTE)
+	$(CC) $^ -o $@ $(LDFLAGS)
+
+$(APP_STAT):	app.o $(COMPILE_OBJ)
+	$(CC) $^ -o $@ $(LDFLAGS)
+
+OTHER_OBJ = keymap.o marshal.o vteaccess.o vtebg.o vte.o vteconv.o vtedraw.o vteseq.o vtetypebuiltins.o
+
+$(APP_RICH):	app.o $(OTHER_OBJ) $(LIB_RICH)
+	$(CC) $^ -o $@ debug.o $(LDFLAGS)
+
+#$(COMPILE_OBJ): $(SOURCE)
+
+$(VTE_SRC) $(VTE_HDR) $(COPY_SRC):
+	$(LN) $(VTE_SRC_DIR)/$@
+
+gnome-pty.h:
+	$(LN) $(VTE_DIR)/gnome-pty-helper/$@
+
+tags:   $(SOURCE) force
+	ctags *.[ch]
+
+force:
+
+# Cleanup targets
+clean:
+	$(RM) $(COMPILE_OBJ)
+	$(RM) $(OUT)
+	$(RM) $(LIB_VTE_DEFS) $(LIB_RICH_DEFS)
+
+distclean: clean
+	#$(RM) $(CONFIG)
+	$(RM) $(VTE_SRC) $(VTE_HDR)
+	$(RM) $(GEN_SRC) $(GEN_HDR)
+	$(RM) $(INC_SRC)
+	$(RM) $(COPY_SRC)
+	$(RM) tags typescript
+
+# Generated source
+$(CONFIG):	$(VTE_DIR)/$(CONFIG)
+	$(GREP) "^#define" $(VTE_DIR)/$(CONFIG) | $(SORT) > $@
+
+marshal.c:
+	$(GEN_GGM) --prefix=_vte_marshal --header --body --internal $(VTE_SRC_DIR)/marshal.list > $@
+
+marshal.h:
+	$(GEN_GGM) --prefix=_vte_marshal --header --internal $(VTE_SRC_DIR)/marshal.list > $@
+
+vtetypebuiltins.c: vte.h vtepty.h
+	$(GEN_GME) --template $(VTE_SRC_DIR)/vtetypebuiltins.c.template vte.h vtepty.h > $@
+
+vtetypebuiltins.h: vte.h vtepty.h
+	$(GEN_GME) --template $(VTE_SRC_DIR)/vtetypebuiltins.h.template vte.h vtepty.h > $@
+
+vteseq-list.h:
+	$(CAT) $(VTE_SRC_DIR)/vteseq-2.gperf $(VTE_SRC_DIR)/vteseq-n.gperf | grep -v '^#' | grep '\<VTE_SEQUENCE_HANDLER\>' | $(SED) 's/.*, //' | LANG=C sort -u > $@
+
+vteseq-2.c:
+	$(GPERF) -m 100 --no-strlen $(VTE_SRC_DIR)/vteseq-2.gperf > $@
+
+vteseq-n.c:
+	$(GPERF) -m 100 $(VTE_SRC_DIR)/vteseq-n.gperf > $@
+
+vteversion.h:
+	@VTE_MAJ=`cat $(VTE_DIR)/configure.in | $(SED) -n '1p' | $(SED) 's/^.*\[\([0-9]\+\).*/\1/'`; \
+	VTE_MIN=$(shell cat $(VTE_DIR)/configure.in | $(SED) -n '2p' | $(SED) 's/^.*\[\([0-9]\+\).*/\1/');	\
+	VTE_MIC=$(shell cat $(VTE_DIR)/configure.in | $(SED) -n '3p' | $(SED) 's/^.*\[\([0-9]\+\).*/\1/');	\
+	$(CAT) $(VTE_SRC_DIR)/vteversion.h.in | $(SED) "s/@VTE_MAJOR_VERSION@/$$VTE_MAJ/" | $(SED) "s/@VTE_MINOR_VERSION@/$$VTE_MIN/" | $(SED) "s/@VTE_MICRO_VERSION@/$$VTE_MIC/" > $@
+
+# Generated lib data
+libvte.exp: $(COMPILE_OBJ)
+	$(NM) -B $(COMPILE_OBJ) | $(SED) -n -e 's/^.*[ ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ ][ ]*\([_A-Za-z][_A-Za-z0-9]*\)$$/\1 \2 \2/p' | $(SED) 's/.* //' | sort | uniq > libvte.exp
+	$(GREP) -E -e "^vte_terminal_.*|^vte_pty_.*|^_vte_pty_.*|^vte_reaper_.*|_vte_debug_.*" "libvte.exp" > "libvte.expT"
+	$(MV) -f "libvte.expT" "libvte.exp"
+
+libvte.ver: libvte.exp
+	echo "{ global:" > libvte.ver
+	cat libvte.exp | $(SED) -e "s/\(.*\)/\1;/" >> libvte.ver
+	echo "local: *; };" >> libvte.ver
+
+librich.exp: $(LIB_RICH_OBJ)
+	$(NM) -B $(LIB_RICH_OBJ) | $(SED) -n -e 's/^.*[ ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[ ][ ]*\([_A-Za-z][_A-Za-z0-9]*\)$$/\1 \2 \2/p' | $(SED) 's/.* //' | sort | uniq > librich.exp
+	$(GREP) -E -e "^rich" "librich.exp" > "librich.expT"
+	$(MV) -f "librich.expT" "librich.exp"
+
+librich.ver: librich.exp
+	echo "{ global:" > librich.ver
+	cat librich.exp | $(SED) -e "s/\(.*\)/\1;/" >> librich.ver
+	echo "local: *; };" >> librich.ver
+
+# One-off preprocessing
+remove_main:
+	unifdef -UISO2022_MAIN iso2022.c | cat > iso2022.c.tmp
+	$(CAT) iso2022.c.tmp > iso2022.c
+	$(RM) iso2022.c.tmp
+	unifdef -UREAPER_MAIN reaper.c | cat > reaper.c.tmp
+	$(CAT) reaper.c.tmp > reaper.c
+	$(RM) reaper.c.tmp
+	unifdef -UTABLE_MAIN table.c | cat > table.c.tmp
+	$(CAT) table.c.tmp > table.c
+	$(RM) table.c.tmp
+	unifdef -UTRIE_MAIN trie.c | cat > trie.c.tmp
+	$(CAT) trie.c.tmp > trie.c
+	$(RM) trie.c.tmp
+	unifdef -UVTECONV_MAIN vteconv.c | cat > vteconv.c.tmp
+	$(CAT) vteconv.c.tmp > vteconv.c
+	$(RM) vteconv.c.tmp
+	unifdef -UTERMCAP_MAIN vtetc.c | cat > vtetc.c.tmp
+	$(CAT) vtetc.c.tmp > vtetc.c
+	$(RM) vtetc.c.tmp
+

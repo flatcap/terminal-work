@@ -1,0 +1,11 @@
+Trace Ctrl-D
+prefix all essential (non-gui) functions "rich_"
+prefix all gui functions "gui_"				Log Changes
+trace startup
+any deprecated in librich?
+librich dir & Makefile
+for all librich functions: what is the caller trying to do?
+librich - generate .so and .la
+identify all the objects - structs, enums in librich - ownership / dep tree
+list of all functions by file - dot to link files!
+un-rename all static functions?

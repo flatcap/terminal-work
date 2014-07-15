@@ -1,0 +1,611 @@
+home-level makefile to
+	build
+	clean
+	distclean
+every project beneath
+
+integrate the terminal application and the scrollbar
+e.g. get the gnome-terminal's scrollbar to represent what's in vim
+
+getting narrower again
+
+test rig
+	different shaped blocks of text
+	wrapping
+	follow
+	random colour attributes (how does this get saved?)
+	tests for each and every escape sequence
+	lots of random screen sizes
+	lots of different character sets
+
+	static tests - compare against test output files
+	dynamic tests - generate a scenario, work out what should be displayed, compare the two
+
+ctags -Rf tags_usr_include /usr/include
+ctags -Rf tags_usr_src_debug /usr/src/debug/
+
+plugin modules for term support - vt100.so
+without a module, term just outputs straight text (FAST!)
+
+option to compile in certain modules for speed
+
+can we get termcap/info to output xml/html?
+bold -> <b>...</b>
+how do we get html front end to do absolute addressing?
+
+wrap on/off -> none/char/word ?
+
+large screen could be 640x150 = 96000 chars
+4K will only house 6.4 lines
+max 1024 chars/line? then continue in "new" line
+
+cache_new   -> new disk (empty)
+cache_clone -> existing disk (full)
+
+disk layers are linked object, too.
+Keep then alive whilst cache object needs them
+Then, page up/down can be fulfilled quickly
+
+4K is too small, 16K?
+16K -> 3-6 pages of dense text
+bigger? config?
+
+save timings/data from real terminal?
+then playback into various test terminals to check efficiency
+useful for debugging
+
+Fast View Modes - Print when...
+	normal - a char is typed
+	line - a line to complete
+	half-page - n lines are complete
+	page - an entire page is complete
+
+Fast Modes
+	Monochrome - ignore the attributes completely
+	Zoomed out - scale down text to fit multiple pages on one screen
+		dividing lines showing pages
+		page number in corner showing order (config)
+		factor 4: 2x2 little terminals
+		factor 9: 3x3 little terminals
+	Paned - make tall thin panes
+		Paned: they are narrow, but long
+		Overlapped: They are normal width, but only left is visible
+	
+How scalable are pango fonts?
+
+Compare all terminals
+	startup time
+	memory footprint
+	throughput of text
+
+view_new
+view_clone (view)
+view_set_size (cols, rows)
+view_set_history (lines)
+view_get_rows (start, num)
+view_set_cache_size (float)
+	0.0 = read from disk
+	1.0 = cache = view_size
+	2.0 = cache = 2 * view_size
+
+On the help menu, a "Complete a Survey" option
+It scans terminal, dependencies and plugins and sends them to me
+(after asking the user)
+
+
+for a shell command:  X | Y | Z
+would it be quicker if each had a "shell" interface to a .so?
+Don't fork then exec X; dlopen X.so
+make each component "drivable"
+command: parses command line text, loads .so
+.so : does the work
+once .so exists, make sire command uses save interface - even if statically linked
+probably quicker
+	no need to generate command line, then have it parsed
+	no fork/exec either
+
+The bash history persists with .bash_history
+Allow the terminal's history to persist, too
+	Use the WM session facilities
+
+Terminal tracking mode
+	normal -> each line displayed
+	quick -> every half-page displayed
+	fast -> every page displayed
+	timed? -> every n seconds  n = 0.5 -> n = 10?
+
+View type
+	colour - full colour terminal
+	mono - just the text
+	rough - rough text - no antialiasing
+	birdseye - one pixel per n chars (attach to an existing view and use it as a scrollbar)
+	gfx - the full graphical experience
+
+if bottom of the cache comes into view, track new additions
+match new window size to old windows (or some default) - option?
+'b' generate block of text command
+invalidate all area function
+invalidate on new view info or resize
+who interprets VT100?  create new term for gfx enabled term?
+can different views have different TERM handling?
+view/buffer/? set tab size, set tab positions
+
+Normal terminal: 174x47
+Big terminal: 639x154
+
+Cache
+	Active area
+	Buffer area (probably 1 page in size)
+	Disk area - stuff waiting to be written to disk
+
+Store API
+	line_num = write_line (text, attr)
+	read_line (num, &text, &attr)
+	get_line_count
+	search?
+
+plugable backend
+	makes testing easier if we can intercept the store
+	multiple plugins?
+		good for debugging new backends
+		compare speed
+	plain text backend = logging
+		wouldn't be up-to-date - buffer/active
+	binary backend
+		quick, compact
+	db backend
+		versatile, distributed
+		mysql
+		sqlite
+
+how many people use last_attr, cached_row, buffer?
+can they be factored out?
+
+HTML backend?
+
+how many threads do we need?
+one thread per view?
+which structs need locking?
+how many threads in GT?
+1/windows? 1/tab?
+
+font_info_measure_font
+font width 8, height 17, ascent 13
+11pt 9x18
+
+updates done by timers in views?
+if view isn't visible, it disable its timer
+libvte needs to be threadsafe
+
+tag data ranges
+insert metadata
+
+compare vte api vs ring model
+
+add IM to app
+
+tooltip stream
+(contains command info)
+tag URIs etc
+
+separate text and attrs?
+	perhaps not
+
+index for each data stream?
+
+once vteterm is complete
+which parts of the ctl can be split up?
+
+to extend the vt, what do we need to do?
+	plugins - how?
+	derived class - how?  what needs to be virtual?
+	add extra streams - how?
+
+vtelib - strongly type everything
+
+vte, vte-gtk, vte-cairo
+
+finalize must recurse
+
+gtk_get_prop(obj) == obj->get_property()
+
+Views can be
+	read only
+	text
+	attr
+	full text + attr
+	read/write - can change buffer
+
+how can we change historic data?
+how can we integrate non-text data?
+Text: "<external num=x>" with special attr bit
+altering historic text/attrs implies re-indexing, or BIG padding
+As long as it's not committed, it's not a problem
+
+Views
+	V0 - master view (current)
+	V1 - read only / old view
+	V2 - some view lost
+	V3 - some read only, some read write
+	V4 - completely lost
+
+need titles on svg pages
+
+get_rows  rc+1 on C's
+drop_rows rc-1 on C's
+
+extend active (more scrollback)
+current store = D7
+read D6 (last commit)
+join caches of C6, C7
+set file ptrs to D5 (older commit)
+
+testing
+	when doing test cases either
+		restart terminal each time
+		reset terminal and check output is empty? (quicker)
+			test1
+			save
+			reset
+			save
+			check
+			test2...
+
+terminal handlers (talk to terminfo.so)
+	null (does nothing)
+	vt52
+	vt100
+	vt220
+	xterm
+	linux
+
+vt100.so
+	expands escape sequences
+	expands tabs?
+		otherwise pango will
+	can manipulate cache objects?
+		directly
+		through API?
+	internal variables representing state
+
+keep the cursor position
+	in view?
+	in cache?
+	both?
+
+hack vte to save all the raw output
+extract all the escape sequences - check they render
+run every program I can, to get all the escape sequences
+
+<Esc>[	CSI	Control Sequence Introducer
+
+Window-Size Escape Sequences
+	Bel
+	Mouse Tracking
+	Window title
+	Icon title
+	Show/Hide
+		menu
+		toolbar
+		scrollbars
+	Set/Reset
+		num lock
+		scroll lock
+		caps lock
+	set cursor style
+	window
+		resize
+		move
+		iconify
+		maximise
+		raise
+		lower
+
+callback, varargs?
+windows_sequence (name, args...)
+	no - we'd have to know the name of everything in advance
+windows_sequence (string)
+	just let the recipient decide
+	yes - I want the sequence
+	no - I don't understand it
+	partial - I recognise the sequence, but it's incomplete
+
+thaw -> store_get_rows
+	store_drop_rows
+
+good use of multiple terminal-handler plugins
+	1) vt100 - does most of the work
+	2) vt220 - mops up a few extras
+	3) rxvt - handles some rxvt specific sequences
+	4) default - send to the gfx front-end
+
+the rxvt plugin might need to be in the front-end
+
+rev-shell - who handles backspace & ctrl-u?
+	the tty/kernel
+
+xml enabled commands => xslt processing
+
+output (capture) filter will display
+	text -> normal
+	csv -> grid, sortable, select all, etc
+	svg -> gfx thumbnail
+	png,gif -> gfx thumbnail
+	xml -> tree display (foldable, collapsible)
+	html -> display
+	.roff -> render like yelp
+	ELF -> cog icon -> run
+
+multiple views of same data
+create a birdseye view like dotty's
+	as a floating scrollbar (transparent, autohide)
+
+treatment/working of
+	setterm
+	tset
+	stty
+	reset
+	ioctl -> get list from kernel
+	sigwinch?
+	signal(
+	set_signal_handler
+
+Input
+	keys (exluding...)
+	backspace
+	enter
+	tab
+	ctrl-l
+	ctrl-d
+	ctrl-ins
+F1 where is it translated into ^[~D ?
+
+Commands (trace through term)
+	none
+	does not exist
+	builtin
+	single command
+	chain|of|commands
+
+Output
+	text
+	stty -echo
+	4 * ioctl
+	escape seq (local)
+	escape seq (window)
+	reset
+	alt screen
+
+Misc
+	resize window -> ioctl -> pty / vte / gt ?
+
+If NOWRAP is enabled, when we have a long input, do we...
+	wrap anyway
+	truncate at screen (cursor off screen)
+	side scroll input line (beginning of line lost)
+	side scroll entire screen (beginning of screen lost)
+	OPTION
+
+Store
+	files: magic number
+	header section
+		sizes
+		what's included
+		etc
+	index and data in one file?
+	what about attrs?
+	what about extra streams?
+
+Test
+	page up (view with plenty of history)
+	ring_get_lines (x, y)	- new - find them on disk, link and refcount, return first
+	ring_drop_lines (y, z)  - old - unref (remove if nec)
+
+ls<enter>
+	how many signals are emitted?
+
+how often should we be notifying people?
+if each view id threaded, we might not need to ration out time
+between them when giving the child's text
+
+on changes to the buffer, send a signal
+	tell specific views
+	tell everyone everything
+	keep the caches in order
+		iterate through the list backwards until everyone who cares has been notified
+
+what happens to frozen rows if a very long new view is created?
+
+what happens with 2 (or more) different *width* views?
+WINCH to which width?  follow focus?  multi-focus?
+First view?  Last View?  Narrowest? widest? tallest? shortest?
+configurable?
+screen(1) follows the first and truncates/limits the rest
+	F = Fit command sets width of all to current size
+implies that all views are not created equal
+
+printf G_GSIZE_FORMAT
+
+Events
+	key press/release
+	mouse enter/leave
+	clicks / drags
+	timeouts
+
+error handling strategy for all the various levels and plugins
+
+/tmp/rteXYX/	index
+		text	} both indexed by "index", ought to be independent
+		attrs	}
+		extra_stream1	} what about indexing?
+		extra_stream2	}
+CONFIG location, could be useful to keep the logs
+
+as each update occurs to active region
+	signal all followers
+	let *them* accumulate the changes and decide when to redraw
+reset => signal *all* viewers
+
+is mmap still used?
+has it been supplanted?
+use for the store
+how does mmap interact with sparse files?
+make lost parts of the store sparse -> prevents need for swapfds
+
+create a NULL cache for
+	searching
+	overview toolbar
+the NULL cache pulls data from the store, but doesn't bother keeping track?
+is there any saving to be had?
+
+cache0
+	always follows active region
+	has no view
+	does it *really* need to exists
+		can it just be an extra ref count?
+
+view updates
+	row lost
+	row changed
+	row added
+invalidate region
+
+gt: about:config
+like firefox, list *all* options
+bold for the non-default
+
+gt needs to override the escape sequence handling
+
+Who does this and where does it happen:
+	tagging streams
+	cursor stuff
+	selection
+	searching
+
+v_id = new_view (NULL, /bin/bash, env)
+v_id2 = new_view (v_id)
+resize (v_id, x, y)
+stats = info (v_id)
+	size
+	shape
+	history
+	etc
+text = get_row (v_id, n)
+get_text (v_id, x, y)
+get_attrs (v_id, x, y)
+
+get_X (vid, type, range_start, range_end)
+	type	X	range
+	text	1	rows
+	attr	2	byte offset? / rows?
+	command	3	rows?
+make everything work with byte offsets?  a bit unwieldy
+3 = register_type ("command", RANGE_BYTE)
+start_tag (vid, 3)
+end_tag (vid, 3)
+
+how do alternate screens work?
+	controlled by terminfo
+	create them as needed
+
+view sizing
+	synchronise (simple, but ugly)
+
+bash attaches readine to stdin
+
+cache will tell view when things change
+view needs way of specifying the frequency of these updates
+	char-by-char
+	char chunk
+	line
+	half-page
+	page
+	idle - all updates have finished
+must unlock any shared resource before signalling others
+
+scrollbar plugin
+	vertical
+	horizontal
+	how do we plug them in?
+
+control config from
+	dbus?
+	dconf
+	gconf
+
+is text selection shared across different views?
+
+zero-config
+	the app should be able to just construct the view
+	and it should just work (no extra config needed)
+	default /bin/bash
+	default colour scheme
+	what else?
+
+gt - gnome-terminal
+v - view
+a - app
+t - term - vt100
+c - cache
+s - store
+
+s = store_new()
+c = cache_new(s)
+t = term_new(c)
+v = view_new(t)
+
+configure, then drop unnecessary handles
+keep handles to update config?
+
+v = view_new(null)
+use sensible defaults
+
+separate configs into
+	will change now
+	will affect new views/terms/caches/stores
+
+app has a set of simple config options
+config plugin -> about:conig
+
+config_new allocated and passed to modules
+	dconf - GSettings
+	gconf
+	flat file
+	mysql
+needs to two-way and live
+	updates in prog reflected in config
+	and vice versa
+
+linespace option
+	measured in pixels
+	create space between lines of text
+	can be negative for well-padded fonts
+
+option to make the UI read-only (on/off)
+
+ability to transfer a command line app *into* a screen session
+how?
+
+who cares what the term type is?  VT100 is handled by vte
+does the underlying tty have limitations?
+
+title filter plugin
+plugin is given raw data:
+	current working directory
+	command being run
+	tty
+	date/time started
+	access to command's environment
+	detect progress-bar-like output and display that too
+can generate a suitable title
+
+cd history
+	terminal keeps track of the current working directory
+	offers the list as a menu
+
+transfer app into a screen session - HOW?
+	fork/exec duplicate open file handles
+who cares what the term type is?  VT100 is handled by VTE
+
+terminal option to display current (where the cursor is) line as the window title
+good for progress bars!

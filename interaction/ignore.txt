@@ -1,0 +1,3 @@
+libc
+libdl
+ld-linux-x86-64

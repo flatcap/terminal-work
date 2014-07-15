@@ -1,0 +1,51 @@
+vte 1.0 - Catch-22
+vte 1.0 - The Way Forward
+
+1.0 branch on vte and gt
+
+delete deprecated
+
+fix gseals
+	bump gtk dep if nec
+	gseal vte
+
+model/view split
+	reduce vte deps
+	multiple views of same data
+	vte + vte-gtk or vte-cairo or ...
+
+decent test rig
+	lots of input texts
+	method for saving output
+	method for inspecting vte
+	list of all unicode chars
+	test every escape seq
+
+fix coding standards
+	whitespace
+	brackets
+	commenting
+
+multiple threads
+	thread for each child (eg bash)
+	thorough testing of locking
+
+future apis
+	put in an api for plugins
+	put in an api for ...
+	compatibility for later
+
+external dependencies
+	find out which programs use libvte
+	how do they use it
+	canvas opinion about how it could be better
+
+forum for discussion
+	wiki - for ideas
+	forum - for discussion
+
+downstream patches
+	find downstream changes and apply them
+	ubuntu
+	fedora
+	debian

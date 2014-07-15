@@ -1,0 +1,6 @@
+scroll region
+screen
+	normal
+	alternate
+cursor
+selection

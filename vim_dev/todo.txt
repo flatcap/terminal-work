@@ -1,0 +1,12 @@
+separate out all the common bits of syntax/folding files
+colours, etc
+
+expand all keywords in config files
+
+Header locations - for tags
+	/usr/include
+	/usr/lib64
+	/usr/src/debug
+
+make sure all the files are referenced
+

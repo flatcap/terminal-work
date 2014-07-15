@@ -1,0 +1,36 @@
+#!/bin/bash
+
+STAMP=/tmp/watcher.$$
+WAIT=1
+TARGET="$1"
+WATCHLIST="$*"
+
+title ()
+{
+	echo -ne "\033]0;$*\007"
+}
+
+
+touch $STAMP
+
+while :; do
+	REBUILD=FALSE
+	for i in $WATCHLIST; do
+		if [ $i -nt $STAMP ]; then
+			touch -r $i $STAMP
+			REBUILD=TRUE
+		fi
+	done
+
+	if [ $REBUILD = "TRUE" ]; then
+		reset
+		gcc -Wall -o jim jim.c
+		if [ $? = 0 ]; then
+			./list | head -1
+			echo
+			./jim text attr row
+		fi
+	fi
+	sleep $WAIT
+done
+

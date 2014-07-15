@@ -1,0 +1,3 @@
+For strings returned from functions, they will be declared "const" (using
+G_CONST_RETURN) if they should not be freed. Non-const strings should be freed
+with g_free(). Arrays follow the same rule.

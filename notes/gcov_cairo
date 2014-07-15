@@ -1,0 +1,903 @@
+  0% add_cursor_timeout
+ 80% add_update_timeout
+  0% all_selected
+100% always_selected
+  0% char_class_any_check
+  0% char_class_any_extract
+  0% char_class_any_setup
+  0% char_class_digit_check
+  0% char_class_digit_extract
+  0% char_class_digit_setup
+  0% char_class_exact_check
+  0% char_class_exact_setup
+  0% char_class_multi_check
+  0% char_class_multi_extract
+  0% char_class_multi_setup
+  0% char_class_none_extract
+  0% char_class_percent_setup
+  0% char_class_string_check
+  0% char_class_string_extract
+  0% char_class_string_setup
+100% cleanup_delayed_font_info_destroys
+100% cleanup_delayed_font_info_destroys_predicate
+  0% compare_matches
+  0% context_equal
+100% context_hash
+  0% cursor_inside_match
+  0% display_control_sequence
+100% _dr_dump_ring
+  0% emit_text_caret_moved
+  0% emit_text_changed_delete
+  0% emit_text_changed_insert
+100% ensure_quit_handler
+  0% find_end_column
+  0% find_start_column
+100% fontconfig_timestamp_quark
+100% font_info_allocate
+ 77% font_info_cache_ascii
+ 43% font_info_create_for_context
+100% font_info_create_for_screen
+100% font_info_create_for_widget
+ 88% font_info_destroy
+  0% font_info_destroy_delayed
+ 83% font_info_find_for_context
+ 27% font_info_find_unistr_info
+ 90% font_info_free
+  0% font_info_get_unistr_info
+ 84% font_info_measure_font
+  0% font_info_reference
+100% font_info_register
+  0% font_info_unregister
+100% g_bit_storage
+  0% get_attribute_set
+ 80% get_chunk
+  0% get_vte_pty_for_fd
+100% g_once_init_enter
+100% g_string_append_c_inline
+  0% is_cursor_key
+  0% item_surface_destroy_func
+100% mark_input_source_invalid
+  0% mark_output_source_invalid
+  0% math_div
+100% need_processing
+ 66% n_read
+ 66% n_write
+  0% offset_from_xy
+  0% process_8_bit_sequence
+ 54% process_block
+ 38% process_cdata
+ 15% process_control
+ 97% process_timeout
+ 43% prune_chunks
+  0% regex_match_clear
+  0% regex_match_clear_cursor
+100% release_chunk
+  0% remove_cursor_timeout
+ 21% remove_from_active_list
+100% remove_update_timeout
+ 62% reset_update_regions
+100% rich_get_ring
+  0% root_pixmap_changed_cb
+  0% rowcol_inside_match
+  0% set_source_color_alpha
+100% time_process_incoming
+  0% unichar_sncmp
+  0% unichar_sncpy
+  0% unichar_snlen
+  0% unistr_comp_equal
+  0% unistr_comp_hash
+  0% unistr_info_create
+  0% unistr_info_destroy
+ 38% unistr_info_finish
+ 19% update_regions
+ 90% update_repeat_timeout
+ 72% update_timeout
+  0% visibility_state_str
+  0% vte_bg_cache_add
+  0% vte_bg_cache_item_free
+  0% vte_bg_cache_prune
+  0% vte_bg_cache_prune_int
+  0% vte_bg_cache_search
+100% vte_bg_class_init
+  0% vte_bg_colors_equal
+100% _vte_bg_display_sync
+  0% vte_bg_finalize
+100% vte_bg_get_for_screen
+  9% vte_bg_get_surface
+100% vte_bg_get_type
+100% vte_bg_init
+ 80% vte_bg_root_filter
+ 90% vte_bg_root_surface
+  0% vte_bg_set_root_surface
+  0% vte_cell_is_between
+  0% vte_cell_is_selected
+100% _vte_cells_for_cell_array
+100% _vte_cells_free
+100% _vte_cells_realloc
+ 56% _vte_conv
+ 80% _vte_conv_close
+100% _vte_conv_cu
+ 67% _vte_conv_open
+  0% _vte_conv_uc
+  0% _vte_conv_utf8_strlen
+ 55% _vte_conv_utf8_utf8
+  0% _vte_conv_uu
+100% _vte_debug_init
+100% _vte_debug_on
+  0% _vte_direct_compare
+  0% _vte_draw_char
+  0% _vte_draw_clear
+  0% _vte_draw_clip
+  0% _vte_draw_draw_rectangle
+100% _vte_draw_end
+  0% _vte_draw_fill_rectangle
+100% _vte_draw_free
+  0% _vte_draw_get_char_width
+100% _vte_draw_get_text_metrics
+  0% _vte_draw_has_bold
+  0% _vte_draw_has_char
+100% _vte_draw_new
+  0% _vte_draw_requires_clear
+ 53% _vte_draw_set_background_image
+  0% _vte_draw_set_background_scroll
+ 83% _vte_draw_set_background_solid
+ 80% _vte_draw_set_text_font
+100% _vte_draw_start
+  0% _vte_draw_text
+  0% _vte_draw_text_internal
+100% _vte_file_stream_append
+100% _vte_file_stream_class_init
+100% _vte_file_stream_ensure_fd0
+100% _vte_file_stream_finalize
+100% _vte_file_stream_get_type
+100% _vte_file_stream_head
+100% _vte_file_stream_init
+100% _vte_file_stream_new
+  0% _vte_file_stream_new_page
+  0% _vte_file_stream_read
+100% _vte_file_stream_reset
+  0% _vte_file_stream_swap_fds
+  0% _vte_file_stream_truncate
+  0% _vte_file_stream_write_contents
+ 83% vte_g_array_fill
+  0% _vte_incoming_chunks_count
+100% _vte_incoming_chunks_length
+100% _vte_incoming_chunks_release
+100% _vte_incoming_chunks_reverse
+ 22% _vte_invalidate_all
+ 16% _vte_invalidate_cell
+  8% _vte_invalidate_cells
+ 15% _vte_invalidate_cursor_once
+  0% vte_invalidate_cursor_periodic
+ 50% _vte_invalidate_region
+ 78% _vte_iso2022_ambiguous_width
+100% _vte_iso2022_find_nextctl
+  0% _vte_iso2022_get_encoded_width
+ 50% _vte_iso2022_is_ambiguous
+  0% _vte_iso2022_map_get
+  0% _vte_iso2022_map_init16
+  0% _vte_iso2022_map_init32
+ 73% _vte_iso2022_process
+  0% _vte_iso2022_process_single
+ 36% _vte_iso2022_sequence_length
+  0% _vte_iso2022_set_encoded_width
+100% _vte_iso2022_state_free
+  0% _vte_iso2022_state_get_codeset
+ 77% _vte_iso2022_state_new
+ 85% _vte_iso2022_state_set_codeset
+ 25% _vte_iso2022_unichar_width
+  0% _vte_keymap_key_add_key_modifiers
+  0% _vte_keymap_key_gets_modifiers
+  0% _vte_keymap_key_is_modifier
+  0% _vte_keymap_map
+  0% _vte_keysym_name
+  0% _vte_keysym_print
+100% vte_line_is_wrappable
+  0% _vte_marshal_VOID__INT_INT
+  0% _vte_marshal_VOID__OBJECT_OBJECT
+  0% _vte_marshal_VOID__STRING_UINT
+  0% _vte_marshal_VOID__UINT_UINT
+100% _vte_matcher_add
+ 84% _vte_matcher_create
+100% _vte_matcher_destroy
+100% _vte_matcher_free
+ 80% _vte_matcher_free_params_array
+ 86% _vte_matcher_init
+100% _vte_matcher_match
+ 92% _vte_matcher_new
+  0% _vte_matcher_print
+100% vte_pango_context_get_fontconfig_timestamp
+100% vte_pango_context_set_fontconfig_timestamp
+  0% vte_parse_color
+100% _vte_property_get_pixmaps
+  0% vte_pty_child_setup
+100% vte_pty_class_init
+  0% _vte_pty_close
+ 75% vte_pty_close
+  0% vte_pty_error_get_type
+  0% vte_pty_error_quark
+  0% vte_pty_finalize
+100% vte_pty_flags_get_type
+  0% __vte_pty_fork
+  0% __vte_pty_get_argv
+100% vte_pty_get_fd
+  0% vte_pty_get_property
+  0% _vte_pty_getpt
+  0% __vte_pty_get_pty_flags
+  0% _vte_pty_get_size
+ 68% vte_pty_get_size
+100% vte_pty_get_type
+  0% _vte_pty_grantpt
+100% _vte_pty_helper_ops_from_flags
+100% vte_pty_init
+100% vte_pty_initable_iface_init
+ 56% vte_pty_initable_init
+100% __vte_pty_merge_environ
+100% vte_pty_new
+  0% vte_pty_new_foreign
+  0% _vte_pty_open
+  0% _vte_pty_open_unix98
+ 59% _vte_pty_open_with_helper
+ 87% _vte_pty_pipe_open
+  0% _vte_pty_ptsname
+ 91% _vte_pty_read_ptypair
+  0% _vte_pty_reset_signal_handlers
+ 76% vte_pty_set_property
+  0% _vte_pty_set_size
+ 64% vte_pty_set_size
+  0% vte_pty_set_term
+  0% _vte_pty_set_utf8
+ 55% vte_pty_set_utf8
+ 52% __vte_pty_spawn
+ 58% _vte_pty_start_helper
+100% _vte_pty_stop_helper
+  0% _vte_pty_unlockpt
+100% vte_reaper_add_child
+  0% vte_reaper_child_watch_cb
+100% vte_reaper_class_init
+100% vte_reaper_constructor
+  0% vte_reaper_finalize
+100% vte_reaper_get
+100% vte_reaper_get_type
+100% vte_reaper_init
+  0% _vte_regex_compile
+  0% _vte_regex_exec
+  0% _vte_regex_free
+  0% _vte_regex_sort_matches
+  0% _vte_ring_append
+100% _vte_ring_append_row_record
+  0% _vte_ring_discard_one_row
+ 50% _vte_ring_ensure_writable
+ 21% _vte_ring_ensure_writable_room
+100% _vte_ring_fini
+ 88% _vte_ring_freeze_one_row
+ 64% _vte_ring_freeze_row
+ 37% _vte_ring_index
+100% _vte_ring_index_writable
+100% _vte_ring_init
+ 94% _vte_ring_insert
+ 75% _vte_ring_maybe_discard_one_row
+100% _vte_ring_maybe_freeze_one_row
+  0% _vte_ring_new_page
+  0% _vte_ring_read_row_record
+  0% _vte_ring_remove
+100% _vte_ring_reset_streams
+ 60% _vte_ring_resize
+  0% _vte_ring_shrink
+  0% _vte_ring_thaw_one_row
+  0% _vte_ring_thaw_row
+100% _vte_ring_validate
+100% _vte_ring_writable_index
+  0% _vte_ring_write_contents
+  0% _vte_ring_write_row
+  0% _vte_row_data_append
+100% _vte_row_data_clear
+ 87% _vte_row_data_ensure
+ 87% _vte_row_data_fill
+100% _vte_row_data_fini
+  0% _vte_row_data_get
+  0% _vte_row_data_get_writable
+100% _vte_row_data_init
+  0% _vte_row_data_insert
+  0% _vte_row_data_remove
+100% _vte_row_data_shrink
+  0% vte_same_class
+100% vteseq_2_hash
+ 87% vteseq_2_lookup
+100% vteseq_n_hash
+ 88% vteseq_n_lookup
+ 88% _vte_sequence_get_handler
+  0% vte_sequence_handler_ae
+  0% vte_sequence_handler_al
+  0% vte_sequence_handler_AL
+  0% vte_sequence_handler_application_keypad
+  0% vte_sequence_handler_as
+  0% vte_sequence_handler_bl
+  0% vte_sequence_handler_bt
+  0% vte_sequence_handler_cb
+  0% vte_sequence_handler_cd
+ 91% vte_sequence_handler_ce
+  0% vte_sequence_handler_ch
+  0% vte_sequence_handler_change_color
+  0% vte_sequence_handler_change_cursor_color
+  0% vte_sequence_handler_character_attributes
+  0% vte_sequence_handler_character_position_absolute
+  0% vte_sequence_handler_cl
+  0% vte_sequence_handler_cm
+100% vte_sequence_handler_cr
+  0% vte_sequence_handler_cs
+  0% vte_sequence_handler_cS
+  0% vte_sequence_handler_ct
+  0% vte_sequence_handler_cursor_character_absolute
+  0% vte_sequence_handler_cursor_lower_left
+  0% vte_sequence_handler_cursor_next_line
+  0% vte_sequence_handler_cursor_position
+  0% vte_sequence_handler_cursor_preceding_line
+  0% vte_sequence_handler_cv
+  0% vte_sequence_handler_dc
+  0% vte_sequence_handler_DC
+  0% vte_sequence_handler_dec_device_status_report
+  0% vte_sequence_handler_decreset
+ 77% vte_sequence_handler_decset
+ 37% vte_sequence_handler_decset_internal
+  0% vte_sequence_handler_delete_lines
+  0% vte_sequence_handler_device_status_report
+  0% vte_sequence_handler_dl
+  0% vte_sequence_handler_DL
+  0% vte_sequence_handler_do
+  0% vte_sequence_handler_DO
+  0% vte_sequence_handler_eA
+  0% vte_sequence_handler_ec
+  0% vte_sequence_handler_ei
+  0% vte_sequence_handler_erase_characters
+  0% vte_sequence_handler_erase_in_display
+ 53% vte_sequence_handler_erase_in_line
+  0% vte_sequence_handler_form_feed
+  0% vte_sequence_handler_fs
+  0% vte_sequence_handler_full_reset
+  0% vte_sequence_handler_ho
+  0% vte_sequence_handler_horizontal_and_vertical_position
+  0% vte_sequence_handler_ic
+  0% vte_sequence_handler_IC
+  0% vte_sequence_handler_im
+  0% vte_sequence_handler_index
+  0% vte_sequence_handler_insert_blank_characters
+  0% vte_sequence_handler_insert_lines
+  0% vte_sequence_handler_kb
+  0% vte_sequence_handler_ke
+  0% vte_sequence_handler_ks
+ 50% vte_sequence_handler_le
+  0% vte_sequence_handler_LE
+  0% vte_sequence_handler_line_position_absolute
+  0% vte_sequence_handler_ll
+  0% vte_sequence_handler_local_charset
+  0% vte_sequence_handler_mb
+  0% vte_sequence_handler_md
+  0% vte_sequence_handler_me
+  0% vte_sequence_handler_mh
+  0% vte_sequence_handler_mk
+  0% vte_sequence_handler_mp
+  0% vte_sequence_handler_mr
+  0% vte_sequence_handler_multiple
+  0% vte_sequence_handler_nd
+  0% vte_sequence_handler_next_line
+  0% vte_sequence_handler_noop
+  0% vte_sequence_handler_normal_keypad
+  0% vte_sequence_handler_nw
+  0% vte_sequence_handler_offset
+  0% vte_sequence_handler_rc
+  0% vte_sequence_handler_request_terminal_parameters
+  0% vte_sequence_handler_reset_mode
+  0% vte_sequence_handler_restore_mode
+  0% vte_sequence_handler_return_terminal_id
+  0% vte_sequence_handler_return_terminal_status
+  0% vte_sequence_handler_reverse_index
+  0% vte_sequence_handler_RI
+  0% vte_sequence_handler_save_mode
+  0% vte_sequence_handler_sc
+  0% vte_sequence_handler_screen_alignment_test
+  0% vte_sequence_handler_scroll_down
+  0% vte_sequence_handler_scroll_up
+  0% vte_sequence_handler_se
+  0% vte_sequence_handler_send_primary_device_attributes
+  0% vte_sequence_handler_send_secondary_device_attributes
+  0% vte_sequence_handler_set_icon_and_window_title
+  0% vte_sequence_handler_set_icon_title
+  0% vte_sequence_handler_set_mode
+  0% vte_sequence_handler_set_mode_internal
+  0% vte_sequence_handler_set_scrolling_region
+  0% vte_sequence_handler_set_scrolling_region_from_start
+  0% vte_sequence_handler_set_scrolling_region_to_end
+  0% vte_sequence_handler_set_title_internal
+  0% vte_sequence_handler_set_window_title
+100% vte_sequence_handler_sf
+  0% vte_sequence_handler_SF
+  0% vte_sequence_handler_so
+  0% vte_sequence_handler_soft_reset
+  0% vte_sequence_handler_sr
+  0% vte_sequence_handler_SR
+  0% vte_sequence_handler_st
+  0% vte_sequence_handler_ta
+  0% vte_sequence_handler_tab_clear
+  0% vte_sequence_handler_ts
+  0% vte_sequence_handler_uc
+  0% vte_sequence_handler_ue
+  0% vte_sequence_handler_up
+  0% vte_sequence_handler_UP
+  0% vte_sequence_handler_us
+  0% vte_sequence_handler_utf_8_charset
+  0% vte_sequence_handler_vb
+  0% vte_sequence_handler_ve
+  0% vte_sequence_handler_vertical_tab
+  0% vte_sequence_handler_vi
+  0% vte_sequence_handler_vs
+  0% vte_sequence_handler_window_manipulation
+100% _vte_stream_append
+100% _vte_stream_class_init
+100% _vte_stream_get_type
+100% _vte_stream_head
+100% _vte_stream_init
+  0% _vte_stream_new_page
+  0% _vte_stream_read
+100% _vte_stream_reset
+  0% _vte_stream_truncate
+  0% _vte_stream_write_contents
+100% _vte_table_add
+ 72% _vte_table_addi
+ 85% _vte_table_arginfo_alloc
+ 37% _vte_table_arginfo_head_finalize
+100% _vte_table_arginfo_head_init
+100% _vte_table_arginfo_head_reverse
+  0% _vte_table_arginfo_head_revert
+  0% _vte_table_extract_char
+100% _vte_table_extract_numbers
+  0% _vte_table_extract_string
+100% _vte_table_free
+100% _vte_table_literal_new
+ 68% _vte_table_match
+ 59% _vte_table_matchi
+100% _vte_table_new
+  0% _vte_table_print
+  0% _vte_table_printi
+ 90% _vte_termcap_create
+ 83% _vte_termcap_destroy
+ 87% _vte_termcap_find_boolean
+ 77% _vte_termcap_find_numeric
+ 95% _vte_termcap_find_start
+100% _vte_termcap_find_string
+100% _vte_termcap_find_string_length
+100% _vte_termcap_free
+100% _vte_termcap_new
+ 93% _vte_termcap_parse_entry
+100% _vte_termcap_parse_file
+ 90% _vte_termcap_strcmp
+ 58% _vte_termcap_unescape_string
+  0% vte_terminal_accessible_action_get_description
+  0% vte_terminal_accessible_action_get_keybinding
+  0% vte_terminal_accessible_action_get_name
+  0% vte_terminal_accessible_action_init
+  0% vte_terminal_accessible_action_set_description
+  0% vte_terminal_accessible_add_focus_handler
+  0% vte_terminal_accessible_add_selection
+  0% vte_terminal_accessible_class_init
+  0% vte_terminal_accessible_component_init
+  0% vte_terminal_accessible_contains
+  0% vte_terminal_accessible_do_action
+  0% vte_terminal_accessible_factory_class_init
+  0% vte_terminal_accessible_factory_class_intern_init
+  0% vte_terminal_accessible_factory_create_accessible
+  0% vte_terminal_accessible_factory_init
+  0% vte_terminal_accessible_factory_new
+  0% vte_terminal_accessible_finalize
+  0% vte_terminal_accessible_focus_in
+  0% vte_terminal_accessible_focus_out
+  0% vte_terminal_accessible_free_private_data
+  0% vte_terminal_accessible_get_caret_offset
+  0% vte_terminal_accessible_get_character_at_offset
+  0% vte_terminal_accessible_get_character_count
+  0% vte_terminal_accessible_get_character_extents
+  0% vte_terminal_accessible_get_default_attributes
+  0% vte_terminal_accessible_get_extents
+  0% vte_terminal_accessible_get_layer
+  0% vte_terminal_accessible_get_mdi_zorder
+  0% vte_terminal_accessible_get_n_actions
+  0% vte_terminal_accessible_get_n_selections
+  0% vte_terminal_accessible_get_offset_at_point
+  0% vte_terminal_accessible_get_position
+  0% vte_terminal_accessible_get_run_attributes
+  0% vte_terminal_accessible_get_selection
+  0% vte_terminal_accessible_get_size
+  0% vte_terminal_accessible_get_text
+  0% vte_terminal_accessible_get_text_after_offset
+  0% vte_terminal_accessible_get_text_at_offset
+  0% vte_terminal_accessible_get_text_before_offset
+  0% vte_terminal_accessible_get_text_somewhere
+  0% vte_terminal_accessible_get_type
+  0% vte_terminal_accessible_invalidate_cursor
+  0% vte_terminal_accessible_new
+  0% vte_terminal_accessible_new_private_data
+  0% _vte_terminal_accessible_ref
+  0% vte_terminal_accessible_ref_accessible_at_point
+  0% vte_terminal_accessible_remove_focus_handler
+  0% vte_terminal_accessible_remove_selection
+  0% vte_terminal_accessible_selection_changed
+  0% vte_terminal_accessible_set_caret_offset
+  0% vte_terminal_accessible_set_extents
+  0% vte_terminal_accessible_set_position
+  0% vte_terminal_accessible_set_selection
+  0% vte_terminal_accessible_set_size
+  0% vte_terminal_accessible_text_init
+  0% vte_terminal_accessible_text_modified
+  0% vte_terminal_accessible_text_scrolled
+  0% vte_terminal_accessible_title_changed
+  0% vte_terminal_accessible_update_private_data_if_needed
+  0% vte_terminal_accessible_visibility_notify
+100% vte_terminal_add_process_timeout
+ 90% _vte_terminal_adjust_adjustments
+100% _vte_terminal_adjust_adjustments_full
+100% vte_terminal_apply_metrics
+  0% _vte_terminal_apply_pango_attr
+  0% _vte_terminal_audible_beep
+  0% vte_terminal_autoscroll
+ 54% vte_terminal_background_update
+  0% _vte_terminal_beep
+  0% vte_terminal_button_press
+  0% vte_terminal_button_release
+  0% vte_terminal_catch_child_exited
+100% vte_terminal_class_init
+ 41% _vte_terminal_cleanup_tab_fragments_at_cursor
+  0% _vte_terminal_clear_above_current
+  0% vte_terminal_clear_cb
+  0% _vte_terminal_clear_current_line
+  0% _vte_terminal_clear_screen
+  0% _vte_terminal_clear_tabstop
+  0% vte_terminal_clipboard_get
+  0% _vte_terminal_codeset_changed_cb
+  0% vte_terminal_configure_toplevel
+ 85% _vte_terminal_connect_pty_read
+ 58% _vte_terminal_connect_pty_write
+  0% vte_terminal_copy
+  0% vte_terminal_copy_cb
+  0% vte_terminal_copy_clipboard
+  0% vte_terminal_copy_primary
+100% vte_terminal_cursor_blink_mode_get_type
+ 37% _vte_terminal_cursor_down
+100% vte_terminal_cursor_new
+100% vte_terminal_cursor_shape_get_type
+  0% vte_terminal_deselect_all
+  0% vte_terminal_determine_colors
+100% _vte_terminal_disconnect_pty_read
+ 50% _vte_terminal_disconnect_pty_write
+  0% vte_terminal_draw_cells
+  0% vte_terminal_draw_cells_with_attributes
+  0% vte_terminal_draw_graphic
+  0% vte_terminal_draw_line
+  0% vte_terminal_draw_point
+  0% vte_terminal_draw_rectangle
+  0% vte_terminal_draw_rows
+ 88% vte_terminal_emit_adjustment_changed
+100% vte_terminal_emit_char_size_changed
+  0% vte_terminal_emit_child_exited
+ 85% vte_terminal_emit_commit
+100% vte_terminal_emit_contents_changed
+100% vte_terminal_emit_cursor_moved
+  0% vte_terminal_emit_decrease_font_size
+  0% vte_terminal_emit_deiconify_window
+100% vte_terminal_emit_emulation_changed
+100% vte_terminal_emit_encoding_changed
+  0% vte_terminal_emit_eof
+  0% vte_terminal_emit_iconify_window
+  0% vte_terminal_emit_icon_title_changed
+  0% vte_terminal_emit_increase_font_size
+  0% vte_terminal_emit_lower_window
+  0% vte_terminal_emit_maximize_window
+  0% vte_terminal_emit_move_window
+ 40% vte_terminal_emit_pending_signals
+ 55% vte_terminal_emit_pending_text_signals
+  0% vte_terminal_emit_raise_window
+  0% vte_terminal_emit_refresh_window
+  0% vte_terminal_emit_resize_window
+  0% vte_terminal_emit_restore_window
+  0% vte_terminal_emit_selection_changed
+  0% _vte_terminal_emit_status_line_changed
+ 60% _vte_terminal_emit_text_deleted
+ 60% _vte_terminal_emit_text_inserted
+ 60% vte_terminal_emit_text_modified
+  0% vte_terminal_emit_text_scrolled
+  0% vte_terminal_emit_window_title_changed
+ 42% _vte_terminal_enable_input_source
+100% vte_terminal_ensure_cursor
+ 78% vte_terminal_ensure_font
+100% _vte_terminal_ensure_row
+  0% vte_terminal_enter
+  0% vte_terminal_eof
+100% vte_terminal_erase_binding_get_type
+  0% vte_terminal_expand_region
+  0% vte_terminal_expose
+  0% vte_terminal_extend_selection
+  0% vte_terminal_extend_selection_expand
+  0% vte_terminal_feed
+ 83% vte_terminal_feed_child
+  0% vte_terminal_feed_child_binary
+  0% vte_terminal_feed_child_using_modes
+100% _vte_terminal_feed_chunks
+  0% vte_terminal_fill_rectangle
+ 86% vte_terminal_finalize
+  0% vte_terminal_find_charcell
+  0% vte_terminal_find_charcell
+100% _vte_terminal_find_row_data
+  0% _vte_terminal_find_row_data_writable
+  0% vte_terminal_focus_in
+  0% vte_terminal_focus_out
+  0% vte_terminal_fork_command
+ 76% vte_terminal_fork_command_full
+  0% vte_terminal_forkpty
+  0% _vte_terminal_fudge_pango_colors
+100% vte_terminal_generate_bold
+  0% vte_terminal_get_accessible
+  0% vte_terminal_get_adjustment
+  0% vte_terminal_get_allow_bold
+  0% _vte_terminal_get_argv
+  0% vte_terminal_get_audible_bell
+  0% vte_terminal_get_char_ascent
+  0% vte_terminal_get_char_descent
+  0% vte_terminal_get_char_height
+  0% vte_terminal_get_char_width
+  0% vte_terminal_get_child_exit_status
+  0% vte_terminal_get_column_count
+  0% vte_terminal_get_cursor_blink_mode
+  0% vte_terminal_get_cursor_position
+  0% vte_terminal_get_cursor_shape
+100% vte_terminal_get_default_emulation
+  0% vte_terminal_get_emulation
+  0% vte_terminal_get_encoding
+  0% _vte_terminal_get_end_selection
+  0% vte_terminal_get_font
+  0% vte_terminal_get_has_selection
+  0% vte_terminal_get_icon_title
+  0% vte_terminal_get_mouse_autohide
+  0% vte_terminal_get_mouse_tracking_info
+  0% vte_terminal_get_padding
+  0% vte_terminal_get_property
+  0% vte_terminal_get_pty
+  0% vte_terminal_get_pty_object
+  0% vte_terminal_get_row_count
+  0% _vte_terminal_get_selection
+  0% _vte_terminal_get_start_selection
+  0% vte_terminal_get_status_line
+  0% _vte_terminal_get_tabstop
+100% vte_terminal_get_text
+  0% vte_terminal_get_text_include_trailing_spaces
+100% vte_terminal_get_text_maybe_wrapped
+  0% vte_terminal_get_text_range
+ 73% vte_terminal_get_text_range_maybe_wrapped
+100% vte_terminal_get_type
+  0% _vte_terminal_get_user_shell
+  0% vte_terminal_get_using_xft
+  0% vte_terminal_get_visible_bell
+  0% vte_terminal_get_window_title
+ 50% vte_terminal_handle_scroll
+ 75% _vte_terminal_handle_sequence
+100% vte_terminal_hierarchy_changed
+  0% _vte_terminal_home_cursor
+  0% vte_terminal_im_append_menuitems
+  0% vte_terminal_im_commit
+  0% vte_terminal_im_preedit_changed
+  0% vte_terminal_im_preedit_end
+  0% vte_terminal_im_preedit_start
+ 60% vte_terminal_im_reset
+100% vte_terminal_init
+  0% vte_terminal_initialize
+  0% _vte_terminal_inline_error_message
+ 39% _vte_terminal_insert_char
+100% vte_terminal_insert_rows
+  0% vte_terminal_invalidate_selection
+ 76% vte_terminal_io_read
+ 58% vte_terminal_io_write
+100% vte_terminal_is_processing
+  0% vte_terminal_is_word_char
+  0% vte_terminal_key_press
+  0% vte_terminal_key_release
+  0% vte_terminal_leave
+  0% _vte_terminal_map_pango_color
+  0% vte_terminal_match_add
+  0% vte_terminal_match_add_gregex
+  0% vte_terminal_match_check
+ 75% vte_terminal_match_check_internal
+  0% vte_terminal_match_check_internal_gregex
+  0% vte_terminal_match_check_internal_vte
+  0% vte_terminal_match_clear_all
+100% vte_terminal_match_contents_clear
+100% vte_terminal_match_contents_refresh
+  0% vte_terminal_match_hilite
+ 88% vte_terminal_match_hilite_clear
+  0% vte_terminal_match_hilite_hide
+  0% vte_terminal_match_hilite_show
+ 54% vte_terminal_match_hilite_update
+  0% vte_terminal_match_remove
+  0% vte_terminal_match_set_cursor
+  0% vte_terminal_match_set_cursor_name
+  0% vte_terminal_match_set_cursor_type
+  0% _vte_terminal_maybe_end_selection
+100% vte_terminal_maybe_scroll_to_bottom
+  0% vte_terminal_maybe_scroll_to_top
+  0% vte_terminal_maybe_send_mouse_button
+  0% vte_terminal_maybe_send_mouse_drag
+  0% vte_terminal_motion_notify
+100% vte_terminal_new
+  0% vte_terminal_paint
+  0% vte_terminal_paint_area
+  0% vte_terminal_paint_cursor
+  0% vte_terminal_paint_im_preedit_string
+  0% _vte_terminal_pango_attribute_destroy
+  0% vte_terminal_paste
+  0% vte_terminal_paste_cb
+  0% vte_terminal_paste_clipboard
+  0% vte_terminal_paste_primary
+  0% vte_terminal_preedit_length
+  0% vte_terminal_preedit_width
+ 53% vte_terminal_process_incoming
+  0% vte_terminal_pty_new
+100% vte_terminal_queue_adjustment_changed
+100% vte_terminal_queue_adjustment_value_changed
+  0% vte_terminal_queue_background_update
+100% _vte_terminal_queue_contents_changed
+100% vte_terminal_queue_cursor_moved
+  0% vte_terminal_queue_eof
+  0% vte_terminal_read_modifiers
+  0% vte_terminal_real_copy_clipboard
+ 92% vte_terminal_realize
+  0% vte_terminal_real_paste_clipboard
+ 70% vte_terminal_refresh_size
+  0% _vte_terminal_remove_selection
+  0% vte_terminal_reset
+100% _vte_terminal_ring_append
+ 66% _vte_terminal_ring_insert
+  0% _vte_terminal_ring_remove
+ 80% vte_terminal_screen_changed
+  0% vte_terminal_scroll
+  0% vte_terminal_scroll_lines
+  0% vte_terminal_scroll_pages
+  0% _vte_terminal_scroll_region
+  0% _vte_terminal_scroll_text
+  0% vte_terminal_select_all
+  0% vte_terminal_select_none
+  0% _vte_terminal_select_text
+ 48% vte_terminal_send
+  0% vte_terminal_send_mouse_button_internal
+  0% vte_terminal_set_allow_bold
+  0% vte_terminal_set_audible_bell
+  0% vte_terminal_set_background_image
+  0% vte_terminal_set_background_image_file
+  0% vte_terminal_set_background_saturation
+  0% vte_terminal_set_background_tint_color
+  0% vte_terminal_set_background_transparent
+ 71% vte_terminal_set_backspace_binding
+  0% vte_terminal_set_color_background
+  0% vte_terminal_set_color_bold
+  0% vte_terminal_set_color_cursor
+  0% vte_terminal_set_color_dim
+  0% vte_terminal_set_color_foreground
+  0% vte_terminal_set_color_highlight
+ 82% vte_terminal_set_color_internal
+ 91% vte_terminal_set_colors
+  0% vte_terminal_set_cursor_blink_mode
+  0% vte_terminal_set_cursor_blinks
+ 41% vte_terminal_set_cursor_blinks_internal
+  0% vte_terminal_set_cursor_from_regex_match
+  0% vte_terminal_set_cursor_shape
+100% _vte_terminal_set_default_attributes
+100% vte_terminal_set_default_colors
+ 84% vte_terminal_set_default_tabstops
+ 71% vte_terminal_set_delete_binding
+ 91% vte_terminal_set_emulation
+ 60% vte_terminal_set_encoding
+  0% vte_terminal_set_font
+100% vte_terminal_set_font_from_string
+  0% vte_terminal_set_font_from_string_full
+100% vte_terminal_set_font_from_string_full_internal
+  0% vte_terminal_set_font_full
+ 82% vte_terminal_set_font_full_internal
+100% vte_terminal_set_inner_border
+  0% vte_terminal_set_mouse_autohide
+  0% vte_terminal_set_opacity
+  0% _vte_terminal_set_pointer_visible
+  0% vte_terminal_set_property
+  0% vte_terminal_set_pty
+ 50% vte_terminal_set_pty_object
+ 66% vte_terminal_set_scroll_adjustments
+  0% vte_terminal_set_scroll_background
+ 77% vte_terminal_set_scrollback_lines
+  0% vte_terminal_set_scroll_on_keystroke
+  0% vte_terminal_set_scroll_on_output
+ 77% vte_terminal_set_size
+100% _vte_terminal_set_tabstop
+ 67% vte_terminal_set_termcap
+ 75% _vte_terminal_setup_utf8
+  0% vte_terminal_set_visibility
+  0% vte_terminal_set_visible_bell
+ 15% vte_terminal_set_word_chars
+  0% vte_terminal_size_allocate
+  0% vte_terminal_size_request
+  0% vte_terminal_start_autoscroll
+  0% vte_terminal_start_processing
+  0% vte_terminal_start_selection
+ 60% vte_terminal_stop_autoscroll
+100% vte_terminal_stop_processing
+ 75% vte_terminal_style_set
+100% vte_terminal_sync_settings
+  0% vte_terminal_termcap_string_same_as_for
+  0% _vte_terminal_translate_pango_cells
+  0% vte_terminal_unichar_is_local_graphic
+ 79% vte_terminal_unrealize
+100% _vte_terminal_update_insert_delta
+  0% vte_terminal_visibility_notify
+  0% _vte_terminal_visible_beep
+ 84% vte_terminal_watch_child
+  0% vte_terminal_write_contents
+  0% vte_terminal_write_flags_get_type
+  0% vte_translate_national_ctrlkeys
+  0% _vte_tree_destroy
+  0% _vte_tree_insert
+  0% _vte_tree_lookup
+  0% _vte_tree_new
+  0% _vte_trie_add
+  0% _vte_trie_addx
+  0% _vte_trie_free
+  0% _vte_trie_match
+  0% _vte_trie_matchx
+  0% _vte_trie_new
+  0% _vte_trie_print
+  0% _vte_trie_printx
+  0% vte_ucs4_to_utf8
+  0% vte_unichar_is_local_graphic
+  0% vte_unichar_strlen
+ 57% _vte_unistr_append_to_string
+  0% _vte_unistr_append_unichar
+  0% _vte_unistr_get_base
+ 71% _vte_unistr_strlen
+  0% _xread
+  0% _xtruncate
+ 69% _xwrite
+  0% _xwrite_contents
+  0% xy_from_offset
+
+ 87% app.c
+  0% child_exited
+100% debug.c
+100% debug.h
+  0% delete_event
+ 92% expose_event
+100% force_refresh
+ 26% iso2022.c
+ 92% key_event
+  0% keymap.c
+  0% keysyms.c
+100% main
+  0% marshal.c
+ 86% matcher.c
+ 41% pty.c
+ 70% reaper.c
+ 41% ring.c
+ 60% table.c
+  0% trie.c
+  0% vteaccess.c
+ 35% vtebg.c
+ 30% vte.c
+ 57% vteconv.c
+ 47% vtedraw.c
+  0% vteregex.c
+ 69% vterowdata.c
+100% vterowdata.h
+ 90% vteseq-2.gperf
+  6% vteseq.c
+ 90% vteseq-n.gperf
+ 54% vtestream-base.h
+ 42% vtestream-file.h
+ 85% vtetc.c
+  0% vtetree.c
+ 66% vtetypebuiltins.c
+ 20% vteunistr.c
+100% wibble
+100% window_cairo
+100% window_vte

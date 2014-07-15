@@ -1,0 +1,8 @@
+repo.url=work/gnome-terminal
+repo.path=/home/flatcap/work/terminal/git/gnome-terminal/.git
+repo.desc=gnome-terminal
+
+repo.url=work/vte
+repo.path=/home/flatcap/work/terminal/git/vte/.git
+repo.desc=vte
+

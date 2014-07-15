@@ -1,0 +1,55 @@
+[WIN] key pressed:  'l' (0,108)
+Setting default mouse cursor.
+Keypress, modifiers=0x0, keyval=0x6c, raw string=`l'.
+Input method committed `l'.
+Emitting `commit' of 1 bytes.
+Sending 'l' to child.
+Wrote  l
+Snapping to bottom of screen
+Keypress taken by IM.
+.Adding terminal to active list
+Starting process timeout
+read 1/4096 bytes, again? yes, active? yes
+<Process timeout:  1 active
+.read 1/4096 bytes, again? yes, active? no
+Handler processing 1 bytes over 1 chunks + 0 bytes pending.
+(  0   1 CDATA "l" (0x6c)
+Current map = 0 (B).
+Consuming 1 bytes.
+`l'
+Inserting 108 'l' (256/257) (14+1, 0), delta = 0; insertion delta => 0.
+Snapping to bottom of screen
+Queueing `contents-changed'.
+Emitting buffered `text-inserted'
+Emitting `contents-changed'.
+Invalidating cells at (14,0+0)x(1,1).
+?Invalidating pixels at (112,-1)x(12,21).
+Starting update timeout
+!Invalidating cell at (0,14-15).
+Invalidating cells at (14,0+0)x(1,1).
+?Invalidating pixels at (112,-1)x(12,21).
+!Invalidating cursor at (0,15-16).
+Invalidating cells at (15,0+0)x(1,1).
+?Invalidating pixels at (120,-1)x(12,21).
+!Queueing `cursor-moved'.
+)0 chars and 0 bytes in 1 chunks left to process.
+>Stoping process timeout
+{Update timeout:  1 active
+Emitting `cursor-moved'.
++Expose (112,0)x(20,20)
+vte_terminal_paint()
+=draw_start
+draw_set_scroll (0, 0)
+vte_terminal_paint	(112,0)x(20,20) pixels
+draw_clip
+vte_terminal_expand_region	(112,0)x(20,20) pixels, (13,0)x(4,2) cells [(105,1)x(32,34) pixels]
+vte_terminal_paint_area	(105,1)x(32,34) pixels, (13,0)x(4,2) cells [(105,1)x(32,34) pixels]
+draw_clear (105, 0, 32, 35)
+draw_cells('l', fore=256, back=257, bold=0, ul=0, strike=0, hilite=0, boxed=0)
+draw_text ("l", len=1, color=(49152,49152,49152,255), normal)
+draw_start
+draw_fill_rectangle (121, 1, 8, 17, color=(49152,49152,49152,255))
+draw_end
+draw_end
+-}
+[WIN] key released: 'l' (0,108)

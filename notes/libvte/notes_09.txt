@@ -1,0 +1,26 @@
+TerminalScreenPrivate
+
+	priv -> child_pid
+		pty_fd
+
+
+VteTerminalPrivate
+
+	priv -> outgoing ->	bytes (data)
+				buf_used
+				buf_length
+		active (list)	How many terms busy with text
+		max_input_bytes
+		input_bytes
+		incoming
+		pty_input_active
+
+
+vte_terminal_process_incoming
+_vte_terminal_insert_char
+process_timeout
+time_process_incoming
+vte_terminal_io_write
+vte_terminal_io_read
+_vte_matcher_match
+

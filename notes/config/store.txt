@@ -1,0 +1,13 @@
+location
+	/tmp
+	/somewhere/useful
+type
+	file
+	mysql
+
+
+text + index
+attr + index
+stream1 + index
+stream2 + index
+...

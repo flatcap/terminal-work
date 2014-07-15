@@ -1,0 +1,16 @@
+PopupWindow
+
+Profiles menu item
+edit_profiles_callback		TerminalWindow
+terminal_app_manage_profiles	TerminalWindow, TerminalApp
+if window exists make it transient to TerminalWindow and raise it
+
+Build dialog from "profile-manager.ui"
+
+Signals: "response" -> profile_list_response_cb (app)
+         "destroy"  -> profile_list_destroyed_cb (app)
+
+response = close -> gtk_widget_destroy (dialog) => "destroy" signal
+destroy          -> dialog ptr = NULL
+
+

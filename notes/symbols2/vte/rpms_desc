@@ -1,0 +1,26 @@
+atk           Interfaces for accessibility support
+cairo         A 2D graphics library
+expat         An XML parser library
+fontconfig    Font configuration and customization library
+freetype      A free and portable font rendering engine
+glib2         A library of handy utility functions
+glibc         The GNU libc libraries
+gtk2          The GIMP ToolKit (GTK+), a library for creating GUIs for X
+libpng        A library of functions for manipulating PNG image format files
+libselinux    SELinux library and simple utilities
+libX11        Core X11 protocol client library
+libXau        Sample Authorization Protocol for X
+libxcb        A C binding to the X11 protocol
+libXcomposite X Composite Extension library
+libXcursor    X.Org X11 libXcursor runtime library
+libXdamage    X Damage extension library
+libXext       X.Org X11 libXext runtime library
+libXfixes     X Fixes library
+libXi         X.Org X11 libXi runtime library
+libXinerama   X.Org X11 libXinerama runtime library
+libXrandr     X.Org X11 libXrandr runtime library
+libXrender    X.Org X11 libXrender runtime library
+ncurses-libs  Ncurses libraries
+pango         System for layout and rendering of internationalized text
+pixman        Pixel manipulation library
+zlib          The zlib compression and decompression library

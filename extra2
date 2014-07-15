@@ -1,0 +1,40 @@
+#__h()
+#{
+#	__hs
+#	if [ -z "$@" ]; then
+#		history 45
+#	else
+#		history | grep -i $@
+#	fi
+#}
+#
+#__hs()
+#{
+#	history -a
+#	history -c
+#	history -r
+#}
+#
+#__hu()
+#{
+#	H=/"$(pwd)"
+#	F=".bash_history"
+#	while [ -n "$H" ]; do
+#		[ -f "$H/$F" ] && break;
+#		H=${H%/*}
+#	done
+#	[ -z "$H" ] && H="/home/flatcap"
+#	export HISTFILE="$H/$F"
+#	__hs
+#}
+#
+#export PROMPT_COMMAND=__hu
+#
+#alias !=__h
+#
+alias m="make -s"
+alias r="make -s && ./multiple"
+#alias g="git"
+alias s="[ -r Session.vim ] && vim -S"
+#CDDIR=/home/work/terminal
+cd

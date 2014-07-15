@@ -1,0 +1,303 @@
+termkit notes
+
+however we package up the information,
+the raw data needs to be there still.
+still cut'n'pastable
+
+if we simplify the permissions from ls to, say, "can read, can't write"
+we still need to be able to find out why
+	read perms from user/group/other
+	no write perms in user/group/other
+	write perms, but the file is immutable
+	etc
+
+Data in the terminal is most certainly not "processed" enough. If you see
+'drwxr-xr-x' and know what it means, that is great - I do too. It just does
+*not*, however, mean that because we can read it, that it's good enough for
+everyone. If you can make the terminal output more meaningful for everyone,
+chances are it'll let *you* who are proficient get stuff done even quicker -
+most certainly a good thing. 
+
+use MIME types/headers to encode data
+
+Rather, the addressing mechanism should be "URL/URI", GET/PUT should be
+supported as the input/output mechanism (when the URI is an HTTP URI) and the
+addressed resources should be "anything on the web".
+
+Looks pretty awesome. As long as I can change the text back to monospace
+(reading logs, using a version control system, and a hundred other things are
+painful without it) I'm in :)
+
+It is a shame that at least for the time being many of these apps will be
+sidestepping a lot of great OS convenience, accessibility and
+internationalization features without having them specifically called to catch
+up with their native widget counterparts.
+
+The other major issue is security, in that often the embeddable rendering
+libraries such as webkit are only a part of the equation and there are many
+security features designed into the browsers themselves. Any app that hopes to
+securely expose web browsing should keep in mind that any public opinion about
+whether a certain renderer is secure or not is at least partially thanks to the
+way it was integrated with the parent application.
+
+In the case of a shell that might be running with administrator privileges,
+
+doing away with the primitive ascii art is positively a step in the direction of
+a more useful terminal.
+
+I'm so glad you made this. While there may have been tons of precedents (the
+CLIM Listener, XMLTerm), this is by far the most polished one. I can't wait to
+have my shell tools output json progress reports (-:
+
+(This runs into one of your problems: you've created replacements for existing
+programs which don't behave in exactly the same way as the original tool. What
+happens if I run /usr/bin/cat instead of the shell built-in 'cat'? Or, for that
+matter "cat file1.gz file2.gz" - a perfectly valid method to create a new single
+zipped file which contains the concatenation of the two original uncompressed
+files?)
+
+1 Full backward compatibility. Both tools and terminal. If compatibility is
+broken, TermKit will die for sure.
+2 Simplicity and transparency. These are basic axioms of unix. "I added
+view in/out streams and attached few metadata to stdin/out." Sounds good
+for now, but keep it simple forever. And keep in your mind that
+'simplicity' does not mean 'stupid' ("You can't touch this." instead of
+"-r-xr-xr-x").
+3 Support all mainstream (posix) platforms. You need community. Users,
+testers, developers and the most important is support from
+distributors. 
+
+Firstly, I think you are mistakenly conflating the concept of what a terminal is
+and what a shell is. TermKit is basically a terminal AND a shell in one.
+
+@AstralStorm: "I'd recommend using something like AsciiDoc or ReStructured Text
+instead - a markup language, simpler than HTML. Just feeding this view data to
+stdio would still work, much less need to write separate output formatters in JS
+or CSS."
+
+As far as interface is concerned, please look into the work of Jef and Aza
+Raskin. In particular, give Enso a try, for one possible idea of how a command
+line w/auto complete could work. 
+
+Another idea that the Raskin had was being able to select any text and execute
+it as a command, and have menus that are basically just lists of commands that
+you can do that with--- Or select text, and execute a command ON the selection,
+using the autocomplete command line.
+
+Hey Steven! This reminds of the Mathematica "shell" that displays rich and
+interactive output as you type in stuff.
+
+Don't get bogged down by the backwards compatibility requirement. You've already
+explained that you can have plain text input/output for existing commands, they
+just won't trigger any special display. It's unavoidable that some things would
+need to be rewritten to take real advantage of this. Maybe some awk junkie will
+correct me, but if I have a 'record' that consists of N images, I don't think
+there's anyway awk can be coaxed into splitting up that record and giving me
+specifically image, say, 5. The assumption in many apps that they're working
+with text and text separators is so ingrained that there's no way awk, sed, etc.
+can be recycled right out of the box for all the cool stuff this could make
+possible.
+
+What if the objects didn't really need to be "parsed" by a command on the
+pipeline in the same way we usually think of this? What if they just stayed in
+memory the whole time? For example, instead of writing the MIME type of a PNG
+and then the PNG file contents, these commands could all live in the same
+address space and directly receive an "image object", which has some method to
+get the pixel data, which might then call into libpng, or memcpy from a buffer,
+or whatever. In that sense a piped program doesn't really have to encode and
+decode PNGs repeatedly in order to make an image transformation, it can just
+work on the pixel buffer directly. Similarly for your JSON example... Do you
+really have to keep encoding, decoding, and re-encoding JSON? That seems like a
+waste. In an ideal world these could just be left in memory for most of their
+lifetime. Maybe they get serialized if they're output to the console, to a file,
+or sent over a network, but as a pipe they stay "native".
+
+- focusing interface on newbies is an usability fallacy...
+
+Having a long-running command automatically run in the background with a
+progress bar, which then gets replaced with the command result when it finishes,
+while I can go on typing more commands is fantastic for usability.
+
+Ideas: It would be nice to apply ordinary *nix-tools to todays media content to
+really make full use of it.
+
+For example:
+
+head --frames=30s mymovie.avi (play first 30s of movie, no options could default
+to 10 seconds)
+tail --frames=30s mymovie.avi (play last 30s of movie)
+more myfile.pdf (display pdf frame by frame)
+head --pages=5 myfile.pdf (display first 5 pages)
+
+I think trying to parse man pages is a non-starter. Formatting is far too
+inconsistent, better to have each tool able to describe its options via JSON
+(you could even get tools to generate their own man pages that way).
+
+Though I absolutely love most of the aspects of this idea, I've got to agree
+that using "cat" to show all sorts of files isn't quite appropriate. Since we're
+reinventing that wheel anyway, why not give it a more applicable and memorable
+name, like "show" or something like that?
+
+What I would really like to see are:
+Drag drop, multiple files from different windows can be easily drag dropped.
+Online text editor, vi is great, but this would lower the bar for more people
+Better support for remote connections, Imagine how this would help remote
+connecting from SSH.
+
+But GUI people and CLI people are two different worlds. And while there are a
+few non-geeks who would trip all over themselves for a hybrid of the two, the
+fact is that you've created an interface that takes the worst features of a GUI
+and combined them with the worst features of a CLI.
+
+Pardon me while I stop typing into my CLI for a bit to pick up my mouse to
+double click on an icon because it is very pretty. And pardon my friend for
+moving his hand off of his mouse and onto the keyboard because he likes an
+interface so much that will allow him to type what he can so plainly click.
+
+What I love about this is there's a clear data model that separates stdout from
+the terminal display hints. It could replace the esoteric hinting that bash uses
+for auto-completion and the terminal-specific code in ls with a MIME-aware
+public API.
+
+If this API could be adopted not just by you but by others in the Unix community
+(any of KDE, Gnome, Red Hat, Canonical, etc.) we could quickly see MIME hinting
+added to all the major Unix apps. Then ultimately MacOS, kshell and Gnome
+Terminal could each do their own style, while people who want raw bash could
+continue to use the same as always.
+
+So, in your 'ls | grep o' example, the output stays persistent in some buffer?
+Can I then shoe-horn in another command between the "cat" and the "ls" if I
+needed to, like a "|sort -r".
+
+What I can imagine is this could save opening several ssh windows to the same
+remote system. One where you do the work, and one where you have the output that
+you refer to all the time, the "ds -k *" the "ls -ltr" lists.
+
+Can I take the output of a command like "ls -ltr" and several commands later,
+refer back to it's output? Can I drag and drop it's result into wherever I
+currently happen to be entering new commands?
+
+Additionally, it would be cool if commands like 'tail -f' would pop open new
+browser windows with that output out of the way of your current command stream.
+
+Question: can TermKit gracefully fallback/degrade to work with existing
+command-line utilities like xargs, or would a new version of xargs need to be
+written?
+
+I find it quite interesting that the stdin/stdout/stderr mixed data/display
+idiom has lasted for so long. The architects of this plain text interface surely
+didn't imagine that everyone would build on the idea, making it very difficult
+to evolve into something like TermKit.
+
+(1) get drag-and-drop working so that we can drag files from the output of ls
+into the arguments of commands, and (2) add support for the up and down arrows
+to cycle through recent commands (it would be really cool if you added support
+for the right and left three-finger swipe gestures for this, too).
+
+Does this tool will work with unmodified utilites like e.g. cat?
+Can I watch a video from remote server by ssh'ing on it and then just invoke cat
+somevideo.mkv (If server doesn't have your termkit or some parts of it, but the
+client have)?
+
+Designate a specific argument to output in the most compatible format and start
+submitting patches to support it. Perhaps "--cli-mime-output=true". The default
+would have to be false, to avoid surprising those of us (like myself) happily
+sitting in an xterm. This argument would allow experimentation with it, allowing
+us time to adjust, and perhaps even join in. Such a switch would also be simple
+to minimally implement: just prefix the normal output with content-type:
+text/plain.
+
+Along with the magic argument, assign an environment variable, say
+CLI_MIME_OUTPUT to set the default value of --cli-mime-output. That way the
+cutover is easy and reversible. And it allows one to continue mixing and
+matching terminal emulators -- again, minimizing the pain of transition.
+
+For example TermKit could set an environment variable (TERMKIT=ENABLED) for each
+process it launches. If the process knows how to talk to TermKit over
+alternative file descriptors and such, it would open them, do whatever
+handshaking was necessary, and go on its happy way. Without the env. variable,
+the program behaves as it would before TermKit ever existed.
+
+Each process shall have a few default pipes (with accessibility from process's
+POV):
+
+    data (r/w)
+    ui (r/w): read represents keyboard/mouse; write writes to the screen
+    ctl (r): receiving signals, like KILL, TERM, etc.
+    error (w)
+
+I like bling as much as anyone, and this could be great for replacing all those
+ugly UIs Hollywood uses when they need to show computer consoles. But when it
+comes to CLI there is mostly one thing I care about: information density. In my
+opinion an 80x24 character display beats TermKit by being better at showing
+context. One tends to reread previous commands (and their outputs) in order to
+create each new command line. It would be very inefficient to have to scroll
+back like TermKit seems to require now. And seeing most things at once on the
+screen beats having to scroll and remember/imagine how it all gets put together.
+
+There are 3, 171 commands in my shell right now. Your probably aren't going to
+add enough wrappers. Do you have apt-get fully covered? Git? hg/svn/cvs? What
+about Midnight Commander? And how does it interact with GNU screen, which I
+can't live without?
+
+UNIX may not be the most discoverable OS, but it's among the best of the
+remaining major players. However, "discoverable" is going to mean different
+things to different people: tooltips are a bad idea, because one should never,
+ever, obscure what the user is typing, or what's nearby -- you don't know where
+the user is looking, and your helpful tooltip may be in the way of what he's
+trying to transcribe; color-coding "dangerous" flags means that someone's
+decided to make the system color-blind unfriendly, as well as decided what's
+dangerous for a user without knowing what the actual dangers might be; and
+regexp hints are more likely to lead a user astray than to help them.
+
+Features *I* would like to see would be preview status bar near to the
+command-line, where the tokenized version of the command-line would be
+displayed.
+
+I would like a running pipe to give me a representation where I can "observe"
+the data currently streaming through a pipe without having to resort to using
+tee and tail -f in another terminal.
+
+I would like to be able to see how full or empty a pipe is while it's running.
+Is there some task that's unable to keep up, or unable to keep a pipe filled?
+That's useful information, and would help a novice user understand how pipes
+work.
+
+I want the OS to prevent any application from stealing my current focus.
+
+I want the OS to tell me what application played a sound / showed an image / did
+something briefly, and then went away.
+
+I want the OS to provide me with (nearly) unlimited undo, as best it can. When I
+make a mistake, I want to be able to go back and figure out what it was that I
+did, and to be able to undo it. (Accidently closed a terminal window? Why should
+that be a disaster?)
+
+I want to control GUI programs from my terminal. I want to be able to create a
+terminal if no such terminal exists. Language is a wonderful thing, and if I am
+in a situation where using words works best, I want to be able to do so.
+
+I don't want programs to know if they have permission or not to do something. I
+don't want programs to know if they're running in the background or if they're
+interacting with a user. I want to be able to lock down a program without the
+program knowing it.
+
+If I'm at a shell, I never want to *have* to grab a mouse. When I paste
+something, I want it to respect the cursor, even if I'm using the mouse. If I'm
+using a mouse with a scroll-wheel (hard to find a good mouse that doesn't have
+one), and my click coincides with a scroll, my scroll should be taken as false
+input and ignored.
+
+I guess I don't consider most of the things you're trying to fix to be broken. I
+like universal text output. I don't like MIME-typing all data streams. I don't
+like "magic happens", especially if there's no trivial way to find out /why/.
+
+I like the idea of presenting output compactly for advanced users, and
+augmenting that when you mouse-over. Even cooler would be to right click on
+output (say, some text from "grep" or "unique") and save it as a variable you
+can pipe. So you could scroll up to an output from a dozen commands earlier, and
+then pipe that to a new command easily.
+
+I'd vote for a "history" command that not only tell me what commands I have
+issued but also when they were issued...
+

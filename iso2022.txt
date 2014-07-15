@@ -1,0 +1,2 @@
+how to I enable iso2022 character sets?
+how can I test them?

@@ -1,0 +1,202 @@
+[WIN] key pressed:  'l' (0,108)
+
+bt0: VteTerminal(GtkWidget) -> "key-press-event"
+     vte_terminal_key_press
+     |   vte_terminal_read_modifiers
+     |   |   vte_terminal_set_selection_block_mode
+     |  _vte_keymap_key_is_modifier
+     |  _vte_terminal_set_pointer_visible
+
+bt1: GtkIMContext -> "commit" (an *entire* input sequence has by entered)
+     vte_terminal_im_commit
+     |   vte_terminal_feed_child_using_modes
+     |   |   vte_terminal_send
+     |   |   |  _vte_conv
+     |   |   |   |  _rich_conv_utf8_utf8
+     |   |   |   vte_terminal_emit_commit "commit"
+     |   |   |  _vte_terminal_connect_pty_write
+     |   |   |   |   vte_terminal_io_write
+     |   vte_terminal_maybe_scroll_to_bottom
+     |   |   vte_terminal_queue_adjustment_value_changed
+
+bt2: bash(GIOFunc) -> "data"
+     vte_terminal_io_read
+     |   vte_terminal_is_processing
+     |   vte_terminal_add_process_timeout "timer" (process_timeout)
+
+bt3: g_timeout_add(VTE_DISPLAY_TIMEOUT/10ms) -> "timer"
+     process_timeout
+     |   vte_terminal_io_read
+     |   |   vte_terminal_is_processing
+     |  _vte_terminal_enable_input_source
+     |   need_processing
+     |   |  _vte_incoming_chunks_length
+     |   time_process_incoming (resets timer)
+     |   |   vte_terminal_process_incoming
+     |   |   |  _vte_incoming_chunks_reverse
+     |   |   |  _vte_iso2022_process
+     |   |   |   |  _rich_iso2022_find_nextctl
+     |   |   |   |   process_block
+     |   |   |   |   process_cdata
+     |   |   |   |  rich_conv_cu
+     |   |   |   |  _vte_conv
+     |   |   |   |  _rich_conv_utf8_utf8
+     |   |   |   |  _rich_iso2022_is_ambiguous
+     |   |   |  _vte_matcher_match
+     |   |   |   |  rich_table_match
+     |   |   |  _vte_terminal_insert_char
+     |   |   |   |  _vte_iso2022_unichar_width
+     |   |   |   vte_terminal_ensure_cursor
+     |   |   |   |  _vte_terminal_ensure_row
+     |   |   |   |  _vte_ring_index_writable
+     |   |   |   |  _vte_row_data_fill
+     |   |   |  _vte_terminal_cleanup_tab_fragments_at_cursor
+     |   |   |   |  _vte_terminal_ensure_row
+     |   |   |   |  _vte_ring_index_writable
+     |   |   |  _vte_row_data_fill
+     |   |   |   |  _rich_row_data_ensure
+     |   |   |   |   |  _rich_cells_for_cell_array
+     |   |   |  _vte_row_data_shrink
+     |   |   |  _vte_matcher_free_params_array
+     |   |   |  _vte_terminal_update_insert_delta
+     |   |   |   vte_terminal_maybe_scroll_to_bottom
+     |   |   |   |   vte_terminal_queue_adjustment_value_changed
+     |   |   |  _vte_terminal_queue_contents_changed
+     |   |   |   vte_terminal_emit_pending_signals
+     |   |   |   |   vte_terminal_emit_adjustment_changed
+     |   |   |   |   vte_terminal_emit_cursor_moved
+     |   |   |   |   vte_terminal_emit_pending_text_signals
+     |   |   |   |  _vte_terminal_emit_text_inserted
+     |   |   |   |   vte_terminal_emit_contents_changed
+     |   |   |   |   vte_terminal_match_contents_clear
+     |   |   |   |   vte_terminal_match_hilite_clear
+     |   |   |  _vte_invalidate_cells
+     |   |   |   |   add_update_timeout "timer" (update_timeout)
+     |   |   |  _vte_invalidate_cell
+     |   |   |   |  _vte_terminal_find_row_data
+     |   |   |   |  _vte_ring_index
+     |   |   |   |  _vte_draw_get_char_width
+     |   |   |   |   font_info_get_unistr_info
+     |   |   |   |   font_info_find_unistr_info
+     |   |   |   |  _vte_invalidate_cells
+     |   |   |   |   add_update_timeout "timer" (update_timeout)
+     |   |   |  _vte_invalidate_cursor_once
+     |   |   |   |   vte_terminal_preedit_width
+     |   |   |   |   find_start_column
+     |   |   |   |  _vte_terminal_find_row_data
+     |   |   |   |  _vte_ring_index
+     |   |   |   |  _vte_ring_index
+     |   |   |   |  _vte_invalidate_cells
+     |   |   |   |   add_update_timeout
+     |   |   |   vte_terminal_queue_cursor_moved
+
+bt4: g_timeout_add(VTE_UPDATE_TIMEOUT/15ms) -> "timer"
+     update_timeout
+     |  _vte_terminal_enable_input_source
+     |   vte_terminal_emit_adjustment_changed
+     |   need_processing
+     |   |  _vte_incoming_chunks_length
+     |   vte_terminal_emit_pending_signals
+     |   |   vte_terminal_emit_adjustment_changed
+     |   |   vte_terminal_emit_cursor_moved
+     |   |   vte_terminal_emit_pending_text_signals
+     |   |   vte_terminal_emit_contents_changed
+
+bt5: VteTerminal(GtkWidget) -> "expose-event"
+     vte_terminal_expose
+     |   vte_terminal_paint
+     |   |  _vte_draw_start
+     |   |  _vte_draw_set_background_scroll
+     |   |  _vte_draw_clip
+     |   |   vte_terminal_expand_region
+     |   |   vte_terminal_paint_area
+     |   |   |  _vte_draw_requires_clear
+     |   |   |  _vte_draw_clear
+     |   |   |   vte_terminal_draw_rows
+     |   |   |  _vte_terminal_find_row_data
+     |   |   |  _vte_ring_index
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |  _vte_terminal_find_row_data
+     |   |   |  _vte_ring_index
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |  _vte_terminal_find_row_data
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |  _vte_terminal_find_row_data
+     |   |   |  _vte_ring_index
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_unichar_is_local_graphic
+     |   |   |   vte_unichar_is_local_graphic
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_unichar_is_local_graphic
+     |   |   |   vte_unichar_is_local_graphic
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_unichar_is_local_graphic
+     |   |   |   vte_unichar_is_local_graphic
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_unichar_is_local_graphic
+     |   |   |   vte_unichar_is_local_graphic
+     |   |   |  _vte_terminal_find_row_data
+     |   |   |  _vte_ring_index
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_unichar_is_local_graphic
+     |   |   |   vte_unichar_is_local_graphic
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_unichar_is_local_graphic
+     |   |   |   vte_unichar_is_local_graphic
+     |   |   |  _vte_terminal_find_row_data
+     |   |   |   vte_terminal_draw_cells
+     |   |   |  _vte_draw_text
+     |   |   |  _vte_draw_text_internal
+     |   |   |   set_source_color_alpha
+     |   |   |   font_info_get_unistr_info
+     |   |   |   font_info_find_unistr_info
+     |   |   |   font_info_get_unistr_info
+     |   |   |   font_info_find_unistr_info
+     |   |   |   font_info_get_unistr_info
+     |   |   |   font_info_find_unistr_info
+     |   |   |   font_info_get_unistr_info
+     |   |   |   font_info_find_unistr_info
+     |   |   |   font_info_get_unistr_info
+     |   |   |   font_info_find_unistr_info
+     |   |   |   font_info_get_unistr_info
+     |   |   |   font_info_find_unistr_info
+     |   |   vte_terminal_paint_cursor
+     |   |   |  _vte_ring_index
+     |   |   |   vte_cell_is_selected
+     |   |   |   vte_terminal_determine_colors
+     |   |   |   vte_terminal_fill_rectangle
+     |   |   |  _vte_draw_start
+     |   |   |  _vte_draw_fill_rectangle
+     |   |   |   set_source_color_alpha
+     |   |   |  _vte_draw_end
+     |   |   vte_terminal_paint_im_preedit_string
+     |   |   |  _vte_draw_end
+
+bt6: VteTerminal(GtkWidget) -> "key-release-event"
+     |   vte_terminal_key_release
+     |   |   vte_terminal_read_modifiers
+     |   |   |   vte_terminal_set_selection_block_mode

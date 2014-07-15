@@ -1,0 +1,41 @@
+digraph "bla" {
+
+	node [ shape = record, color = black, fillcolor = lightcyan, style = filled ];
+
+	GtkAccelLabel []
+	GtkButton []
+	GtkHBox []
+	GtkImage []
+	GtkImageMenuItem []
+	GtkLabel []
+	GtkMenuBar []
+	GtkNotebook []
+	GtkNotebookPage []
+	GtkVBox []
+	GtkVScrollbar []
+	TerminalApp [ label = "{TerminalApp|GObject}" ]
+	TerminalScreen [ label = "{TerminalScreen|VteTerminal}" ]
+	TerminalTabLabel [ label = "{TerminalTabLabel|GtkHBox}" ]
+	TerminalWindow [ label = "{TerminalWindow|GtkWindow}" ]
+
+	"TerminalApp" -> "TerminalWindow";
+	"TerminalWindow" -> "GtkVBox";
+	"GtkVBox" -> "GtkMenuBar";
+	"GtkMenuBar" -> "GtkImageMenuItem";
+	"GtkImageMenuItem" -> "GtkAccelLabel";
+	"GtkVBox" -> "GtkNotebook";
+	"GtkNotebook" -> "GtkHBox";
+	"GtkHBox" -> "TerminalScreen";
+	"GtkHBox" -> "GtkVScrollbar";
+	"GtkNotebook" -> "GtkNotebookPage";
+	"GtkNotebookPage" -> "TerminalTabLabel";
+	"TerminalTabLabel" -> "GtkLabel";
+	"TerminalTabLabel" -> "GtkButton";
+	"GtkButton" -> "GtkImage";
+
+	"GtkNotebookPage" -> "GtkHBox";
+	"TerminalTabLabel" -> "TerminalScreen";
+
+};
+
+

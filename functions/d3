@@ -1,0 +1,14 @@
+_vte_row_data_fill
+_vte_row_data_get
+_vte_row_data_get_writable
+_vte_row_data_insert
+_vte_row_data_shrink
+_vte_terminal_connect_pty_write
+vte_terminal_feed_child
+vte_terminal_feed_child_using_modes
+vte_terminal_im_commit
+_vte_terminal_insert_char
+vte_terminal_io_write
+vte_terminal_key_press
+vte_terminal_process_incoming
+vte_terminal_send

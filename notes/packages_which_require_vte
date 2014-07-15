@@ -1,0 +1,62 @@
+anjuta
+	libvte.so.9
+
+awn-extras-applets
+	libvte.so.9
+	vte
+
+frysk-devel
+	libvtejava-0.12.so
+
+frysk-gnome
+	libvte-java
+	libvtejava-0.12.so
+
+geany
+	vte
+
+gnome-terminal
+	libvte.so.9
+
+grip
+	libvte.so.9
+
+guake
+	vte
+
+libvtemm
+	libvtemm-1.2.so.9
+	libvte.so.9
+
+libvtemm-devel
+	libvtemm
+	libvtemm-1.2.so.9
+	pkgconfig(vte)
+	vte-devel
+
+nemiver
+	libvte.so.9
+
+remmina
+	libvte.so.9
+
+ruby-vte
+	libvte.so.9
+
+ruby-vte-devel
+	ruby(vte)
+
+terminator
+	vte
+
+virt-manager
+	vte
+
+vte
+	libvte.so.9
+
+vte-devel
+	libvte.so.9
+	pkgconfig(vte)
+	vte
+

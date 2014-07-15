@@ -1,0 +1,3 @@
+TerminalApp * terminal_app_get (void);
+TerminalWindow * terminal_app_get_current_window (TerminalApp *app);
+TerminalScreen* terminal_window_get_active (TerminalWindow *window);

@@ -1,0 +1,19 @@
+digraph "bla" {
+	"libacl" -> "libattr";
+	"libcrypt" -> "libfreebl3.so";
+	"librt" -> "libpthread";
+	"vim" -> "libacl";
+	"vim" -> "libattr";
+	"vim" -> "libcrypt";
+	"vim" -> "libfreebl3.so";
+	"vim" -> "libgcc_s";
+	"vim" -> "libgpm";
+	"vim" -> "libm";
+	"vim" -> "libnsl";
+	"vim" -> "libpthread";
+	"vim" -> "libresolv";
+	"vim" -> "librt";
+	"vim" -> "libselinux";
+	"vim" -> "libtinfo";
+	"vim" -> "libutil";
+};

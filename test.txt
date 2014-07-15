@@ -1,0 +1,75 @@
+80x24 terminal
+
+Tests
+	40x10
+	40x24
+	40x25
+	90x10
+	90x24
+	90x25
+	40x50
+	90x50
+
+wrap on/off
+follow on/off
+
+
+test case: look back
+	view_new
+		cache_new
+			disk_new
+	enter lots of text
+	view_clone
+		cache_clone
+	clone page up * n
+	enter text
+result
+	correct text in clone
+	clone doesn't change
+	original follows text
+
+test case: overlap
+	view_new
+	enter lots of text
+	view_clone
+	clone page up (still overlapping original)
+	clear original
+result
+	correct text in clone
+	(minus overlap)
+	original blank
+
+test case: separate input
+	view_new
+	view_clone
+	resize clone
+	wide text in clone (clone width?)
+	wide text in original (original width?)
+result
+	both follow text
+	text wraps to container
+
+
+test_shapes.svg
+open command in $1 fills 80x80
+	$2 displays text 20 lines -> resize brings rest info view
+	OPTION: either
+	$3 truncates all lines to 20?
+		resize (bigger) brings rest into view
+	$3 wraps all lines at 20 (soft-wrapped)
+		resize (bigger) rewraps lines as necessary
+
+open command in $2 fills 80x20
+	$1 displays cmd in its last 20 lines (bottoms are sync'd)
+		resize (bigger) does nothing
+	OPTION: either
+	$3 Displays lines at bottom, truncated to 20
+		resize (bigger) brings rest into view
+	$3 Wraps all lines at 20 (soft-wrapped)
+		resize (bigger) rewraps lines as necessary
+
+open command in $3 fills 20x80
+	$1 displays all at left (left edges are sync'd)
+	$2 displays last 20 lines
+		resize (bigger) brings rest into view
+

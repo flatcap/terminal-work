@@ -1,0 +1,12 @@
+How fast is pango layout creation / deletion?
+Should we use one layout forever?
+Speed of clear / full screen of text?
+
+Ring says:
+	Invalidate all
+	Some rows invalidated
+	Sub row invalidated
+	If tracking: Row dead; new row; scroll up
+	Rows dead (x, y) - fallen off end!
+		View may choose to still display them
+

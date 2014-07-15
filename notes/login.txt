@@ -1,0 +1,43 @@
+login
+	.bash_profile
+	.bash_logout
+	TERM=linux
+	PS1=xyz
+
+ssh
+	.bash_profile
+	.bash_logout
+	SSH_CLIENT='192.168.2.3 55636 22'
+	TERM=xterm
+	PS1=xyz
+
+ssh -X
+	.bash_profile
+	.bash_logout
+	SSH_CLIENT='192.168.2.3 55636 22'
+	TERM=xterm
+	DISPLAY=localhost:10.0
+	PS1=xyz
+
+gnome-terminal
+	.bashrc
+	TERM=xterm
+	PS1=xyz
+
+scp
+	.bashrc
+	SSH_CLIENT='192.168.2.3 55636 22'
+	TERM=dumb
+	BASH_EXECUTION_STRING='scp -t a/b/c'
+
+Login shell
+       ~/.bash_profile OR ~/.bash_login OR ~/.profile
+       ~/.bash_logout
+
+Interactive shell
+       ~/.bashrc
+
+       Bash  attempts  to determine when it is being run with its standard input connected to a network connection, as if by the remote shell
+       daemon, usually rshd, or the secure shell daemon sshd.  If bash determines it is being run in this fashion, it reads and  executes  com-
+       mands  from  ~/.bashrc,  if  that  file exists and is readable.
+

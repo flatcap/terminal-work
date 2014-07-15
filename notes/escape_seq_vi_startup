@@ -1,0 +1,93 @@
+screen is (77x99)
+
+[D]~/src$ seq 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+[D]~/src$ vi
+
+
+
+[?1000h				dec - enable mouse tracking
+[?1049h				dec - set alternate screen
+[?1h					dec - set normal cursor keys
+=					set alternate keypad mode
+[1;77r				set scrolling region: lines 1-77 (whole screen)
+[?12;25h				dec - set cursor blink (ignored); set cursor visible
+[?12l					dec - reset cursor blink (ignored)
+[?25h					show cursor
+[27m					normal video (not reversed, etc)
+[m					reset colours
+[H					move to (1x1)
+[2J					clear screen
+[>					set numeric keypad mode; 
+c
+[?25l					hide cursor
+
+[2;1H					move to (2x1)
+[38;5;242m~				print grey ~s
+...
+[76;1H~				to the bottom of the screen
+[m					reset colours
+
+[33;42HVIM - Vi IMproved		welcome text
+...
+
+]2;vi [No Name] 			window title
+
+[1;1H					move to (1x1)
+
+[?12l					dec - reset cursor blink (ignored)
+[?25h					show cursor
+[?1000l				dec - disable mouse tracking
+[?1002h				dec - enable mouse tracking
+
+P+q436f\				device control strings (ignored)
+P+q6b75\
+P+q6b64\
+P+q6b72\
+P+q6b6c\
+P+q2332\
+P+q2334\
+P+q2569\
+P+q2a37\
+P+q6b31\
+
+[?25l					hide cursor
+[77;89H
+:
+[1;1H
+[77;89H
+[K
+[77;1H
+:
+[?1002l				dec - disable mouse tracking
+[?12l
+[?25h					show cursor
+q
+[?25l					hide cursor
+[?12l
+[?25h					show cursor
+
+[?1002h				dec - set mouse tracking
+[?25l					hide cursor
+[?1002l				dec - reset mouse tracking
+]2;
+[77;1H
+[K
+[77;1H
+[?1l					dec - reset normal cursor keys
+>					set numeric keypad mode
+[?12l
+[?25h					show cursor
+[?1049l				dec - reset alternate screen
+
+[D]~/src$ exit
+

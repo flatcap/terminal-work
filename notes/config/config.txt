@@ -1,0 +1,9 @@
+keyboard shortcuts
+colour palette
+tab
+fonts
+scrollbar
+	posn
+	style
+	history
+

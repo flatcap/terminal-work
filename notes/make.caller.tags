@@ -1,0 +1,7 @@
+# Caller tags - where all the librich functions get used
+caller-tags:
+	$(GREP) -nof symbols/symbols_librich $$($(CAT) symbols/src_for_vte) | $(AWK) -F: '{print $$3"\t"$$1"\t"$$2";\"\tf"}' | $(SORT) > $@
+
+caller-bp:
+	$(GREP) -nof symbols/symbols_librich $$($(CAT) symbols/src_for_vte) | $(AWK) -F: '{print "b "$$1":"$$2}' | $(SORT) > $@
+

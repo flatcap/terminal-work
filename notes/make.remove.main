@@ -1,0 +1,21 @@
+# One-off preprocessing
+remove_main:
+	unifdef -UISO2022_MAIN iso2022.c | cat > iso2022.c.tmp
+	$(CAT) iso2022.c.tmp > iso2022.c
+	$(RM) iso2022.c.tmp
+	unifdef -UREAPER_MAIN reaper.c | cat > reaper.c.tmp
+	$(CAT) reaper.c.tmp > reaper.c
+	$(RM) reaper.c.tmp
+	unifdef -UTABLE_MAIN table.c | cat > table.c.tmp
+	$(CAT) table.c.tmp > table.c
+	$(RM) table.c.tmp
+	unifdef -UTRIE_MAIN trie.c | cat > trie.c.tmp
+	$(CAT) trie.c.tmp > trie.c
+	$(RM) trie.c.tmp
+	unifdef -UVTECONV_MAIN vteconv.c | cat > vteconv.c.tmp
+	$(CAT) vteconv.c.tmp > vteconv.c
+	$(RM) vteconv.c.tmp
+	unifdef -UTERMCAP_MAIN vtetc.c | cat > vtetc.c.tmp
+	$(CAT) vtetc.c.tmp > vtetc.c
+	$(RM) vtetc.c.tmp
+

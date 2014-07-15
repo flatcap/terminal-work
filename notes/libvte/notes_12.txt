@@ -1,0 +1,20 @@
+keyboard
+input method
+cairo
+view
+	ring
+	etc
+term
+	ring normal
+	ring alternate
+iso2022
+pty
+bash
+
+bash
+pty
+iso2022
+matcher
+ring
+rows
+streams

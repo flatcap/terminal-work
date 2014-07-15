@@ -1,0 +1,2 @@
+gtkentry.c:#define GTK_ENTRY_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ENTRY, GtkEntryPrivate))
+gtkentry.c:  GtkEntryPrivate *priv = GTK_ENTRY_GET_PRIVATE (object);

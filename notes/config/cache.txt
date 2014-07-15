@@ -1,0 +1,4 @@
+amount of caching
+	1 = minimum
+	2 = minimum + 0.5 extra either side
+

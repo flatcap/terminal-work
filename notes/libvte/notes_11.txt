@@ -1,0 +1,12 @@
+cached_row = bottom row on visible screen
+what's this used for?
+
+how many writes per KB on disk?  - streams
+can we cache the writes?
+
+gcov app #if 0 unused fns/calls
+
+comment out pango/cairo/etc and repeat bg
+split overlapping (gfx & lib) fns in two
+
+

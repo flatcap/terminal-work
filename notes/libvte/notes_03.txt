@@ -1,0 +1,10 @@
+iso2022		check widths of chars
+matcher		identify escape sequences
+pty		comms between vt and tty
+reaper		wait for children to die
+regex		match http://, etc
+ring		page cache?
+rowdata
+termcap		manage the terminal capabilities, initial size, F1 = <esc seq>, etc
+unistr		decode unicode strings
+stream		page excess data to /tmp

@@ -1,0 +1,8 @@
+enum
+{
+  PROP_0,
+
+  PROP_MAMAN_NAME,
+  PROP_PAPA_NUMBER
+};
+

@@ -1,0 +1,29 @@
+key bindings
+	tab
+		new
+		close
+		switch
+		move
+	window
+		new
+		close
+	cut'n'paste
+	zoom
+		in
+		out
+		default
+	menubar on/off
+profile
+	shell
+	palette
+	bold
+	background
+		image
+		transparency
+		scrolling
+	title
+	bell
+	scrollbar
+	icon
+	cursor
+	exit action

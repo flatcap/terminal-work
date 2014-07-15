@@ -1,0 +1,7 @@
+https://fedorahosted.org/libterm/wiki/Rationale
+
+libterm.{org,com} are free
+
+git://git.fedorahosted.org/libterm.git
+
+Ari Entlich <atrigent@ccs.neu.edu>

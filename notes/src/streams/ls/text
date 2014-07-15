@@ -1,0 +1,47 @@
+total 292
+lrwxrwxrwx. 1 dev dev     15 2010-03-17 22:14 cc -> /usr/bin/ccache
+-rwx------. 1 dev dev    179 2010-03-28 00:24 clean_home
+-rwxr-x---. 1 dev dev    191 2010-02-18 12:26 colours
+-rwxr-x---. 1 dev dev  24551 2010-02-18 12:26 column
+drwxr-x---. 2 dev dev   4096 2010-03-25 14:14 complete.d
+drwxr-x---. 2 dev dev   4096 2010-02-18 23:01 debug.d
+-rwxr-x---. 1 dev dev 188768 2010-02-18 12:26 demo
+-rwxr-x---. 1 dev dev   1173 2010-02-18 23:01 df_
+drwxr-x---. 2 dev dev   4096 2010-03-21 10:29 function.d
+lrwxrwxrwx. 1 dev dev     15 2010-03-17 22:14 g++ -> /usr/bin/ccache
+lrwxrwxrwx. 1 dev dev     15 2010-03-17 22:14 gcc -> /usr/bin/ccache
+-rwxr-x---. 1 dev dev    150 2010-02-18 12:26 git-tidy
+-rwxr-x---. 1 dev dev    227 2010-02-18 12:26 list
+-rwxr-x---. 1 dev dev    649 2010-02-18 22:28 newbug
+-rwxr-x---. 1 dev dev     76 2010-02-18 23:01 off
+drwxr-x---. 2 dev dev   4096 2010-03-09 14:47 old
+-rwxr-x---. 1 dev dev   1094 2010-02-18 12:26 oo
+-rwxr-x---. 1 dev dev    185 2010-02-18 23:01 random
+-rwxr-x---. 1 dev dev    348 2010-02-18 23:01 rebase
+-rwxr-x---. 1 dev dev    579 2010-02-18 12:26 ren
+-rwxr-x---. 1 dev dev    113 2010-02-18 12:26 side
+-rwxr-x---. 1 dev dev   1041 2010-02-18 12:26 _ssh-helper
+-rwxr-x---. 1 dev dev    174 2010-02-18 23:01 swap_files
+-rwxr-x---. 1 dev dev    396 2010-02-18 23:01 tidyname
+-rwxr-x---. 1 dev dev    110 2010-02-18 12:26 up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

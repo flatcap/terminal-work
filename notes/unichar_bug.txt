@@ -1,0 +1,65 @@
+Entering: vte_terminal_io_write: '  a漢語b  ' (12)
+Entering: _vte_terminal_insert_char ' '
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char ' '
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char 'a'
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char '���扚'
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char '���扚'
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char '語'
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char 'b'
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char ' '
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+Entering: _vte_terminal_insert_char ' '
+_vte_terminal_insert_char:
+row_data = 0x1a8bd90
+    cells    = 0x1a8cf80
+    len      = 56
+    CharCell (8):
+        >><<
+

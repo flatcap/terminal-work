@@ -1,0 +1,4547 @@
+diff --git a/src/eggdesktopfile.c b/src/eggdesktopfile.c
+index c185998..cc5bfbb 100644
+--- a/src/eggdesktopfile.c
++++ b/src/eggdesktopfile.c
+@@ -55,6 +55,7 @@ struct EggDesktopFile {
+ EggDesktopFile *
+ egg_desktop_file_new (const char *desktop_file_path, GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GKeyFile *key_file;
+ 
+   key_file = g_key_file_new ();
+@@ -83,6 +84,7 @@ EggDesktopFile *
+ egg_desktop_file_new_from_data_dirs (const char  *desktop_file_path,
+ 				     GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggDesktopFile *desktop_file;
+   GKeyFile *key_file;
+   char *full_path;
+@@ -119,6 +121,7 @@ egg_desktop_file_new_from_dirs (const char  *desktop_file_path,
+ 				const char **search_dirs,
+ 				GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggDesktopFile *desktop_file;
+   GKeyFile *key_file;
+   char *full_path;
+@@ -155,6 +158,7 @@ egg_desktop_file_new_from_key_file (GKeyFile    *key_file,
+ 				    const char  *source,
+ 				    GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggDesktopFile *desktop_file;
+   char *version, *type;
+ 
+@@ -310,6 +314,7 @@ egg_desktop_file_new_from_key_file (GKeyFile    *key_file,
+ void
+ egg_desktop_file_free (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_key_file_free (desktop_file->key_file);
+   g_free (desktop_file->source);
+   g_free (desktop_file->name);
+@@ -328,6 +333,7 @@ egg_desktop_file_free (EggDesktopFile *desktop_file)
+ const char *
+ egg_desktop_file_get_source (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return desktop_file->source;
+ }
+ 
+@@ -342,6 +348,7 @@ egg_desktop_file_get_source (EggDesktopFile *desktop_file)
+ EggDesktopFileType
+ egg_desktop_file_get_desktop_file_type (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return desktop_file->type;
+ }
+ 
+@@ -356,6 +363,7 @@ egg_desktop_file_get_desktop_file_type (EggDesktopFile *desktop_file)
+ const char *
+ egg_desktop_file_get_name (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return desktop_file->name;
+ }
+ 
+@@ -377,6 +385,7 @@ egg_desktop_file_get_name (EggDesktopFile *desktop_file)
+ const char *
+ egg_desktop_file_get_icon (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return desktop_file->icon;
+ }
+ 
+@@ -385,6 +394,7 @@ egg_desktop_file_has_key (EggDesktopFile  *desktop_file,
+ 			  const char      *key,
+ 			  GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_has_key (desktop_file->key_file,
+ 			     EGG_DESKTOP_FILE_GROUP, key,
+ 			     error);
+@@ -395,6 +405,7 @@ egg_desktop_file_get_string (EggDesktopFile  *desktop_file,
+ 			     const char      *key,
+ 			     GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_get_string (desktop_file->key_file,
+ 				EGG_DESKTOP_FILE_GROUP, key,
+ 				error);
+@@ -406,6 +417,7 @@ egg_desktop_file_get_locale_string (EggDesktopFile  *desktop_file,
+ 				    const char      *locale,
+ 				    GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_get_locale_string (desktop_file->key_file,
+ 				       EGG_DESKTOP_FILE_GROUP, key, locale,
+ 				       error);
+@@ -416,6 +428,7 @@ egg_desktop_file_get_boolean (EggDesktopFile  *desktop_file,
+ 			      const char      *key,
+ 			      GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_get_boolean (desktop_file->key_file,
+ 				 EGG_DESKTOP_FILE_GROUP, key,
+ 				 error);
+@@ -426,6 +439,7 @@ egg_desktop_file_get_numeric (EggDesktopFile  *desktop_file,
+ 			      const char      *key,
+ 			      GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_get_double (desktop_file->key_file,
+ 				EGG_DESKTOP_FILE_GROUP, key,
+ 				error);
+@@ -437,6 +451,7 @@ egg_desktop_file_get_string_list (EggDesktopFile  *desktop_file,
+ 				  gsize           *length,
+ 				  GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_get_string_list (desktop_file->key_file,
+ 				     EGG_DESKTOP_FILE_GROUP, key, length,
+ 				     error);
+@@ -449,6 +464,7 @@ egg_desktop_file_get_locale_string_list (EggDesktopFile  *desktop_file,
+ 					 gsize           *length,
+ 					 GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_key_file_get_locale_string_list (desktop_file->key_file,
+ 					    EGG_DESKTOP_FILE_GROUP, key,
+ 					    locale, length,
+@@ -479,6 +495,7 @@ gboolean
+ egg_desktop_file_can_launch (EggDesktopFile *desktop_file,
+ 			     const char     *desktop_environment)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *try_exec, *found_program;
+   char **only_show_in, **not_show_in;
+   gboolean found;
+@@ -559,6 +576,7 @@ egg_desktop_file_can_launch (EggDesktopFile *desktop_file,
+ gboolean
+ egg_desktop_file_accepts_documents (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return desktop_file->document_code != 0;
+ }
+ 
+@@ -578,6 +596,7 @@ egg_desktop_file_accepts_documents (EggDesktopFile *desktop_file)
+ gboolean
+ egg_desktop_file_accepts_multiple (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return (desktop_file->document_code == 'F' ||
+ 	  desktop_file->document_code == 'U');
+ }
+@@ -594,6 +613,7 @@ egg_desktop_file_accepts_multiple (EggDesktopFile *desktop_file)
+ gboolean
+ egg_desktop_file_accepts_uris (EggDesktopFile *desktop_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return (desktop_file->document_code == 'U' ||
+ 	  desktop_file->document_code == 'u');
+ }
+@@ -604,6 +624,7 @@ append_quoted_word (GString    *str,
+ 		    gboolean    in_single_quotes,
+ 		    gboolean    in_double_quotes)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const char *p;
+ 
+   if (!in_single_quotes && !in_double_quotes)
+@@ -638,6 +659,7 @@ do_percent_subst (EggDesktopFile *desktop_file,
+ 		  gboolean        in_single_quotes,
+ 		  gboolean        in_double_quotes)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GSList *d;
+   char *doc;
+ 
+@@ -714,6 +736,7 @@ parse_exec (EggDesktopFile  *desktop_file,
+ 	    GSList         **documents,
+ 	    GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *exec, *p, *command;
+   gboolean escape, single_quot, double_quot;
+   GString *gs;
+@@ -805,6 +828,7 @@ parse_exec (EggDesktopFile  *desktop_file,
+ static GSList *
+ translate_document_list (EggDesktopFile *desktop_file, GSList *documents)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gboolean accepts_uris = egg_desktop_file_accepts_uris (desktop_file);
+   GSList *ret, *d;
+ 
+@@ -839,6 +863,7 @@ translate_document_list (EggDesktopFile *desktop_file, GSList *documents)
+ static void
+ free_document_list (GSList *documents)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GSList *d;
+ 
+   for (d = documents; d; d = d->next)
+@@ -867,6 +892,7 @@ egg_desktop_file_parse_exec (EggDesktopFile  *desktop_file,
+ 			     GSList          *documents,
+ 			     GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GSList *translated, *docs;
+   char *command;
+ 
+@@ -883,6 +909,7 @@ parse_link (EggDesktopFile  *desktop_file,
+ 	    GSList         **documents,
+ 	    GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *url;
+   GKeyFile *key_file;
+ 
+@@ -918,6 +945,7 @@ start_startup_notification (GdkDisplay     *display,
+ 			    int             workspace,
+ 			    guint32         launch_time)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static int sequence = 0;
+   char *startup_id;
+   char *description, *wmclass;
+@@ -982,6 +1010,7 @@ static void
+ end_startup_notification (GdkDisplay *display,
+ 			  const char *startup_id)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gdk_x11_display_broadcast_startup_message (display, "remove",
+ 					     "ID", startup_id,
+ 					     NULL);
+@@ -997,6 +1026,7 @@ typedef struct {
+ static gboolean
+ startup_notification_timeout (gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   StartupNotificationData *sn_data = data;
+ 
+   end_startup_notification (sn_data->display, sn_data->startup_id);
+@@ -1011,6 +1041,7 @@ static void
+ set_startup_notification_timeout (GdkDisplay *display,
+ 				  const char *startup_id)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   StartupNotificationData *sn_data;
+ 
+   sn_data = g_new (StartupNotificationData, 1);
+@@ -1025,6 +1056,7 @@ set_startup_notification_timeout (GdkDisplay *display,
+ static GPtrArray *
+ array_putenv (GPtrArray *env, char *variable)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint i, keylen;
+ 
+   if (!env)
+@@ -1071,6 +1103,7 @@ egg_desktop_file_launchv (EggDesktopFile *desktop_file,
+ 			  GSList *documents, va_list args,
+ 			  GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggDesktopFileLaunchOption option;
+   GSList *translated_documents = NULL, *docs = NULL;
+   char *command, **argv;
+@@ -1352,6 +1385,7 @@ egg_desktop_file_launch (EggDesktopFile *desktop_file,
+ 			 GSList *documents, GError **error,
+ 			 ...)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   va_list args;
+   gboolean success;
+   EggDesktopFile *app_desktop_file;
+@@ -1401,6 +1435,7 @@ egg_desktop_file_launch (EggDesktopFile *desktop_file,
+ GQuark
+ egg_desktop_file_error_quark (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_quark_from_static_string ("egg-desktop_file-error-quark");
+ }
+ 
+@@ -1426,6 +1461,7 @@ static EggDesktopFile *egg_desktop_file;
+ void
+ egg_set_desktop_file (const char *desktop_file_path)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GError *error = NULL;
+ 
+   G_LOCK (egg_desktop_file);
+@@ -1469,6 +1505,7 @@ egg_set_desktop_file (const char *desktop_file_path)
+ EggDesktopFile *
+ egg_get_desktop_file (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggDesktopFile *retval;
+ 
+   G_LOCK (egg_desktop_file);
+diff --git a/src/eggshell.c b/src/eggshell.c
+index 9a175c4..ff89fa7 100644
+--- a/src/eggshell.c
++++ b/src/eggshell.c
+@@ -57,6 +57,7 @@
+ char *
+ egg_shell (const char *shell)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifndef G_OS_WIN32
+ 	struct passwd *pw;
+ 	int i;
+diff --git a/src/eggsmclient-xsmp.c b/src/eggsmclient-xsmp.c
+index 81af7d2..b8eed86 100644
+--- a/src/eggsmclient-xsmp.c
++++ b/src/eggsmclient-xsmp.c
+@@ -1,3 +1,4 @@
++#include <stdio.h>
+ /*
+  * Copyright (C) 2007 Novell, Inc.
+  *
+@@ -178,6 +179,7 @@ G_DEFINE_TYPE (EggSMClientXSMP, egg_sm_client_xsmp, EGG_TYPE_SM_CLIENT)
+ static void
+ egg_sm_client_xsmp_init (EggSMClientXSMP *xsmp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   xsmp->state = XSMP_STATE_CONNECTION_CLOSED;
+   xsmp->connection = NULL;
+   xsmp->restart_style = SmRestartIfRunning;
+@@ -186,6 +188,7 @@ egg_sm_client_xsmp_init (EggSMClientXSMP *xsmp)
+ static void
+ egg_sm_client_xsmp_class_init (EggSMClientXSMPClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientClass *sm_client_class = EGG_SM_CLIENT_CLASS (klass);
+ 
+   sm_client_class->startup             = sm_client_xsmp_startup;
+@@ -198,6 +201,7 @@ egg_sm_client_xsmp_class_init (EggSMClientXSMPClass *klass)
+ EggSMClient *
+ egg_sm_client_xsmp_new (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (!g_getenv ("SESSION_MANAGER"))
+     return NULL;
+ 
+@@ -207,6 +211,7 @@ egg_sm_client_xsmp_new (void)
+ static gboolean
+ sm_client_xsmp_set_initial_properties (gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = user_data;
+   EggDesktopFile *desktop_file;
+   GPtrArray *clone, *restart;
+@@ -298,6 +303,7 @@ sm_client_xsmp_set_initial_properties (gpointer user_data)
+ static void
+ sm_client_xsmp_disconnect (EggSMClientXSMP *xsmp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   SmcConn connection;
+ 
+   if (!xsmp->connection)
+@@ -318,6 +324,7 @@ static void
+ sm_client_xsmp_startup (EggSMClient *client,
+ 			const char  *client_id)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = (EggSMClientXSMP *)client;
+   SmcCallbacks callbacks;
+   char *ret_client_id;
+@@ -396,6 +403,7 @@ sm_client_xsmp_set_restart_command (EggSMClient  *client,
+ 				    int           argc,
+ 				    const char  **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = (EggSMClientXSMP *)client;
+   int i;
+ 
+@@ -414,6 +422,7 @@ sm_client_xsmp_set_discard_command (EggSMClient  *client,
+ 				    int           argc,
+ 				    const char  **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = (EggSMClientXSMP *)client;
+   int i;
+ 
+@@ -431,6 +440,7 @@ static void
+ sm_client_xsmp_will_quit (EggSMClient *client,
+ 			  gboolean     will_quit)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = (EggSMClientXSMP *)client;
+ 
+   if (xsmp->state == XSMP_STATE_CONNECTION_CLOSED)
+@@ -470,6 +480,7 @@ sm_client_xsmp_end_session (EggSMClient         *client,
+ 			    EggSMClientEndStyle  style,
+ 			    gboolean             request_confirmation)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = (EggSMClientXSMP *)client;
+   int save_type;
+ 
+@@ -557,6 +568,7 @@ sm_client_xsmp_end_session (EggSMClient         *client,
+ static gboolean
+ idle_do_pending_events (gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = data;
+   EggSMClient *client = data;
+ 
+@@ -592,6 +604,7 @@ idle_do_pending_events (gpointer data)
+ static void
+ update_pending_events (EggSMClientXSMP *xsmp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gboolean want_idle =
+     xsmp->waiting_to_emit_quit ||
+     xsmp->waiting_to_emit_quit_cancelled ||
+@@ -615,6 +628,7 @@ fix_broken_state (EggSMClientXSMP *xsmp, const char *message,
+ 		  gboolean send_interact_done,
+ 		  gboolean send_save_yourself_done)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_warning ("Received XSMP %s message in state %s: client or server error",
+ 	     message, EGG_SM_CLIENT_XSMP_STATE (xsmp));
+ 
+@@ -640,6 +654,7 @@ xsmp_save_yourself (SmcConn   smc_conn,
+ 		    int       interact_style,
+ 		    Bool      fast)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = client_data;
+   gboolean wants_quit_requested;
+ 
+@@ -743,6 +758,7 @@ xsmp_save_yourself (SmcConn   smc_conn,
+ static void
+ do_save_yourself (EggSMClientXSMP *xsmp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (xsmp->state == XSMP_STATE_SHUTDOWN_CANCELLED)
+     {
+       /* The SM cancelled a previous SaveYourself, but we haven't yet
+@@ -792,6 +808,7 @@ do_save_yourself (EggSMClientXSMP *xsmp)
+ static void
+ save_state (EggSMClientXSMP *xsmp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GKeyFile *state_file;
+   char *state_file_path, *data;
+   EggDesktopFile *desktop_file;
+@@ -966,6 +983,7 @@ static void
+ xsmp_interact (SmcConn   smc_conn,
+ 	       SmPointer client_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = client_data;
+   EggSMClient *client = client_data;
+ 
+@@ -986,6 +1004,7 @@ static void
+ xsmp_die (SmcConn   smc_conn,
+ 	  SmPointer client_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = client_data;
+   EggSMClient *client = client_data;
+ 
+@@ -1000,6 +1019,7 @@ static void
+ xsmp_save_complete (SmcConn   smc_conn,
+ 		    SmPointer client_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = client_data;
+ 
+   g_debug ("Received SaveComplete message in state %s",
+@@ -1015,6 +1035,7 @@ static void
+ xsmp_shutdown_cancelled (SmcConn   smc_conn,
+ 			 SmPointer client_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientXSMP *xsmp = client_data;
+   EggSMClient *client = client_data;
+ 
+@@ -1079,6 +1100,7 @@ static GPtrArray *
+ generate_command (char **argv, const char *client_id,
+ 		  const char *state_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GPtrArray *cmd;
+   int i;
+ 
+@@ -1110,6 +1132,7 @@ generate_command (char **argv, const char *client_id,
+ static void
+ set_properties (EggSMClientXSMP *xsmp, ...)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GPtrArray *props;
+   SmProp *prop;
+   va_list ap;
+@@ -1141,6 +1164,7 @@ set_properties (EggSMClientXSMP *xsmp, ...)
+ static void
+ delete_properties (EggSMClientXSMP *xsmp, ...)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GPtrArray *props;
+   char *prop;
+   va_list ap;
+@@ -1168,6 +1192,7 @@ delete_properties (EggSMClientXSMP *xsmp, ...)
+ static SmProp *
+ array_prop (const char *name, ...) 
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   SmProp *prop;
+   SmPropValue pv;
+   GArray *vals;
+@@ -1203,6 +1228,7 @@ array_prop (const char *name, ...)
+ static SmProp *
+ ptrarray_prop (const char *name, GPtrArray *values)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   SmProp *prop;
+   SmPropValue pv;
+   GArray *vals;
+@@ -1236,6 +1262,7 @@ ptrarray_prop (const char *name, GPtrArray *values)
+ static SmProp *
+ string_prop (const char *name, const char *value)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   SmProp *prop;
+ 
+   prop = g_new (SmProp, 1);
+@@ -1255,6 +1282,7 @@ string_prop (const char *name, const char *value)
+ static SmProp *
+ card8_prop (const char *name, unsigned char value)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   SmProp *prop;
+   char *card8val;
+ 
+@@ -1307,6 +1335,7 @@ static void        ice_connection_watch (IceConn        ice_conn,
+ static void
+ ice_init (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   IceSetIOErrorHandler (ice_io_error_handler);
+   IceSetErrorHandler (ice_error_handler);
+   IceAddConnectionWatch (ice_connection_watch, NULL);
+@@ -1315,6 +1344,7 @@ ice_init (void)
+ static gboolean
+ process_ice_messages (IceConn ice_conn)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   IceProcessMessagesStatus status;
+ 
+   gdk_threads_enter ();
+@@ -1343,6 +1374,7 @@ ice_iochannel_watch (GIOChannel   *channel,
+ 		     GIOCondition  condition,
+ 		     gpointer      client_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return process_ice_messages (client_data);
+ }
+ 
+@@ -1352,6 +1384,7 @@ ice_connection_watch (IceConn     ice_conn,
+ 		      Bool        opening,
+ 		      IcePointer *watch_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint watch_id;
+ 
+   if (opening)
+@@ -1383,12 +1416,14 @@ ice_error_handler (IceConn       ice_conn,
+ 		   int           severity,
+ 		   IcePointer    values)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* Do nothing */
+ } 
+ 
+ static void
+ ice_io_error_handler (IceConn ice_conn)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* Do nothing */
+ } 
+ 
+@@ -1401,5 +1436,6 @@ smc_error_handler (SmcConn       smc_conn,
+                    int           severity,
+                    SmPointer     values)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* Do nothing */
+ }
+diff --git a/src/eggsmclient.c b/src/eggsmclient.c
+index 85aaee4..544c31b 100644
+--- a/src/eggsmclient.c
++++ b/src/eggsmclient.c
+@@ -1,3 +1,4 @@
++#include <stdio.h>
+ /*
+  * Copyright (C) 2007 Novell, Inc.
+  *
+@@ -54,12 +55,14 @@ static EggSMClientMode global_client_mode = EGG_SM_CLIENT_MODE_NORMAL;
+ static void
+ egg_sm_client_init (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   ;
+ }
+ 
+ static void
+ egg_sm_client_class_init (EggSMClientClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+ 
+   g_type_class_add_private (klass, sizeof (EggSMClientPrivate));
+@@ -186,6 +189,7 @@ sm_client_post_parse_func (GOptionContext  *context,
+ 			   gpointer         data,
+ 			   GError         **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClient *client = egg_sm_client_get ();
+ 
+   if (sm_client_id == NULL)
+@@ -219,6 +223,7 @@ sm_client_post_parse_func (GOptionContext  *context,
+ GOptionGroup *
+ egg_sm_client_get_option_group (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GOptionEntry entries[] = {
+     { "sm-client-disable", 0, 0,
+       G_OPTION_ARG_NONE, &sm_client_disable,
+@@ -282,6 +287,7 @@ egg_sm_client_get_option_group (void)
+ void
+ egg_sm_client_set_mode (EggSMClientMode mode)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   global_client_mode = mode;
+ }
+ 
+@@ -296,6 +302,7 @@ egg_sm_client_set_mode (EggSMClientMode mode)
+ EggSMClientMode
+ egg_sm_client_get_mode (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return global_client_mode;
+ }
+ 
+@@ -315,6 +322,7 @@ egg_sm_client_get_mode (void)
+ EggSMClient *
+ egg_sm_client_get (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (!global_client)
+     {
+       if (global_client_mode != EGG_SM_CLIENT_MODE_DISABLED &&
+@@ -363,6 +371,7 @@ egg_sm_client_get (void)
+ gboolean
+ egg_sm_client_is_resumed (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (client == global_client, FALSE);
+ 
+   return sm_client_state_file != NULL;
+@@ -390,6 +399,7 @@ egg_sm_client_is_resumed (EggSMClient *client)
+ GKeyFile *
+ egg_sm_client_get_state_file (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClientPrivate *priv = EGG_SM_CLIENT_GET_PRIVATE (client);
+   char *state_file_path;
+   GError *err = NULL;
+@@ -438,6 +448,7 @@ egg_sm_client_set_restart_command (EggSMClient  *client,
+ 				   int           argc,
+ 				   const char  **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (EGG_IS_SM_CLIENT (client));
+ 
+   if (EGG_SM_CLIENT_GET_CLASS (client)->set_restart_command)
+@@ -459,6 +470,7 @@ egg_sm_client_set_discard_command (EggSMClient  *client,
+ 				   int           argc,
+ 				   const char  **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (EGG_IS_SM_CLIENT (client));
+ 
+   if (EGG_SM_CLIENT_GET_CLASS (client)->set_discard_command)
+@@ -487,6 +499,7 @@ void
+ egg_sm_client_will_quit (EggSMClient *client,
+ 			 gboolean     will_quit)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (EGG_IS_SM_CLIENT (client));
+ 
+   if (EGG_SM_CLIENT_GET_CLASS (client)->will_quit)
+@@ -513,6 +526,7 @@ gboolean
+ egg_sm_client_end_session (EggSMClientEndStyle  style,
+ 			   gboolean             request_confirmation)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   EggSMClient *client = egg_sm_client_get ();
+ 
+   g_return_val_if_fail (EGG_IS_SM_CLIENT (client), FALSE);
+@@ -531,6 +545,7 @@ egg_sm_client_end_session (EggSMClientEndStyle  style,
+ GKeyFile *
+ egg_sm_client_save_state (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GKeyFile *state_file;
+   char *group;
+ 
+@@ -558,6 +573,7 @@ egg_sm_client_save_state (EggSMClient *client)
+ void
+ egg_sm_client_quit_requested (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (client == global_client);
+ 
+   if (!g_signal_has_handler_pending (client, signals[QUIT_REQUESTED], 0, FALSE))
+@@ -575,6 +591,7 @@ egg_sm_client_quit_requested (EggSMClient *client)
+ void
+ egg_sm_client_quit_cancelled (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (client == global_client);
+ 
+   g_debug ("Emitting quit_cancelled");
+@@ -585,6 +602,7 @@ egg_sm_client_quit_cancelled (EggSMClient *client)
+ void
+ egg_sm_client_quit (EggSMClient *client)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (client == global_client);
+ 
+   g_debug ("Emitting quit");
+@@ -600,6 +618,7 @@ egg_sm_client_debug_handler (const char *log_domain,
+ 			     const char *message,
+ 			     gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static int debug = -1;
+ 
+   if (debug < 0)
+diff --git a/src/profile-editor.c b/src/profile-editor.c
+index a82a1e0..28dcae6 100644
+--- a/src/profile-editor.c
++++ b/src/profile-editor.c
+@@ -78,6 +78,7 @@ static GtkWidget*
+ profile_editor_get_widget (GtkWidget  *editor,
+                            const char *widget_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkBuilder *builder;
+ 
+   builder = g_object_get_data (G_OBJECT (editor), "builder");
+@@ -89,6 +90,7 @@ profile_editor_get_widget (GtkWidget  *editor,
+ static void
+ widget_and_labels_set_sensitive (GtkWidget *widget, gboolean sensitive)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GList *labels, *i;
+ 
+   labels = gtk_widget_list_mnemonic_labels (widget);
+@@ -105,6 +107,7 @@ static void
+ profile_forgotten_cb (TerminalProfile *profile,
+                       GtkWidget *editor)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_widget_destroy (editor);
+ }
+ 
+@@ -113,6 +116,7 @@ profile_notify_sensitivity_cb (TerminalProfile *profile,
+                                GParamSpec *pspec,
+                                GtkWidget *editor)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalBackgroundType bg_type;
+   gboolean use_custom_locked, palette_locked, bg_type_locked, scrollback_lines_locked;
+   const char *prop_name;
+@@ -280,6 +284,7 @@ color_scheme_combo_changed_cb (GtkWidget *combo,
+                                GParamSpec *pspec,
+                                TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint i;
+   
+   i = gtk_combo_box_get_active (GTK_COMBO_BOX (combo));
+@@ -304,6 +309,7 @@ profile_colors_notify_scheme_combo_cb (TerminalProfile *profile,
+                                        GParamSpec *pspec,
+                                        GtkComboBox *combo)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GdkColor *fg, *bg;
+   guint i;
+ 
+@@ -328,6 +334,7 @@ palette_scheme_combo_changed_cb (GtkComboBox *combo,
+                                  GParamSpec *pspec,
+                                  TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   int i;
+ 
+   i = gtk_combo_box_get_active (GTK_COMBO_BOX (combo));
+@@ -347,6 +354,7 @@ profile_palette_notify_scheme_combo_cb (TerminalProfile *profile,
+                                         GParamSpec *pspec,
+                                         GtkComboBox *combo)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint i;
+ 
+   if (!terminal_profile_get_palette_is_builtin (profile, &i))
+@@ -365,6 +373,7 @@ palette_color_notify_cb (GtkColorButton *button,
+                          GParamSpec *pspec,
+                          TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *editor;
+   GdkColor color;
+   guint i;
+@@ -383,6 +392,7 @@ profile_palette_notify_colorpickers_cb (TerminalProfile *profile,
+                                         GParamSpec *pspec,
+                                         GtkWidget *editor)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *w;
+   GdkColor colors[TERMINAL_PALETTE_SIZE];
+   guint n_colors, i;
+@@ -412,6 +422,7 @@ profile_palette_notify_colorpickers_cb (TerminalProfile *profile,
+ static void
+ custom_command_entry_changed_cb (GtkWidget *entry)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const char *command;
+   GError *error = NULL;
+ 
+@@ -450,6 +461,7 @@ static void
+ visible_name_entry_changed_cb (GtkEntry *entry,
+                                GtkWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const char *visible_name;
+   char *text;
+   
+@@ -465,6 +477,7 @@ scrollback_lines_spin_button_changed_cb (GtkSpinButton *button,
+                                          GParamSpec *pspec,
+                                          GtkLabel *label)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   double lines;
+   char *kbtext, *text;
+ 
+@@ -481,6 +494,7 @@ static void
+ reset_compat_defaults_cb (GtkWidget       *button,
+                           TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_profile_reset_property (profile, TERMINAL_PROFILE_DELETE_BINDING);
+   terminal_profile_reset_property (profile, TERMINAL_PROFILE_BACKSPACE_BINDING);
+ }
+@@ -492,6 +506,7 @@ reset_compat_defaults_cb (GtkWidget       *button,
+ static void
+ init_color_scheme_menu (GtkWidget *combo_box)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   int i;
+ 
+   i = G_N_ELEMENTS (color_schemes);
+@@ -507,12 +522,14 @@ format_percent_value (GtkScale *scale,
+                       double    val,
+                       void     *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_strdup_printf ("%d%%", (int) rint (val * 100.0));
+ }
+ 
+ static void
+ init_background_darkness_scale (GtkWidget *scale)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_connect (scale, "format-value",
+                     G_CALLBACK (format_percent_value),
+                     NULL);
+@@ -524,6 +541,7 @@ editor_response_cb (GtkWidget *editor,
+                     int response,
+                     gpointer use_data)
+ {  
++	printf ("Entering %s\n", __FUNCTION__);
+   if (response == GTK_RESPONSE_HELP)
+     {
+       terminal_util_show_help ("gnome-terminal-prefs", GTK_WINDOW (editor));
+@@ -537,6 +555,7 @@ editor_response_cb (GtkWidget *editor,
+ static GdkPixbuf *
+ create_preview_pixbuf (const gchar *filename)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GdkPixbuf *pixbuf = NULL;
+   GnomeThumbnailFactory *thumbs;
+   const char *mime_type = NULL;
+@@ -574,6 +593,7 @@ create_preview_pixbuf (const gchar *filename)
+ static void 
+ update_image_preview (GtkFileChooser *chooser) 
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *image;
+   gchar *file;
+ 
+@@ -605,6 +625,7 @@ static void
+ setup_background_filechooser (GtkWidget *filechooser, 
+                               TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkFileFilter *filter;
+   const char *home_dir;
+ 
+@@ -655,6 +676,7 @@ static void
+ profile_editor_destroyed (GtkWidget       *editor,
+                           TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_handlers_disconnect_by_func (profile, G_CALLBACK (profile_forgotten_cb), editor);
+   g_signal_handlers_disconnect_by_func (profile, G_CALLBACK (profile_notify_sensitivity_cb), editor);
+   g_signal_handlers_disconnect_matched (profile, G_SIGNAL_MATCH_FUNC, 0, 0, NULL,
+@@ -672,6 +694,7 @@ void
+ terminal_profile_edit (TerminalProfile *profile,
+                        GtkWindow       *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *path;
+   GtkBuilder *builder;
+   GError *error = NULL;
+diff --git a/src/skey-popup.c b/src/skey-popup.c
+index 415c267..353e23a 100644
+--- a/src/skey-popup.c
++++ b/src/skey-popup.c
+@@ -40,6 +40,7 @@ typedef struct {
+ static void
+ skey_data_free (SkeyData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_free (data->seed);
+   g_free (data);
+ }
+@@ -49,6 +50,7 @@ extract_seq_and_seed (const gchar  *skey_match,
+ 		      gint         *seq,
+ 		      gchar       **seed)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gchar *end_ptr = NULL;
+ 
+   /* FIXME: use g_ascii_strtoll */
+@@ -68,6 +70,7 @@ extract_hash_seq_and_seed (const gchar  *otp_match,
+ 	  	           gint         *seq,
+ 		           gchar       **seed)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gchar *end_ptr = NULL;
+   const gchar *p = otp_match + strlen (OTP_PREFIX);
+   gint len = 3;
+@@ -119,6 +122,7 @@ skey_challenge_response_cb (GtkWidget *dialog,
+                             int response_id,
+                             SkeyData *data)
+ {  
++	printf ("Entering %s\n", __FUNCTION__);
+   if (response_id == GTK_RESPONSE_OK)
+     {
+       GtkWidget *entry;
+@@ -149,6 +153,7 @@ terminal_skey_do_popup (GtkWindow *window,
+                         TerminalScreen *screen,
+ 			const gchar    *skey_match)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *dialog, *label, *entry, *ok_button;
+   char *title_text;
+   char *seed;
+diff --git a/src/terminal-accels.c b/src/terminal-accels.c
+index 6c3e0fb..d12f427 100644
+--- a/src/terminal-accels.c
++++ b/src/terminal-accels.c
+@@ -265,6 +265,7 @@ static char*
+ binding_name (guint            keyval,
+               GdkModifierType  mask)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (keyval != 0)
+     return gtk_accelerator_name (keyval, mask);
+ 
+@@ -275,6 +276,7 @@ static char*
+ binding_display_name (guint            keyval,
+                       GdkModifierType  mask)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (keyval != 0)
+     return gtk_accelerator_get_label (keyval, mask);
+     
+@@ -284,6 +286,7 @@ binding_display_name (guint            keyval,
+ static const char *
+ key_from_gconf_key (const char *gconf_key)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const char *last_slash = strrchr (gconf_key, '/');
+   if (last_slash)
+     return last_slash++;
+@@ -293,6 +296,7 @@ key_from_gconf_key (const char *gconf_key)
+ void
+ terminal_accels_init (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GConfClient *conf;
+   guint i, j;
+ 
+@@ -345,6 +349,7 @@ terminal_accels_init (void)
+ void
+ terminal_accels_shutdown (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GConfClient *conf;
+ 
+   conf = gconf_client_get_default ();
+@@ -373,6 +378,7 @@ update_model_foreach (GtkTreeModel *model,
+ 		      GtkTreeIter  *iter,
+ 		      gpointer      data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   KeyEntry *key_entry = NULL;
+ 
+   gtk_tree_model_get (model, iter,
+@@ -393,6 +399,7 @@ keys_change_notify (GConfClient *client,
+                     GConfEntry  *entry,
+                     gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GConfValue *val;
+   KeyEntry *key_entry;
+   GdkModifierType mask;
+@@ -480,6 +487,7 @@ accel_changed_callback (GtkAccelGroup  *accel_group,
+                         GClosure       *accel_closure,
+                         gpointer        data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* FIXME because GTK accel API is so nonsensical, we get
+    * a notify for each closure, on both the added and the removed
+    * accelerator. We just use the accel closure to find our
+@@ -516,6 +524,7 @@ binding_from_string (const char      *str,
+                      guint           *accelerator_key,
+                      GdkModifierType *accelerator_mods)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (str == NULL ||
+       strcmp (str, "disabled") == 0)
+     {
+@@ -537,6 +546,7 @@ binding_from_value (GConfValue       *value,
+                     guint            *accelerator_key,
+                     GdkModifierType  *accelerator_mods)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (value == NULL)
+     {
+       /* unset */
+@@ -558,6 +568,7 @@ add_key_entry_to_changeset (gpointer key,
+                             KeyEntry *key_entry,
+                             GConfChangeSet *changeset)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkAccelKey gtk_key;
+ 
+   if (!key_entry->needs_gconf_sync)
+@@ -580,6 +591,7 @@ add_key_entry_to_changeset (gpointer key,
+ static gboolean
+ sync_idle_cb (gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GConfClient *conf;
+   GConfChangeSet *changeset;
+   GError *error = NULL;
+@@ -617,6 +629,7 @@ accel_set_func (GtkTreeViewColumn *tree_column,
+                 GtkTreeIter       *iter,
+                 gpointer           data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   KeyEntry *ke;
+   
+   gtk_tree_model_get (model, iter,
+@@ -644,6 +657,7 @@ accel_compare_func (GtkTreeModel *model,
+                     GtkTreeIter  *b,
+                     gpointer      user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   KeyEntry *ke_a;
+   KeyEntry *ke_b;
+   char *name_a;
+@@ -695,6 +709,7 @@ treeview_accel_changed_cb (GtkAccelGroup  *accel_group,
+                            GClosure *accel_closure,
+                            GtkTreeModel *model)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_tree_model_foreach (model, update_model_foreach, accel_closure->data);
+ }
+ 
+@@ -706,6 +721,7 @@ accel_edited_callback (GtkCellRendererAccel *cell,
+                        guint                 hardware_keycode,
+                        GtkTreeView          *view)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeModel *model;
+   GtkTreePath *path;
+   GtkTreeIter iter;
+@@ -802,6 +818,7 @@ accel_cleared_callback (GtkCellRendererAccel *cell,
+                         gchar                *path_string,
+                         GtkTreeView          *view)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeModel *model;
+   GtkTreePath *path;
+   GtkTreeIter iter;
+@@ -850,6 +867,7 @@ static void
+ edit_keys_dialog_destroy_cb (GtkWidget *widget,
+                              gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_handlers_disconnect_by_func (notification_group, G_CALLBACK (treeview_accel_changed_cb), user_data);
+   edit_keys_dialog = NULL;
+   edit_keys_store = NULL;
+@@ -860,6 +878,7 @@ edit_keys_dialog_response_cb (GtkWidget *editor,
+                               int response,
+                               gpointer use_data)
+ {  
++	printf ("Entering %s\n", __FUNCTION__);
+   if (response == GTK_RESPONSE_HELP)
+     {
+       terminal_util_show_help ("gnome-terminal-shortcuts", GTK_WINDOW (editor));
+@@ -876,6 +895,7 @@ row_changed (GtkTreeModel *tree_model,
+              GtkTreeIter  *iter,
+              gpointer      user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   _terminal_debug_print (TERMINAL_DEBUG_ACCELS,
+                          "ROW-CHANGED [%s]\n", gtk_tree_path_to_string (path) /* leak */);
+ }
+@@ -884,6 +904,7 @@ row_changed (GtkTreeModel *tree_model,
+ void
+ terminal_edit_keys_dialog_show (GtkWindow *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app;
+   GtkWidget *dialog, *tree_view, *disable_mnemonics_button, *disable_menu_accel_button;
+   GtkTreeViewColumn *column;
+diff --git a/src/terminal-app.c b/src/terminal-app.c
+index d7336a0..563f7d5 100644
+--- a/src/terminal-app.c
++++ b/src/terminal-app.c
+@@ -160,6 +160,7 @@ static GdkScreen*
+ terminal_app_get_screen_by_display_name (const char *display_name,
+                                          int screen_number)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GdkDisplay *display = NULL;
+   GdkScreen *screen = NULL;
+ 
+@@ -220,6 +221,7 @@ static int
+ profiles_alphabetic_cmp (gconstpointer pa,
+                          gconstpointer pb)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *a = (TerminalProfile *) pa;
+   TerminalProfile *b = (TerminalProfile *) pb;
+   int result;
+@@ -244,6 +246,7 @@ profiles_lookup_by_visible_name_foreach (gpointer key,
+                                          gpointer value,
+                                          gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   LookupInfo *info = data;
+   const char *name;
+ 
+@@ -256,6 +259,7 @@ static void
+ terminal_window_destroyed (TerminalWindow *window,
+                            TerminalApp    *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   app->windows = g_list_remove (app->windows, window);
+ 
+   if (app->windows == NULL)
+@@ -266,6 +270,7 @@ static TerminalProfile *
+ terminal_app_create_profile (TerminalApp *app,
+                              const char *name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile;
+ 
+   g_assert (terminal_app_get_profile_by_name (app, name) == NULL);
+@@ -293,6 +298,7 @@ static void
+ terminal_app_delete_profile (TerminalApp *app,
+                              TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GHashTableIter iter;
+   GSList *name_list;
+   const char *name, *profile_name;
+@@ -339,6 +345,7 @@ terminal_app_profile_cell_data_func (GtkTreeViewColumn *tree_column,
+                                      GtkTreeIter *iter,
+                                      gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile;
+   GValue value = { 0, };
+ 
+@@ -356,6 +363,7 @@ terminal_app_profile_sort_func (GtkTreeModel *model,
+                                 GtkTreeIter *b,
+                                 gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile_a, *profile_b;
+   int retval;
+ 
+@@ -376,6 +384,7 @@ terminal_app_get_profile_liststore (TerminalApp *app,
+                                     GtkTreeIter *selected_profile_iter,
+                                     gboolean *selected_profile_iter_set)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkListStore *store;
+   GtkTreeIter iter;
+   GList *profiles, *l;
+@@ -422,6 +431,7 @@ terminal_app_get_profile_liststore (TerminalApp *app,
+ static /* ref */ TerminalProfile*
+ profile_combo_box_get_selected (GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkComboBox *combo = GTK_COMBO_BOX (widget);
+   TerminalProfile *profile = NULL;
+   GtkTreeIter iter;
+@@ -437,6 +447,7 @@ static void
+ profile_combo_box_refill (TerminalApp *app,
+                           GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkComboBox *combo = GTK_COMBO_BOX (widget);
+   GtkTreeIter iter;
+   gboolean iter_set;
+@@ -468,6 +479,7 @@ profile_combo_box_refill (TerminalApp *app,
+ static GtkWidget*
+ profile_combo_box_new (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *combo;
+   GtkCellRenderer *renderer;
+ 
+@@ -492,6 +504,7 @@ static void
+ profile_combo_box_changed_cb (GtkWidget *widget,
+                               TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile;
+ 
+   profile = profile_combo_box_get_selected (widget);
+@@ -518,6 +531,7 @@ static void
+ profile_list_treeview_refill (TerminalApp *app,
+                               GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeView *tree_view = GTK_TREE_VIEW (widget);
+   GtkTreeIter iter;
+   gboolean iter_set;
+@@ -551,6 +565,7 @@ profile_list_treeview_refill (TerminalApp *app,
+ static GtkWidget*
+ profile_list_treeview_create (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *tree_view;
+   GtkTreeSelection *selection;
+   GtkCellRenderer *renderer;
+@@ -581,6 +596,7 @@ profile_list_delete_confirm_response_cb (GtkWidget *dialog,
+                                          int response,
+                                          TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile;
+ 
+   profile = TERMINAL_PROFILE (g_object_get_data (G_OBJECT (dialog), "profile"));
+@@ -596,6 +612,7 @@ static void
+ profile_list_delete_button_clicked_cb (GtkWidget *button,
+                                        GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeView *tree_view = GTK_TREE_VIEW (widget);
+   TerminalApp *app = terminal_app_get ();
+   GtkTreeSelection *selection;
+@@ -651,6 +668,7 @@ static void
+ profile_list_new_button_clicked_cb (GtkWidget   *button,
+                                     gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app;
+ 
+   app = terminal_app_get ();
+@@ -661,6 +679,7 @@ static void
+ profile_list_edit_button_clicked_cb (GtkWidget *button,
+                                      GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeView *tree_view = GTK_TREE_VIEW (widget);
+   GtkTreeSelection *selection;
+   GtkTreeIter iter;
+@@ -689,6 +708,7 @@ profile_list_row_activated_cb (GtkTreeView       *tree_view,
+                                GtkTreeViewColumn *column,
+                                gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeIter iter;
+   GtkTreeModel *model;
+   TerminalProfile *selected_profile;
+@@ -712,6 +732,7 @@ static GList*
+ find_profile_link (GList      *profiles,
+                    const char *name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GList *l;
+ 
+   for (l = profiles; l != NULL; l = l->next)
+@@ -732,6 +753,7 @@ terminal_app_profile_list_notify_cb (GConfClient *conf,
+                                      GConfEntry  *entry,
+                                      gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (user_data);
+   GObject *object = G_OBJECT (app);
+   GConfValue *val;
+@@ -854,6 +876,7 @@ terminal_app_default_profile_notify_cb (GConfClient *client,
+                                         GConfEntry  *entry,
+                                         gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (user_data);
+   GConfValue *val;
+   const char *name = NULL;
+@@ -880,6 +903,7 @@ static int
+ compare_encodings (TerminalEncoding *a,
+                    TerminalEncoding *b)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_utf8_collate (a->name, b->name);
+ }
+ 
+@@ -888,6 +912,7 @@ encoding_mark_active (gpointer key,
+                       gpointer value,
+                       gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalEncoding *encoding = (TerminalEncoding *) value;
+   guint active = GPOINTER_TO_UINT (data);
+ 
+@@ -900,6 +925,7 @@ terminal_app_encoding_list_notify_cb (GConfClient *client,
+                                       GConfEntry  *entry,
+                                       gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (user_data);
+   GConfValue *val;
+   GSList *strings, *tmp;
+@@ -969,6 +995,7 @@ terminal_app_system_font_notify_cb (GConfClient *client,
+                                     GConfEntry  *entry,
+                                     gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (user_data);
+   GConfValue *gconf_value;
+   const char *font = NULL;
+@@ -1007,6 +1034,7 @@ terminal_app_enable_mnemonics_notify_cb (GConfClient *client,
+                                          GConfEntry  *entry,
+                                          gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (user_data);
+   GConfValue *gconf_value;
+   gboolean enable;
+@@ -1034,6 +1062,7 @@ terminal_app_enable_menu_accels_notify_cb (GConfClient *client,
+                                            GConfEntry  *entry,
+                                            gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (user_data);
+   GConfValue *gconf_value;
+   gboolean enable;
+@@ -1060,6 +1089,7 @@ new_profile_response_cb (GtkWidget *new_profile_dialog,
+                          int        response_id,
+                          TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (response_id == GTK_RESPONSE_ACCEPT)
+     {
+       GtkWidget *name_entry;
+@@ -1145,6 +1175,7 @@ static void
+ new_profile_dialog_destroy_cb (GtkWidget *new_profile_dialog,
+                                TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *combo;
+ 
+   combo = g_object_get_data (G_OBJECT (new_profile_dialog), "base_option_menu");
+@@ -1157,6 +1188,7 @@ static void
+ new_profile_name_entry_changed_cb (GtkEntry *entry,
+                                    GtkDialog *dialog)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const char *name;
+ 
+   name = gtk_entry_get_text (entry);
+@@ -1173,6 +1205,7 @@ terminal_app_new_profile (TerminalApp     *app,
+                           TerminalProfile *default_base_profile,
+                           GtkWindow       *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (app->new_profile_dialog == NULL)
+     {
+       GtkWidget *create_button, *table, *name_label, *name_entry, *base_label, *combo;
+@@ -1227,6 +1260,7 @@ static void
+ profile_list_selection_changed_cb (GtkTreeSelection *selection,
+                                    TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gboolean selected;
+ 
+   selected = gtk_tree_selection_get_selected (selection, NULL, NULL);
+@@ -1242,6 +1276,7 @@ profile_list_response_cb (GtkWidget *dialog,
+                           int        id,
+                           TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_assert (app->manage_profiles_dialog == dialog);
+ 
+   if (id == GTK_RESPONSE_HELP)
+@@ -1257,6 +1292,7 @@ static void
+ profile_list_destroyed_cb (GtkWidget   *manage_profiles_dialog,
+                            TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_handlers_disconnect_by_func (app, G_CALLBACK (profile_list_treeview_refill), app->manage_profiles_list);
+   g_signal_handlers_disconnect_by_func (app, G_CALLBACK (profile_combo_box_refill), app->manage_profiles_default_menu);
+ 
+@@ -1272,6 +1308,7 @@ void
+ terminal_app_manage_profiles (TerminalApp     *app,
+                               GtkWindow       *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObject *dialog;
+   GObject *tree_view_container, *new_button, *edit_button, *remove_button;
+   GObject *default_hbox, *default_label;
+@@ -1352,6 +1389,7 @@ terminal_app_save_state_cb (EggSMClient *client,
+                             GKeyFile *key_file,
+                             TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_app_save_config (app, key_file);
+ }
+ 
+@@ -1359,6 +1397,7 @@ static void
+ terminal_app_client_quit_cb (EggSMClient *client,
+                              TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_emit (app, signals[QUIT], 0);
+ }
+ 
+@@ -1371,6 +1410,7 @@ G_DEFINE_TYPE (TerminalApp, terminal_app, G_TYPE_OBJECT)
+ static void
+ terminal_app_init (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   global_app = app;
+ 
+   /* Initialise defaults */
+@@ -1455,6 +1495,7 @@ terminal_app_init (TerminalApp *app)
+ static void
+ terminal_app_finalize (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (object);
+ 
+ #ifdef WITH_SMCLIENT
+@@ -1504,6 +1545,7 @@ terminal_app_get_property (GObject *object,
+                            GValue *value,
+                            GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (object);
+ 
+   switch (prop_id)
+@@ -1535,6 +1577,7 @@ terminal_app_set_property (GObject *object,
+                             const GValue *value,
+                             GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = TERMINAL_APP (object);
+ 
+   switch (prop_id)
+@@ -1559,6 +1602,7 @@ terminal_app_set_property (GObject *object,
+ static void
+ terminal_app_class_init (TerminalAppClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+ 
+   object_class->finalize = terminal_app_finalize;
+@@ -1626,6 +1670,7 @@ terminal_app_class_init (TerminalAppClass *klass)
+ void
+ terminal_app_initialize (gboolean use_factory)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_assert (global_app == NULL);
+   g_object_new (TERMINAL_TYPE_APP, NULL);
+   g_assert (global_app != NULL);
+@@ -1636,6 +1681,7 @@ terminal_app_initialize (gboolean use_factory)
+ void
+ terminal_app_shutdown (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_assert (global_app != NULL);
+   g_object_unref (global_app);
+   g_assert (global_app == NULL);
+@@ -1644,6 +1690,7 @@ terminal_app_shutdown (void)
+ TerminalApp*
+ terminal_app_get (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_assert (global_app != NULL);
+   return global_app;
+ }
+@@ -1668,6 +1715,7 @@ terminal_app_handle_options (TerminalApp *app,
+                              gboolean allow_resume,
+                              GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GList *lw;
+   GdkScreen *screen;
+ 
+@@ -1801,6 +1849,7 @@ TerminalWindow *
+ terminal_app_new_window (TerminalApp *app,
+                          GdkScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window;
+ 
+   window = terminal_window_new ();
+@@ -1825,6 +1874,7 @@ terminal_app_new_terminal (TerminalApp     *app,
+                            char           **child_env,
+                            double           zoom)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen;
+ 
+   g_return_val_if_fail (TERMINAL_IS_APP (app), NULL);
+@@ -1847,6 +1897,7 @@ terminal_app_edit_profile (TerminalApp     *app,
+                            TerminalProfile *profile,
+                            GtkWindow       *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_profile_edit (profile, transient_parent);
+ }
+ 
+@@ -1854,6 +1905,7 @@ void
+ terminal_app_edit_keybindings (TerminalApp     *app,
+                                GtkWindow       *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_edit_keys_dialog_show (transient_parent);
+ }
+ 
+@@ -1861,12 +1913,14 @@ void
+ terminal_app_edit_encodings (TerminalApp     *app,
+                              GtkWindow       *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_encoding_dialog_show (transient_parent);
+ }
+ 
+ TerminalWindow *
+ terminal_app_get_current_window (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_list_last (app->windows)->data;
+ }
+ 
+@@ -1881,6 +1935,7 @@ terminal_app_get_current_window (TerminalApp *app)
+ GList*
+ terminal_app_get_profile_list (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_APP (app), NULL);
+ 
+   return g_list_sort (g_hash_table_get_values (app->profiles), profiles_alphabetic_cmp);
+@@ -1890,6 +1945,7 @@ TerminalProfile*
+ terminal_app_get_profile_by_name (TerminalApp *app,
+                                   const char *name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_APP (app), NULL);
+   g_return_val_if_fail (name != NULL, NULL);
+ 
+@@ -1900,6 +1956,7 @@ TerminalProfile*
+ terminal_app_get_profile_by_visible_name (TerminalApp *app,
+                                           const char *name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   LookupInfo info;
+ 
+   g_return_val_if_fail (TERMINAL_IS_APP (app), NULL);
+@@ -1917,6 +1974,7 @@ terminal_app_get_profile_by_visible_name (TerminalApp *app,
+ TerminalProfile*
+ terminal_app_get_default_profile (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_APP (app), NULL);
+ 
+   return app->default_profile;
+@@ -1925,6 +1983,7 @@ terminal_app_get_default_profile (TerminalApp *app)
+ TerminalProfile*
+ terminal_app_get_profile_for_new_term (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GHashTableIter iter;
+   TerminalProfile *profile = NULL;
+   TerminalProfile **profileptr = &profile;
+@@ -1944,6 +2003,7 @@ terminal_app_get_profile_for_new_term (TerminalApp *app)
+ GHashTable *
+ terminal_app_get_encodings (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return app->encodings;
+ }
+ 
+@@ -1955,6 +2015,7 @@ terminal_app_get_encodings (TerminalApp *app)
+ GSList*
+ terminal_app_get_active_encodings (TerminalApp *app)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GSList *list = NULL;
+   GHashTableIter iter;
+   gpointer key, value;
+@@ -1977,6 +2038,7 @@ void
+ terminal_app_save_config (TerminalApp *app,
+                           GKeyFile *key_file)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GList *lw;
+   guint n = 0;
+   GPtrArray *window_names_array;
+@@ -2016,6 +2078,7 @@ terminal_app_save_config_file (TerminalApp *app,
+                                const char *file_name,
+                                GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GKeyFile *key_file;
+   char *data;
+   gsize len;
+diff --git a/src/terminal-debug.c b/src/terminal-debug.c
+index 02cd92c..d120b4b 100644
+--- a/src/terminal-debug.c
++++ b/src/terminal-debug.c
+@@ -1,3 +1,4 @@
++#include <stdio.h>
+ /*
+  * Copyright (C) 2002,2003 Red Hat, Inc.
+  *
+@@ -27,6 +28,7 @@ TerminalDebugFlags _terminal_debug_flags;
+ void
+ _terminal_debug_init(void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifdef GNOME_ENABLE_DEBUG
+   const GDebugKey keys[] = {
+     { "accels",    TERMINAL_DEBUG_ACCELS    },
+diff --git a/src/terminal-encoding.c b/src/terminal-encoding.c
+index d95b0ce..d0aaa34 100644
+--- a/src/terminal-encoding.c
++++ b/src/terminal-encoding.c
+@@ -150,6 +150,7 @@ terminal_encoding_new (const char *charset,
+                        gboolean is_custom,
+                        gboolean force_valid)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalEncoding *encoding;
+ 
+   encoding = g_slice_new (TerminalEncoding);
+@@ -166,6 +167,7 @@ terminal_encoding_new (const char *charset,
+ TerminalEncoding*
+ terminal_encoding_ref (TerminalEncoding *encoding)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (encoding != NULL, NULL);
+ 
+   encoding->refcount++;
+@@ -175,6 +177,7 @@ terminal_encoding_ref (TerminalEncoding *encoding)
+ void
+ terminal_encoding_unref (TerminalEncoding *encoding)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (--encoding->refcount > 0)
+     return;
+ 
+@@ -186,6 +189,7 @@ terminal_encoding_unref (TerminalEncoding *encoding)
+ gboolean
+ terminal_encoding_is_valid (TerminalEncoding *encoding)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* All of the printing ASCII characters from space (32) to the tilde (126) */
+   static const char ascii_sample[] =
+       " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+@@ -246,6 +250,7 @@ terminal_encoding_is_valid (TerminalEncoding *encoding)
+ GType
+ terminal_encoding_get_type (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static GType type = 0;
+ 
+   if (G_UNLIKELY (type == 0)) {
+@@ -260,6 +265,7 @@ terminal_encoding_get_type (void)
+ static void
+ update_active_encodings_gconf (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GSList *list, *l;
+   GSList *strings = NULL;
+   GConfClient *conf;
+@@ -290,6 +296,7 @@ response_callback (GtkWidget *window,
+                    int        id,
+                    EncodingDialogData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (id == GTK_RESPONSE_HELP)
+     terminal_util_show_help ("gnome-terminal-encoding-add", GTK_WINDOW (window));
+   else
+@@ -308,6 +315,7 @@ static void
+ selection_changed_cb (GtkTreeSelection *selection,
+                       EncodingDialogData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *button;
+   gboolean have_selection;
+ 
+@@ -326,6 +334,7 @@ static void
+ button_clicked_cb (GtkWidget *button,
+                    EncodingDialogData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeSelection *selection;
+   GtkTreeModel *model;
+   GtkTreeIter filter_iter, iter;
+@@ -369,6 +378,7 @@ liststore_insert_encoding (gpointer key,
+                            TerminalEncoding *encoding,
+                            GtkListStore *store)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeIter iter;
+ 
+   if (!terminal_encoding_is_valid (encoding))
+@@ -386,6 +396,7 @@ filter_active_encodings (GtkTreeModel *child_model,
+                          GtkTreeIter *child_iter,
+                          gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalEncoding *encoding;
+   gboolean active = GPOINTER_TO_UINT (data);
+   gboolean visible;
+@@ -401,6 +412,7 @@ static GtkTreeModel *
+ encodings_create_treemodel (GtkListStore *base_store,
+                             gboolean active)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeModel *model;
+ 
+   model = gtk_tree_model_filter_new (GTK_TREE_MODEL (base_store), NULL);
+@@ -415,6 +427,7 @@ static void
+ encodings_list_changed_cb (TerminalApp *app,
+                            EncodingDialogData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_list_store_clear (data->base_store);
+ 
+   g_hash_table_foreach (terminal_app_get_encodings (app), (GHFunc) liststore_insert_encoding, data->base_store);
+@@ -423,6 +436,7 @@ encodings_list_changed_cb (TerminalApp *app,
+ static void
+ encoding_dialog_data_free (EncodingDialogData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_handlers_disconnect_by_func (terminal_app_get (),
+                                         G_CALLBACK (encodings_list_changed_cb),
+                                         data);
+@@ -433,6 +447,7 @@ encoding_dialog_data_free (EncodingDialogData *data)
+ void
+ terminal_encoding_dialog_show (GtkWindow *transient_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app;
+   GtkCellRenderer *cell_renderer;
+   GtkTreeViewColumn *column;
+@@ -558,6 +573,7 @@ terminal_encoding_dialog_show (GtkWindow *transient_parent)
+ GHashTable *
+ terminal_encodings_get_builtins (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GHashTable *encodings_hashtable;
+   guint i;
+   const char *locale_charset = NULL;
+diff --git a/src/terminal-find.c b/src/terminal-find.c
+index e4707e9..5cdfa2a 100644
+--- a/src/terminal-find.c
++++ b/src/terminal-find.c
+@@ -70,6 +70,7 @@ static void terminal_find_set_parent (GtkWindow *new_parent);
+ static void
+ terminal_find_history_load (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeIter iter;
+   GSList *list = NULL;
+   GSList *curr = NULL;
+@@ -106,6 +107,7 @@ terminal_find_history_load (void)
+ static void
+ terminal_find_history_save (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeIter iter;
+   GSList *list = NULL;
+   int i;
+@@ -150,6 +152,7 @@ terminal_find_history_save (void)
+ static void
+ terminal_find_history_add (const char *str)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkTreeIter iter;
+   int i;
+   int items;
+@@ -200,6 +203,7 @@ terminal_find_history_add (const char *str)
+ static void
+ terminal_find_history_init (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkEntryCompletion *comp = NULL;
+ 
+   g_assert (entry);
+@@ -234,6 +238,7 @@ terminal_find_aways_selected (VteTerminal *terminal,
+                               glong row,
+                               gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return TRUE;
+ }
+ 
+@@ -247,6 +252,7 @@ static void
+ terminal_find_replace_string (char **oldstr,
+                               char  *newstr)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (!oldstr)
+     return;
+ 
+@@ -262,6 +268,7 @@ terminal_find_replace_string (char **oldstr,
+ static FindParams *
+ terminal_find_new_search (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_new0 (FindParams, 1);
+ }
+ 
+@@ -273,6 +280,7 @@ terminal_find_new_search (void)
+ static void
+ terminal_find_free_search (FindParams *fp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (!fp)
+     return;
+ 
+@@ -292,6 +300,7 @@ terminal_find_free_search (FindParams *fp)
+ static gboolean
+ terminal_find_build_search (FindParams *fp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char    *new_str   = NULL;
+   int      new_flags = 0;
+   gboolean changed   = FALSE;
+@@ -357,6 +366,7 @@ terminal_find_build_search (FindParams *fp)
+ static gboolean
+ terminal_find_perform_search (FindParams *fp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* We don't need to free these pointers */
+   VteTerminal       *vterm  = NULL;
+   GtkAdjustment     *adj    = NULL;
+@@ -485,6 +495,7 @@ terminal_find_perform_search (FindParams *fp)
+ static void
+ terminal_find_show_search (FindParams *fp)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   VteTerminal   *vterm = NULL;
+   GtkAdjustment *adj   = NULL;
+ 
+@@ -507,6 +518,7 @@ terminal_find_show_search (FindParams *fp)
+ static void
+ terminal_find_window_cb (GtkWidget *window, gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_widget_destroy (GTK_WIDGET (dialog));
+ }
+ 
+@@ -523,6 +535,7 @@ terminal_find_response_cb (GtkWidget *dialog,
+                            int        response,
+                            gpointer   user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* Might get GTK_RESPONSE_CLOSE or GTK_RESPONSE_DELETE_EVENT */
+   if (response != GTK_RESPONSE_APPLY)
+     {
+@@ -554,6 +567,7 @@ terminal_find_clear_cb (GtkEntry *find,
+                         GdkEvent *event,
+                         gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_entry_set_text (find, "");
+ }
+ 
+@@ -567,6 +581,7 @@ static void
+ terminal_find_toggled_cb (GtkToggleButton *togglebutton,
+                           gpointer        *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gboolean b;
+ 
+   g_assert (check_case);
+@@ -594,6 +609,7 @@ terminal_find_text_cb (GtkEntry   *text,
+                        GParamSpec *pspec,
+                        GtkWidget  *button)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gboolean has_text;
+ 
+   has_text = gtk_entry_get_text_length (text) > 0;
+@@ -612,6 +628,7 @@ terminal_find_check_cb (GConfClient *client,
+                         GConfEntry *conf_entry,
+                         gpointer button)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), gconf_value_get_bool (conf_entry->value));
+ }
+ 
+@@ -625,6 +642,7 @@ static void
+ terminal_find_destroyed_cb (GtkWidget *widget,
+                             gpointer   user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_assert (gconf);
+ 
+   terminal_find_history_save ();
+@@ -666,6 +684,7 @@ terminal_find_destroyed_cb (GtkWidget *widget,
+ static void
+ terminal_find_set_parent (GtkWindow *new_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (parent)
+     g_signal_handlers_disconnect_by_func (parent, G_CALLBACK (terminal_find_window_cb), NULL);
+ 
+@@ -689,6 +708,7 @@ terminal_find_set_parent (GtkWindow *new_parent)
+ void
+ terminal_find_display (GtkWindow *terminal_window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkButton *button_close = NULL;
+   GtkButton *button_find  = NULL;
+   gboolean find_case;
+diff --git a/src/terminal-options.c b/src/terminal-options.c
+index 4971b7d..0a31759 100644
+--- a/src/terminal-options.c
++++ b/src/terminal-options.c
+@@ -39,6 +39,7 @@ static InitialTab*
+ initial_tab_new (const char *profile,
+                  gboolean    is_id)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   InitialTab *it;
+ 
+   it = g_slice_new (InitialTab);
+@@ -58,6 +59,7 @@ initial_tab_new (const char *profile,
+ static void
+ initial_tab_free (InitialTab *it)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_free (it->profile);
+   g_strfreev (it->exec_argv);
+   g_free (it->title);
+@@ -68,6 +70,7 @@ initial_tab_free (InitialTab *it)
+ static InitialWindow*
+ initial_window_new (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   InitialWindow *iw;
+ 
+   iw = g_slice_new0 (InitialWindow);
+@@ -78,6 +81,7 @@ initial_window_new (void)
+ static void
+ initial_window_free (InitialWindow *iw)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_list_foreach (iw->tabs, (GFunc) initial_tab_free, NULL);
+   g_list_free (iw->tabs);
+   g_free (iw->geometry);
+@@ -89,6 +93,7 @@ static void
+ apply_defaults (TerminalOptions *options,
+                 InitialWindow        *iw)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (options->default_role)
+     {
+       iw->role = options->default_role;
+@@ -113,6 +118,7 @@ apply_defaults (TerminalOptions *options,
+ static InitialWindow*
+ ensure_top_window (TerminalOptions *options)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   InitialWindow *iw;
+ 
+   if (options->initial_windows == NULL)
+@@ -136,6 +142,7 @@ ensure_top_window (TerminalOptions *options)
+ static InitialTab*
+ ensure_top_tab (TerminalOptions *options)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   InitialWindow *iw;
+   InitialTab *it;
+ 
+@@ -153,6 +160,7 @@ add_new_window (TerminalOptions *options,
+                 const char           *profile,
+                 gboolean              is_id)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   InitialWindow *iw;
+ 
+   iw = initial_window_new ();
+@@ -171,6 +179,7 @@ unsupported_option_callback (const gchar *option_name,
+                              gpointer     data,
+                              GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_printerr (_("Option \"%s\" is no longer supported in this version of gnome-terminal;"
+                " you might want to create a profile with the desired setting, and use"
+                " the new '--profile' option\n"), option_name);
+@@ -184,6 +193,7 @@ option_version_cb (const gchar *option_name,
+                    gpointer     data,
+                    GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_print ("%s %s\n", _("GNOME Terminal"), VERSION);
+ 
+   exit (EXIT_SUCCESS);
+@@ -196,6 +206,7 @@ option_command_callback (const gchar *option_name,
+                          gpointer     data,
+                          GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   GError *err = NULL;
+   char  **exec_argv;
+@@ -234,6 +245,7 @@ option_profile_cb (const gchar *option_name,
+                    gpointer     data,
+                    GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->initial_windows)
+@@ -260,6 +272,7 @@ option_profile_id_cb (const gchar *option_name,
+                       gpointer     data,
+                       GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->initial_windows)
+@@ -287,6 +300,7 @@ option_window_callback (const gchar *option_name,
+                         gpointer     data,
+                         GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   gboolean is_profile_id;
+ 
+@@ -303,6 +317,7 @@ option_tab_callback (const gchar *option_name,
+                      gpointer     data,
+                      GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   gboolean is_profile_id;
+ 
+@@ -327,6 +342,7 @@ option_role_callback (const gchar *option_name,
+                       gpointer     data,
+                       GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   InitialWindow *iw;
+ 
+@@ -353,6 +369,7 @@ option_show_menubar_callback (const gchar *option_name,
+                               gpointer     data,
+                               GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   InitialWindow *iw;
+ 
+@@ -385,6 +402,7 @@ option_hide_menubar_callback (const gchar *option_name,
+                               gpointer     data,
+                               GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   InitialWindow *iw;
+ 
+@@ -417,6 +435,7 @@ option_maximize_callback (const gchar *option_name,
+                           gpointer     data,
+                           GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   InitialWindow *iw;
+ 
+@@ -437,6 +456,7 @@ option_fullscreen_callback (const gchar *option_name,
+                             gpointer     data,
+                             GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->initial_windows)
+@@ -458,6 +478,7 @@ option_geometry_callback (const gchar *option_name,
+                           gpointer     data,
+                           GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->initial_windows)
+@@ -479,6 +500,7 @@ option_disable_factory_callback (const gchar *option_name,
+                                  gpointer     data,
+                                  GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   options->use_factory = FALSE;
+@@ -492,6 +514,7 @@ option_load_save_config_cb (const gchar *option_name,
+                             gpointer     data,
+                             GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->config_file)
+@@ -514,6 +537,7 @@ option_title_callback (const gchar *option_name,
+                        gpointer     data,
+                        GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->initial_windows)
+@@ -538,6 +562,7 @@ option_working_directory_callback (const gchar *option_name,
+                                    gpointer     data,
+                                    GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+ 
+   if (options->initial_windows)
+@@ -562,6 +587,7 @@ option_active_callback (const gchar *option_name,
+                         gpointer     data,
+                         GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   InitialTab *it;
+ 
+@@ -577,6 +603,7 @@ option_zoom_callback (const gchar *option_name,
+                       gpointer     data,
+                       GError     **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   double zoom;
+   char *end;
+@@ -633,6 +660,7 @@ digest_options_callback (GOptionContext *context,
+                          gpointer      data,
+                          GError      **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = data;
+   InitialTab    *it;
+ 
+@@ -688,6 +716,7 @@ terminal_options_parse (const char *working_directory,
+                         GError **error,
+                         ...)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options;
+   GOptionContext *context;
+   GOptionGroup *extra_group;
+@@ -789,6 +818,7 @@ terminal_options_merge_config (TerminalOptions *options,
+                                GKeyFile *key_file,
+                                GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   int version, compat_version;
+   char **groups;
+   guint i;
+@@ -899,6 +929,7 @@ terminal_options_merge_config (TerminalOptions *options,
+ void
+ terminal_options_ensure_window (TerminalOptions *options)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   ensure_top_window (options);
+ }
+ 
+@@ -911,6 +942,7 @@ terminal_options_ensure_window (TerminalOptions *options)
+ void
+ terminal_options_free (TerminalOptions *options)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_list_foreach (options->initial_windows, (GFunc) initial_window_free, NULL);
+   g_list_free (options->initial_windows);
+ 
+@@ -932,6 +964,7 @@ terminal_options_free (TerminalOptions *options)
+ static GOptionContext *
+ get_goption_context (TerminalOptions *options)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GOptionEntry global_unique_goptions[] = {
+     {
+       "disable-factory",
+diff --git a/src/terminal-profile.c b/src/terminal-profile.c
+index 2f669a9..657489e 100644
+--- a/src/terminal-profile.c
++++ b/src/terminal-profile.c
+@@ -293,6 +293,7 @@ static gboolean
+ palette_cmp (const GdkColor *ca,
+              const GdkColor *cb)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint i;
+ 
+   for (i = 0; i < TERMINAL_PALETTE_SIZE; ++i)
+@@ -306,6 +307,7 @@ static GParamSpec *
+ get_pspec_from_name (TerminalProfile *profile,
+                      const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfileClass *klass = TERMINAL_PROFILE_GET_CLASS (profile);
+   GParamSpec *pspec;
+ 
+@@ -321,6 +323,7 @@ static const GValue *
+ get_prop_value_from_prop_name (TerminalProfile *profile,
+                                const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   GParamSpec *pspec;
+ 
+@@ -339,6 +342,7 @@ set_value_from_palette (GValue *value,
+                         const GdkColor *colors,
+                         guint n_colors)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GValueArray *array;
+   guint i, max_n_colors;
+ 
+@@ -372,6 +376,7 @@ values_equal (GParamSpec *pspec,
+               const GValue *va,
+               const GValue *vb)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* g_param_values_cmp isn't good enough for some types, since e.g.
+    * it compares colours and font descriptions by pointer value, not
+    * with the correct compare functions. Providing extra
+@@ -418,6 +423,7 @@ ensure_pixbuf_property (TerminalProfile *profile,
+                         guint pixbuf_prop_id,
+                         gboolean *load_failed)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   GValue *path_value, *pixbuf_value;
+   GdkPixbuf *pixbuf;
+@@ -468,6 +474,7 @@ terminal_profile_reset_property_internal (TerminalProfile *profile,
+                                           GParamSpec *pspec,
+                                           gboolean notify)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   GValue value_ = { 0, };
+   GValue *value;
+@@ -518,6 +525,7 @@ terminal_profile_gconf_notify_cb (GConfClient *client,
+                                   GConfEntry  *entry,
+                                   gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile = TERMINAL_PROFILE (user_data);
+   TerminalProfilePrivate *priv = profile->priv;
+   TerminalProfileClass *klass;
+@@ -710,6 +718,7 @@ terminal_profile_gconf_changeset_add (TerminalProfile *profile,
+                                       GConfChangeSet *changeset,
+                                       GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   const char *gconf_key;
+   char *key;
+@@ -847,6 +856,7 @@ cleanup:
+ static gboolean
+ terminal_profile_save (TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   GConfChangeSet *changeset;
+   GSList *l;
+@@ -886,6 +896,7 @@ terminal_profile_save (TerminalProfile *profile)
+ static gboolean
+ terminal_profile_save_idle_cb (TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_profile_save (profile);
+ 
+   /* don't run again */
+@@ -896,6 +907,7 @@ static void
+ terminal_profile_schedule_save (TerminalProfile *profile,
+                                 GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+ 
+   g_assert (pspec != NULL);
+@@ -912,6 +924,7 @@ terminal_profile_schedule_save (TerminalProfile *profile,
+ static void
+ terminal_profile_init (TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv;
+   GObjectClass *object_class;
+   GParamSpec **pspecs;
+@@ -965,6 +978,7 @@ terminal_profile_constructor (GType type,
+                               guint n_construct_properties,
+                               GObjectConstructParam *construct_params)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObject *object;
+   TerminalProfile *profile;
+   TerminalProfilePrivate *priv;
+@@ -1025,6 +1039,7 @@ terminal_profile_constructor (GType type,
+ static void
+ terminal_profile_finalize (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile = TERMINAL_PROFILE (object);
+   TerminalProfilePrivate *priv = profile->priv;
+ 
+@@ -1056,6 +1071,7 @@ terminal_profile_get_property (GObject *object,
+                                GValue *value,
+                                GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile = TERMINAL_PROFILE (object);
+   TerminalProfilePrivate *priv = profile->priv;
+ 
+@@ -1084,6 +1100,7 @@ terminal_profile_set_property (GObject *object,
+                                const GValue *value,
+                                GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *profile = TERMINAL_PROFILE (object);
+   TerminalProfilePrivate *priv = profile->priv;
+   GValue *prop_value;
+@@ -1160,6 +1177,7 @@ static void
+ terminal_profile_notify (GObject *object,
+                          GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = TERMINAL_PROFILE (object)->priv;
+   void (* notify) (GObject *, GParamSpec *) = G_OBJECT_CLASS (terminal_profile_parent_class)->notify;
+ 
+@@ -1180,6 +1198,7 @@ terminal_profile_notify (GObject *object,
+ static void
+ terminal_profile_class_init (TerminalProfileClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+   
+   gconf_key_quark = g_quark_from_static_string ("GT::GConfKey");
+@@ -1332,6 +1351,7 @@ terminal_profile_class_init (TerminalProfileClass *klass)
+ TerminalProfile*
+ _terminal_profile_new (const char *name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_object_new (TERMINAL_TYPE_PROFILE,
+                        "name", name,
+                        NULL);
+@@ -1340,6 +1360,7 @@ _terminal_profile_new (const char *name)
+ void
+ _terminal_profile_forget (TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   
+   if (!priv->forgotten)
+@@ -1357,6 +1378,7 @@ _terminal_profile_forget (TerminalProfile *profile)
+ gboolean
+ _terminal_profile_get_forgotten (TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return profile->priv->forgotten;
+ }
+ 
+@@ -1364,6 +1386,7 @@ TerminalProfile *
+ _terminal_profile_clone (TerminalProfile *base_profile,
+                          const char      *visible_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app = terminal_app_get ();
+   GObject *base_object = G_OBJECT (base_profile);
+   TerminalProfilePrivate *new_priv;
+@@ -1454,6 +1477,7 @@ gboolean
+ terminal_profile_get_property_boolean (TerminalProfile *profile,
+                                        const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1468,6 +1492,7 @@ gconstpointer
+ terminal_profile_get_property_boxed (TerminalProfile *profile,
+                                      const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1482,6 +1507,7 @@ double
+ terminal_profile_get_property_double (TerminalProfile *profile,
+                                       const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1496,6 +1522,7 @@ int
+ terminal_profile_get_property_enum (TerminalProfile *profile,
+                                     const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1510,6 +1537,7 @@ int
+ terminal_profile_get_property_int (TerminalProfile *profile,
+                                    const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1524,6 +1552,7 @@ gpointer
+ terminal_profile_get_property_object (TerminalProfile *profile,
+                                       const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1538,6 +1567,7 @@ const char*
+ terminal_profile_get_property_string (TerminalProfile *profile,
+                                       const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GValue *value;
+ 
+   value = get_prop_value_from_prop_name (profile, prop_name);
+@@ -1552,6 +1582,7 @@ gboolean
+ terminal_profile_property_locked (TerminalProfile *profile,
+                                   const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   GParamSpec *pspec;
+ 
+@@ -1567,6 +1598,7 @@ void
+ terminal_profile_reset_property (TerminalProfile *profile,
+                                  const char *prop_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GParamSpec *pspec;
+ 
+   pspec = get_pspec_from_name (profile, prop_name);
+@@ -1583,6 +1615,7 @@ terminal_profile_get_palette (TerminalProfile *profile,
+                               GdkColor *colors,
+                               guint *n_colors)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv;
+   GValueArray *array;
+   guint i, n;
+@@ -1613,6 +1646,7 @@ gboolean
+ terminal_profile_get_palette_is_builtin (TerminalProfile *profile,
+                                          guint *n)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GdkColor colors[TERMINAL_PALETTE_SIZE];
+   guint n_colors;
+   guint i;
+@@ -1636,6 +1670,7 @@ void
+ terminal_profile_set_palette_builtin (TerminalProfile *profile,
+                                       guint n)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GValue value = { 0, };
+ 
+   g_return_if_fail (n < TERMINAL_PALETTE_N_BUILTINS);
+@@ -1651,6 +1686,7 @@ terminal_profile_modify_palette_entry (TerminalProfile *profile,
+                                        guint            i,
+                                        const GdkColor  *color)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfilePrivate *priv = profile->priv;
+   GValueArray *array;
+   GValue *value;
+diff --git a/src/terminal-screen-container.c b/src/terminal-screen-container.c
+index 60405eb..403baf6 100644
+--- a/src/terminal-screen-container.c
++++ b/src/terminal-screen-container.c
+@@ -28,6 +28,7 @@
+ GtkWidget *
+ terminal_screen_container_new (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifdef USE_SCROLLED_WINDOW
+   GtkWidget *scrolled_window;
+ 
+@@ -69,6 +70,7 @@ terminal_screen_container_new (TerminalScreen *screen)
+ TerminalScreen *
+ terminal_screen_container_get_screen (GtkWidget *container)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifdef USE_SCROLLED_WINDOW
+   g_return_val_if_fail (GTK_IS_SCROLLED_WINDOW (container), NULL);
+ 
+@@ -84,6 +86,7 @@ terminal_screen_container_get_screen (GtkWidget *container)
+ static GtkWidget *
+ terminal_screen_container_get_scrollbar (GtkWidget *container)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_object_get_data (G_OBJECT (container), SCROLLBAR_DATA_KEY);
+ }
+ #endif
+@@ -93,6 +96,7 @@ terminal_screen_container_set_policy (GtkWidget *container,
+                                       GtkPolicyType hpolicy G_GNUC_UNUSED,
+                                       GtkPolicyType vpolicy)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifdef USE_SCROLLED_WINDOW
+   g_return_if_fail (GTK_IS_SCROLLED_WINDOW (container));
+ 
+@@ -119,6 +123,7 @@ void
+ terminal_screen_container_set_placement (GtkWidget *container,
+                                          GtkCornerType corner)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifdef USE_SCROLLED_WINDOW
+   g_return_if_fail (GTK_IS_SCROLLED_WINDOW (container));
+ 
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index a1d3be3..d0a7e4e 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -186,6 +186,7 @@ G_DEFINE_TYPE (TerminalScreen, terminal_screen, VTE_TYPE_TERMINAL)
+ static char *
+ cwd_of_pid (int pid)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static const char patterns[][18] = {
+     "/proc/%d/cwd",         /* Linux */
+     "/proc/%d/path/cwd",    /* Solaris >= 10 */
+@@ -239,6 +240,7 @@ cwd_of_pid (int pid)
+ static void
+ free_tag_data (TagData *tagdata)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_slice_free (TagData, tagdata);
+ }
+ 
+@@ -246,6 +248,7 @@ free_tag_data (TagData *tagdata)
+ static void
+ parent_size_request (GtkWidget *scrolled_window, GtkRequisition *req, GtkWidget *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   _terminal_debug_print (TERMINAL_DEBUG_GEOMETRY,
+                          "[screen %p] scrolled-window size req %d : %d\n",
+                          screen, req->width, req->height);
+@@ -257,6 +260,7 @@ parent_parent_set_cb (GtkWidget *widget,
+                       GtkWidget *old_parent,
+                       TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GtkWidget *toplevel;
+ 
+@@ -277,6 +281,7 @@ static void
+ parent_set_callback (GtkWidget *widget,
+                      GtkWidget *old_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (old_parent)
+     g_signal_handlers_disconnect_by_func (old_parent, G_CALLBACK (parent_parent_set_cb), widget);
+ 
+@@ -299,6 +304,7 @@ terminal_screen_class_enable_menu_bar_accel_notify_cb (TerminalApp *app,
+                                                        GParamSpec *pspec,
+                                                        TerminalScreenClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static gboolean is_enabled = TRUE; /* the binding is enabled by default since GtkWidgetClass installs it */
+   gboolean enable;
+   GtkBindingSet *binding_set;
+@@ -321,6 +327,7 @@ terminal_screen_class_enable_menu_bar_accel_notify_cb (TerminalApp *app,
+ static void
+ terminal_screen_realize (GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (widget);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalBackgroundType bg_type;
+@@ -343,6 +350,7 @@ static void
+ terminal_screen_style_set (GtkWidget *widget,
+                            GtkStyle *previous_style)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (widget);
+   void (* style_set) (GtkWidget*, GtkStyle*) = GTK_WIDGET_CLASS (terminal_screen_parent_class)->style_set;
+ 
+@@ -360,6 +368,7 @@ static void
+ size_request (GtkWidget *widget,
+               GtkRequisition *req)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   _terminal_debug_print (TERMINAL_DEBUG_GEOMETRY,
+                          "[screen %p] size-request %d : %d\n",
+                          widget, req->width, req->height);
+@@ -369,6 +378,7 @@ static void
+ size_allocate (GtkWidget *widget,
+                GtkAllocation *allocation)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   _terminal_debug_print (TERMINAL_DEBUG_GEOMETRY,
+                          "[screen %p] size-alloc   %d : %d at (%d, %d)\n",
+                          widget, allocation->width, allocation->height, allocation->x, allocation->y);
+@@ -378,6 +388,7 @@ size_allocate (GtkWidget *widget,
+ static void
+ terminal_screen_init (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GtkTargetEntry target_table[] = {
+     { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_TAB },
+     { "application/x-color", 0, TARGET_COLOR },
+@@ -462,6 +473,7 @@ terminal_screen_get_property (GObject *object,
+                               GValue *value,
+                               GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (object);
+ 
+   switch (prop_id)
+@@ -496,6 +508,7 @@ terminal_screen_set_property (GObject *object,
+                               const GValue *value,
+                               GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (object);
+ 
+   switch (prop_id)
+@@ -527,6 +540,7 @@ terminal_screen_set_property (GObject *object,
+ static void
+ terminal_screen_class_init (TerminalScreenClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
+   VteTerminalClass *terminal_class = VTE_TERMINAL_CLASS (klass);
+@@ -676,6 +690,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
+ static void
+ terminal_screen_dispose (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (object);
+   GtkSettings *settings;
+ 
+@@ -690,6 +705,7 @@ terminal_screen_dispose (GObject *object)
+ static void
+ terminal_screen_finalize (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (object);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+@@ -722,6 +738,7 @@ terminal_screen_new (TerminalProfile *profile,
+                      char           **child_env,
+                      double           zoom)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen;
+   TerminalScreenPrivate *priv;
+ 
+@@ -752,6 +769,7 @@ terminal_screen_new (TerminalProfile *profile,
+ const char*
+ terminal_screen_get_raw_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   
+   if (priv->raw_title)
+@@ -763,6 +781,7 @@ terminal_screen_get_raw_title (TerminalScreen *screen)
+ const char*
+ terminal_screen_get_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   
+   if (priv->cooked_title == NULL)
+@@ -778,6 +797,7 @@ terminal_screen_get_title (TerminalScreen *screen)
+ const char*
+ terminal_screen_get_icon_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   
+   if (priv->cooked_icon_title == NULL)
+@@ -793,6 +813,7 @@ terminal_screen_get_icon_title (TerminalScreen *screen)
+ gboolean
+ terminal_screen_get_icon_title_set (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return screen->priv->icon_title_set;
+ }
+ 
+@@ -805,6 +826,7 @@ terminal_screen_get_icon_title_set (TerminalScreen *screen)
+ static const char *
+ terminal_screen_get_title_format (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   static const char *formats[] = {
+     "%A"      /* TERMINAL_TITLE_REPLACE */,
+@@ -832,6 +854,7 @@ terminal_screen_format_title (TerminalScreen *screen,
+                               const char *raw_title,
+                               char **titleptr)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   const char *format, *arg;
+   const char *static_title = NULL;
+@@ -899,6 +922,7 @@ terminal_screen_format_title (TerminalScreen *screen,
+ static void 
+ terminal_screen_cook_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   
+   if (terminal_screen_format_title (screen, priv->raw_title, &priv->cooked_title))
+@@ -908,6 +932,7 @@ terminal_screen_cook_title (TerminalScreen *screen)
+ static void 
+ terminal_screen_cook_icon_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   if (terminal_screen_format_title (screen, priv->raw_icon_title, &priv->cooked_icon_title))
+@@ -919,6 +944,7 @@ terminal_screen_profile_notify_cb (TerminalProfile *profile,
+                                    GParamSpec *pspec,
+                                    TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GObject *object = G_OBJECT (screen);
+   VteTerminal *vte_terminal = VTE_TERMINAL (screen);
+@@ -1071,6 +1097,7 @@ terminal_screen_profile_notify_cb (TerminalProfile *profile,
+ static void
+ update_color_scheme (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalProfile *profile = priv->profile;
+   GtkStyle *style;
+@@ -1107,6 +1134,7 @@ update_color_scheme (TerminalScreen *screen)
+ void
+ terminal_screen_set_font (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalProfile *profile;
+   PangoFontDescription *desc;
+@@ -1138,6 +1166,7 @@ terminal_screen_system_font_notify_cb (TerminalApp *app,
+                                        GParamSpec *pspec,
+                                        TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   if (!GTK_WIDGET_REALIZED (screen))
+@@ -1152,6 +1181,7 @@ terminal_screen_system_font_notify_cb (TerminalApp *app,
+ static void
+ terminal_screen_change_font (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   terminal_screen_set_font (screen);
+@@ -1163,6 +1193,7 @@ static void
+ profile_forgotten_callback (TerminalProfile *profile,
+                             TerminalScreen  *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalProfile *new_profile;
+ 
+   new_profile = terminal_app_get_profile_for_new_term (terminal_app_get ());
+@@ -1174,6 +1205,7 @@ void
+ terminal_screen_set_profile (TerminalScreen *screen,
+                              TerminalProfile *profile)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalProfile *old_profile;
+ 
+@@ -1223,6 +1255,7 @@ terminal_screen_set_profile (TerminalScreen *screen,
+ TerminalProfile*
+ terminal_screen_get_profile (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   g_assert (priv->profile != NULL);
+@@ -1233,6 +1266,7 @@ void
+ terminal_screen_set_override_command (TerminalScreen *screen,
+                                       char          **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv;
+ 
+   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+@@ -1245,6 +1279,7 @@ terminal_screen_set_override_command (TerminalScreen *screen,
+ const char**
+ terminal_screen_get_override_command (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+ 
+   return (const char**) screen->priv->override_command;
+@@ -1254,6 +1289,7 @@ void
+ terminal_screen_set_initial_environment (TerminalScreen *screen,
+                                          char          **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv;
+ 
+   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+@@ -1266,6 +1302,7 @@ terminal_screen_set_initial_environment (TerminalScreen *screen,
+ char**
+ terminal_screen_get_initial_environment (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+ 
+   return screen->priv->initial_env;
+@@ -1275,6 +1312,7 @@ static void
+ show_command_error_dialog (TerminalScreen *screen,
+                            GError         *error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_assert (error != NULL);
+   
+   terminal_util_show_error_dialog ((GtkWindow*) gtk_widget_get_ancestor (GTK_WIDGET (screen), GTK_TYPE_WINDOW), NULL,
+@@ -1288,6 +1326,7 @@ get_child_command (TerminalScreen *screen,
+                    char         ***argv_p,
+                    GError        **err)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalProfile *profile;
+   char  *file;
+@@ -1361,6 +1400,7 @@ static char**
+ get_child_environment (TerminalScreen *screen,
+                        char **shell)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GtkWidget *term = GTK_WIDGET (screen);
+   char **env;
+@@ -1539,6 +1579,7 @@ get_child_environment (TerminalScreen *screen,
+ void
+ terminal_screen_launch_child (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   VteTerminal *terminal = VTE_TERMINAL (screen);
+   TerminalProfile *profile;
+@@ -1596,6 +1637,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
+ static TerminalScreenPopupInfo *
+ terminal_screen_popup_info_new (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalScreenPopupInfo *info;
+ 
+@@ -1610,6 +1652,7 @@ terminal_screen_popup_info_new (TerminalScreen *screen)
+ TerminalScreenPopupInfo *
+ terminal_screen_popup_info_ref (TerminalScreenPopupInfo *info)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (info != NULL, NULL);
+ 
+   info->ref_count++;
+@@ -1619,6 +1662,7 @@ terminal_screen_popup_info_ref (TerminalScreenPopupInfo *info)
+ void
+ terminal_screen_popup_info_unref (TerminalScreenPopupInfo *info)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (info != NULL);
+ 
+   if (--info->ref_count > 0)
+@@ -1632,6 +1676,7 @@ terminal_screen_popup_info_unref (TerminalScreenPopupInfo *info)
+ static gboolean
+ terminal_screen_popup_menu (GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (widget);
+   TerminalScreenPopupInfo *info;
+ 
+@@ -1649,6 +1694,7 @@ static gboolean
+ terminal_screen_button_press (GtkWidget      *widget,
+                               GdkEventButton *event)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (widget);
+   TerminalScreenPrivate *priv = screen->priv;
+   gboolean (* button_press_event) (GtkWidget*, GdkEventButton*) =
+@@ -1719,6 +1765,7 @@ terminal_screen_set_dynamic_title (TerminalScreen *screen,
+                                    const char     *title,
+ 				   gboolean	  userset)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   g_assert (TERMINAL_IS_SCREEN (screen));
+@@ -1738,6 +1785,7 @@ terminal_screen_set_dynamic_icon_title (TerminalScreen *screen,
+                                         const char     *icon_title,
+ 					gboolean       userset)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GObject *object = G_OBJECT (screen);
+   
+@@ -1766,6 +1814,7 @@ void
+ terminal_screen_set_override_title (TerminalScreen *screen,
+                                     const char     *title)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   char *old_title;
+ 
+@@ -1780,6 +1829,7 @@ terminal_screen_set_override_title (TerminalScreen *screen,
+ const char*
+ terminal_screen_get_dynamic_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+   
+   return screen->priv->raw_title;
+@@ -1788,6 +1838,7 @@ terminal_screen_get_dynamic_title (TerminalScreen *screen)
+ const char*
+ terminal_screen_get_dynamic_icon_title (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+   
+   return screen->priv->raw_icon_title;
+@@ -1807,6 +1858,7 @@ terminal_screen_get_dynamic_icon_title (TerminalScreen *screen)
+ char*
+ terminal_screen_get_current_dir (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   char *cwd;
+ 
+@@ -1839,6 +1891,7 @@ terminal_screen_get_current_dir (TerminalScreen *screen)
+ char*
+ terminal_screen_get_current_dir_with_fallback (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   if (priv->pty_fd == -1)
+@@ -1851,6 +1904,7 @@ void
+ terminal_screen_set_font_scale (TerminalScreen *screen,
+                                 double          factor)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   
+   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+@@ -1872,6 +1926,7 @@ terminal_screen_set_font_scale (TerminalScreen *screen,
+ double
+ terminal_screen_get_font_scale (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), 1.0);
+   
+   return screen->priv->font_scale;
+@@ -1881,6 +1936,7 @@ static void
+ terminal_screen_window_title_changed (VteTerminal *vte_terminal,
+                                       TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_screen_set_dynamic_title (screen,
+                                      vte_terminal_get_window_title (vte_terminal),
+ 				     FALSE);
+@@ -1890,6 +1946,7 @@ static void
+ terminal_screen_icon_title_changed (VteTerminal *vte_terminal,
+                                     TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_screen_set_dynamic_icon_title (screen,
+                                           vte_terminal_get_icon_title (vte_terminal),
+ 					  FALSE);
+@@ -1898,6 +1955,7 @@ terminal_screen_icon_title_changed (VteTerminal *vte_terminal,
+ static void
+ terminal_screen_child_exited (VteTerminal *terminal)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (terminal);
+   TerminalScreenPrivate *priv = screen->priv;
+   TerminalExitAction action;
+@@ -1926,6 +1984,7 @@ void
+ terminal_screen_set_user_title (TerminalScreen *screen,
+                                 const char *text)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+   /* The user set the title to nothing, let's understand that as a
+@@ -1949,6 +2008,7 @@ terminal_screen_drag_data_received (GtkWidget        *widget,
+                                     guint             info,
+                                     guint             time)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen = TERMINAL_SCREEN (widget);
+   TerminalScreenPrivate *priv = screen->priv;
+ 
+@@ -2166,6 +2226,7 @@ terminal_screen_drag_data_received (GtkWidget        *widget,
+ void
+ _terminal_screen_update_scrollbar (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GtkWidget *parent;
+   GtkPolicyType policy = GTK_POLICY_ALWAYS;
+@@ -2202,6 +2263,7 @@ terminal_screen_get_size (TerminalScreen *screen,
+ 			  int       *width_chars,
+ 			  int       *height_chars)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   VteTerminal *terminal = VTE_TERMINAL (screen);
+ 
+   *width_chars = terminal->column_count;
+@@ -2213,6 +2275,7 @@ terminal_screen_get_cell_size (TerminalScreen *screen,
+ 			       int                  *cell_width_pixels,
+ 			       int                  *cell_height_pixels)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   VteTerminal *terminal = VTE_TERMINAL (screen);
+ 
+   *cell_width_pixels = terminal->char_width;
+@@ -2222,6 +2285,7 @@ terminal_screen_get_cell_size (TerminalScreen *screen,
+ static void
+ terminal_screen_skey_match_remove (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GSList *l, *next;
+ 
+@@ -2247,6 +2311,7 @@ terminal_screen_check_match (TerminalScreen *screen,
+ 			     int        row,
+                              int       *flavor)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   GSList *tags;
+   int tag;
+@@ -2273,6 +2338,7 @@ terminal_screen_save_config (TerminalScreen *screen,
+                              GKeyFile *key_file,
+                              const char *group)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   VteTerminal *terminal = VTE_TERMINAL (screen);
+   TerminalProfile *profile = priv->profile;
+@@ -2315,6 +2381,7 @@ terminal_screen_save_config (TerminalScreen *screen,
+ gboolean
+ terminal_screen_has_foreground_process (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreenPrivate *priv = screen->priv;
+   int fgpid;
+ 
+diff --git a/src/terminal-tab-label.c b/src/terminal-tab-label.c
+index 91509be..fc81f08 100644
+--- a/src/terminal-tab-label.c
++++ b/src/terminal-tab-label.c
+@@ -58,6 +58,7 @@ static void
+ close_button_clicked_cb (GtkWidget *widget,
+                          TerminalTabLabel *tab_label)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_emit (tab_label, signals[CLOSE_BUTTON_CLICKED], 0);
+ }
+ 
+@@ -66,6 +67,7 @@ sync_tab_label (TerminalScreen *screen,
+                 GParamSpec *pspec,
+                 GtkWidget *label)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *hbox;
+   const char *title;
+ 
+@@ -85,6 +87,7 @@ static void
+ terminal_tab_label_parent_set (GtkWidget *widget,
+                                GtkWidget *old_parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   void (* parent_set) (GtkWidget *, GtkWidget *) = GTK_WIDGET_CLASS (terminal_tab_label_parent_class)->parent_set;
+ 
+   if (parent_set)
+@@ -95,6 +98,7 @@ static void
+ terminal_tab_label_style_set (GtkWidget *widget,
+                               GtkStyle *previous_style)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalTabLabel *tab_label = TERMINAL_TAB_LABEL (widget);
+   TerminalTabLabelPrivate *priv = tab_label->priv;
+   void (* style_set) (GtkWidget *, GtkStyle *) = GTK_WIDGET_CLASS (terminal_tab_label_parent_class)->style_set;
+@@ -111,6 +115,7 @@ terminal_tab_label_style_set (GtkWidget *widget,
+ static void
+ terminal_tab_label_init (TerminalTabLabel *tab_label)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   tab_label->priv = TERMINAL_TAB_LABEL_GET_PRIVATE (tab_label);
+ }
+ 
+@@ -119,6 +124,7 @@ terminal_tab_label_constructor (GType type,
+                                 guint n_construct_properties,
+                                 GObjectConstructParam *construct_params)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObject *object;
+   TerminalTabLabel *tab_label;
+   TerminalTabLabelPrivate *priv;
+@@ -169,6 +175,7 @@ terminal_tab_label_constructor (GType type,
+ static void
+ terminal_tab_label_finalize (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ //   TerminalTabLabel *tab_label = TERMINAL_TAB_LABEL (object);
+ 
+   G_OBJECT_CLASS (terminal_tab_label_parent_class)->finalize (object);
+@@ -180,6 +187,7 @@ terminal_tab_label_set_property (GObject *object,
+                            const GValue *value,
+                            GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalTabLabel *tab_label = TERMINAL_TAB_LABEL (object);
+   TerminalTabLabelPrivate *priv = tab_label->priv;
+ 
+@@ -193,6 +201,7 @@ terminal_tab_label_set_property (GObject *object,
+ static void
+ terminal_tab_label_class_init (TerminalTabLabelClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+ 
+@@ -235,6 +244,7 @@ terminal_tab_label_class_init (TerminalTabLabelClass *klass)
+ GtkWidget *
+ terminal_tab_label_new (TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_object_new (TERMINAL_TYPE_TAB_LABEL,
+                        "screen", screen,
+                        NULL);
+@@ -251,6 +261,7 @@ void
+ terminal_tab_label_set_bold (TerminalTabLabel *tab_label,
+                              gboolean bold)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalTabLabelPrivate *priv = tab_label->priv;
+   PangoAttrList *attr_list;
+   PangoAttribute *weight_attr;
+diff --git a/src/terminal-tabs-menu.c b/src/terminal-tabs-menu.c
+index c1e60de..4c24267 100644
+--- a/src/terminal-tabs-menu.c
++++ b/src/terminal-tabs-menu.c
+@@ -78,6 +78,7 @@ G_DEFINE_TYPE (TerminalTabsMenu, terminal_tabs_menu, G_TYPE_OBJECT)
+ static guint
+ allocate_tab_id (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+         int bit;
+         guint b, len;
+         guint8 *data;
+@@ -122,6 +123,7 @@ allocate_tab_id (void)
+ static void
+ free_tab_id (GtkAction *action)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+         const char *name;
+         guint id;
+         guint8 *data;
+@@ -150,6 +152,7 @@ static void
+ tab_action_activate_cb (GtkToggleAction *action,
+ 			TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenuPrivate *priv = menu->priv;
+ 	TerminalScreen *screen;
+ 
+@@ -172,6 +175,7 @@ sync_tab_title (TerminalScreen *screen,
+ 		GParamSpec *pspec,
+ 		GtkAction *action)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	const char *title;
+ 
+ 	title = terminal_screen_get_title (screen);
+@@ -185,6 +189,7 @@ notebook_page_added_cb (GtkNotebook *notebook,
+ 			guint position,
+ 			TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenuPrivate *priv = menu->priv;
+ 	GtkAction *action;
+ 	char verb[ACTION_VERB_FORMAT_LENGTH];
+@@ -233,6 +238,7 @@ notebook_page_removed_cb (GtkNotebook *notebook,
+ 			  guint position,
+ 			  TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenuPrivate *priv = menu->priv;
+ 	GtkAction *action;
+         TerminalScreen *screen;
+@@ -262,6 +268,7 @@ notebook_page_reordered_cb (GtkNotebook *notebook,
+ 			    guint position,
+ 			    TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	terminal_tabs_menu_update (menu);
+ }
+ 
+@@ -271,6 +278,7 @@ notebook_page_switch_cb (GtkNotebook *notebook,
+                          guint position,
+                          TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+         GtkWidget *container;
+         TerminalScreen *screen;
+         GtkAction *action;
+@@ -290,6 +298,7 @@ connect_proxy_cb (GtkActionGroup *action_group,
+ 		  GtkWidget *proxy,
+ 		  gpointer dummy)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	if (GTK_IS_MENU_ITEM (proxy))
+ 	{
+ 		GtkLabel *label;
+@@ -306,6 +315,7 @@ static void
+ terminal_tabs_menu_set_window (TerminalTabsMenu *menu,
+ 			   TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenuPrivate *priv = menu->priv;
+ 	GtkWidget *notebook;
+ 	GtkUIManager *manager;
+@@ -343,6 +353,7 @@ terminal_tabs_menu_set_property (GObject *object,
+ 			     const GValue *value,
+ 			     GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenu *menu = TERMINAL_TABS_MENU (object);
+ 
+ 	switch (prop_id)
+@@ -359,6 +370,7 @@ terminal_tabs_menu_get_property (GObject *object,
+ 			     GValue *value,
+ 			     GParamSpec *pspec)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	/* no readable properties */
+ 	g_return_if_reached ();
+ }
+@@ -366,6 +378,7 @@ terminal_tabs_menu_get_property (GObject *object,
+ static void
+ terminal_tabs_menu_class_init (TerminalTabsMenuClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+ 
+ 	object_class->set_property = terminal_tabs_menu_set_property;
+@@ -387,12 +400,14 @@ terminal_tabs_menu_class_init (TerminalTabsMenuClass *klass)
+ static void
+ terminal_tabs_menu_init (TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	menu->priv = TERMINAL_TABS_MENU_GET_PRIVATE (menu);
+ }
+ 
+ static void
+ terminal_tabs_menu_clean (TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenuPrivate *p = menu->priv;
+ 	GtkUIManager *manager = GTK_UI_MANAGER (terminal_window_get_ui_manager (p->window));
+ 
+@@ -407,6 +422,7 @@ terminal_tabs_menu_clean (TerminalTabsMenu *menu)
+ TerminalTabsMenu *
+ terminal_tabs_menu_new (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	return TERMINAL_TABS_MENU (g_object_new (TERMINAL_TYPE_TABS_MENU,
+ 					     "window", window,
+ 					     NULL));
+@@ -418,6 +434,7 @@ tab_set_action_accelerator (GtkActionGroup *action_group,
+ 			    guint tab_number,
+ 			    gboolean is_single_tab)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+         if (!is_single_tab &&
+             tab_number < TERMINAL_ACCELS_N_TABS_SWITCH)
+         {
+@@ -436,6 +453,7 @@ tab_set_action_accelerator (GtkActionGroup *action_group,
+ static void
+ terminal_tabs_menu_update (TerminalTabsMenu *menu)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ 	TerminalTabsMenuPrivate *p = menu->priv;
+ 	GtkUIManager *manager;
+ 	GtkAction *action;
+diff --git a/src/terminal-util.c b/src/terminal-util.c
+index a6bca92..699c5dc 100644
+--- a/src/terminal-util.c
++++ b/src/terminal-util.c
+@@ -41,6 +41,7 @@
+ void
+ terminal_util_set_unique_role (GtkWindow *window, const char *prefix)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *role;
+ 
+   role = g_strdup_printf ("%s-%d-%d-%d", prefix, getpid (), g_random_int (), (int) time (NULL));
+@@ -64,6 +65,7 @@ terminal_util_set_unique_role (GtkWindow *window, const char *prefix)
+ void
+ terminal_util_show_error_dialog (GtkWindow *transient_parent, GtkWidget **weak_ptr, const char *message_format, ...)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *message;
+   va_list args;
+ 
+@@ -113,6 +115,7 @@ open_url (GtkWindow *parent,
+           guint32 user_time,
+           GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GdkScreen *screen;
+ 
+   if (parent)
+@@ -127,6 +130,7 @@ void
+ terminal_util_show_help (const char *topic, 
+                          GtkWindow  *parent)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GError *error = NULL;
+   const char *lang;
+   char *uri = NULL, *url;
+@@ -181,6 +185,7 @@ terminal_util_set_atk_name_description (GtkWidget  *widget,
+                                         const char *name,
+                                         const char *desc)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   AtkObject *obj;
+   
+   obj = gtk_widget_get_accessible (widget);
+@@ -209,6 +214,7 @@ terminal_util_open_url (GtkWidget *parent,
+                         TerminalURLFlavour flavor,
+                         guint32 user_time)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GError *error = NULL;
+   char *uri;
+ 
+@@ -256,6 +262,7 @@ terminal_util_open_url (GtkWidget *parent,
+ void
+ terminal_util_transform_uris_to_quoted_fuse_paths (char **uris)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint i;
+ 
+   if (!uris)
+@@ -287,6 +294,7 @@ char *
+ terminal_util_concat_uris (char **uris,
+                            gsize *length)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GString *string;
+   gsize len;
+   guint i;
+@@ -311,6 +319,7 @@ terminal_util_concat_uris (char **uris,
+ char *
+ terminal_util_get_licence_text (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const gchar *license[] = {
+     N_("GNOME Terminal is free software; you can redistribute it and/or modify "
+        "it under the terms of the GNU General Public License as published by "
+@@ -333,6 +342,7 @@ terminal_util_load_builder_file (const char *filename,
+                                  const char *object_name,
+                                  ...)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *path;
+   GtkBuilder *builder;
+   GError *error = NULL;
+@@ -373,6 +383,7 @@ terminal_util_load_builder_file (const char *filename,
+ gboolean
+ terminal_util_dialog_response_on_delete (GtkWindow *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gtk_dialog_response (GTK_DIALOG (widget), GTK_RESPONSE_DELETE_EVENT);
+   return TRUE;
+ }
+@@ -387,6 +398,7 @@ terminal_util_key_file_set_string_escape (GKeyFile *key_file,
+                                           const char *key,
+                                           const char *string)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *escaped;
+ 
+   /* FIXMEchpe: be more intelligent and only escape characters that aren't UTF-8 */
+@@ -401,6 +413,7 @@ terminal_util_key_file_get_string_unescape (GKeyFile *key_file,
+                                             const char *key,
+                                             GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *escaped, *unescaped;
+ 
+   escaped = g_key_file_get_string (key_file, group, key, error);
+@@ -420,6 +433,7 @@ terminal_util_key_file_set_argv (GKeyFile *key_file,
+                                  int argc,
+                                  char **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char **quoted_argv;
+   char *flat;
+   int i;
+@@ -446,6 +460,7 @@ terminal_util_key_file_get_argv (GKeyFile *key_file,
+                                  int *argc,
+                                  GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char **argv;
+   char *flat;
+   gboolean retval;
+@@ -476,6 +491,7 @@ terminal_util_key_file_get_argv (GKeyFile *key_file,
+ GArray *
+ terminal_util_string_to_array (const char *string)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GArray *array;
+   gsize len = 0;
+ 
+@@ -499,6 +515,7 @@ GArray *
+ terminal_util_strv_to_array (int argc,
+                              char **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GArray *array;
+   gsize len = 0;
+   int i;
+@@ -533,6 +550,7 @@ char *
+ terminal_util_array_to_string (const GArray *array,
+                                GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *string;
+   g_return_val_if_fail (array != NULL, NULL);
+ 
+@@ -565,6 +583,7 @@ terminal_util_array_to_strv (const GArray *array,
+                              int *argc,
+                              GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GPtrArray *argv;
+   const char *data, *nullbyte;
+   gssize len;
+@@ -615,6 +634,7 @@ typedef struct {
+ static void
+ property_change_free (PropertyChange *change)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_handler_disconnect (change->object, change->object_notify_id);
+ 
+   g_slice_free (PropertyChange, change);
+@@ -624,6 +644,7 @@ static gboolean
+ transform_boolean (gboolean input,
+                    PropertyChangeFlags flags)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (flags & FLAG_INVERT_BOOL)
+     input = !input;
+ 
+@@ -633,6 +654,7 @@ transform_boolean (gboolean input,
+ static void
+ object_change_notify_cb (PropertyChange *change)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObject *object = change->object;
+   const char *object_prop = change->object_prop;
+   GtkWidget *widget = change->widget;
+@@ -734,6 +756,7 @@ out:
+ static void
+ widget_change_notify_cb (PropertyChange *change)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObject *object = change->object;
+   const char *object_prop = change->object_prop;
+   GtkWidget *widget = change->widget;
+@@ -827,6 +850,7 @@ terminal_util_bind_object_property_to_widget (GObject *object,
+                                               GtkWidget *widget,
+                                               PropertyChangeFlags flags)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   PropertyChange *change;
+   const char *signal;
+   char notify_signal[64];
+diff --git a/src/terminal-window.c b/src/terminal-window.c
+index f70fcac..21a0ca6 100644
+--- a/src/terminal-window.c
++++ b/src/terminal-window.c
+@@ -205,6 +205,7 @@ app_setting_notify_cb (TerminalApp *app,
+                        GParamSpec *pspec,
+                        GdkScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkSettings *settings;
+   const char *prop_name;
+ 
+@@ -249,6 +250,7 @@ app_setting_notify_cb (TerminalApp *app,
+ static void
+ app_setting_notify_destroy_cb (GdkScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_signal_handlers_disconnect_by_func (terminal_app_get (),
+                                         G_CALLBACK (app_setting_notify_cb),
+                                         screen);
+@@ -259,6 +261,7 @@ app_setting_notify_destroy_cb (GdkScreen *screen)
+ static char *
+ escape_underscores (const char *name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GString *escaped_name;
+ 
+   g_assert (name != NULL);
+@@ -283,6 +286,7 @@ find_tab_num_at_pos (GtkNotebook *notebook,
+                      int screen_x, 
+                      int screen_y)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkPositionType tab_pos;
+   int page_num = 0;
+   GtkNotebook *nb = GTK_NOTEBOOK (notebook);
+@@ -331,6 +335,7 @@ position_menu_under_widget (GtkMenu *menu,
+                             gboolean *push_in,
+                             gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* Adapted from gtktoolbar.c */
+   GtkWidget *widget = GTK_WIDGET (user_data);
+   GtkWidget *container;
+@@ -378,6 +383,7 @@ static void
+ terminal_set_profile_toggled_callback (GtkToggleAction *action,
+                                        TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalProfile *profile;
+ 
+@@ -403,6 +409,7 @@ profile_visible_name_notify_cb (TerminalProfile *profile,
+                                 GParamSpec *pspec,
+                                 GtkAction *action)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const char *visible_name;
+   char *dot, *display_name;
+   guint num;
+@@ -443,6 +450,7 @@ profile_visible_name_notify_cb (TerminalProfile *profile,
+ static void
+ disconnect_profiles_from_actions_in_group (GtkActionGroup *action_group)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GList *actions, *l;
+ 
+   actions = gtk_action_group_list_actions (action_group);
+@@ -463,6 +471,7 @@ disconnect_profiles_from_actions_in_group (GtkActionGroup *action_group)
+ static void
+ terminal_window_update_set_profile_menu_active_profile (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalProfile *new_active_profile;
+   GList *actions, *l;
+@@ -497,6 +506,7 @@ terminal_window_update_set_profile_menu_active_profile (TerminalWindow *window)
+ static void
+ terminal_window_update_set_profile_menu (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalProfile *active_profile;
+   GtkActionGroup *action_group;
+@@ -595,6 +605,7 @@ terminal_window_create_new_terminal_action (TerminalWindow *window,
+                                             guint num,
+                                             GCallback callback)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkAction *action;
+ 
+@@ -616,6 +627,7 @@ terminal_window_create_new_terminal_action (TerminalWindow *window,
+ static void
+ terminal_window_update_new_terminal_menus (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkActionGroup *action_group;
+   GtkAction *action;
+@@ -700,6 +712,7 @@ static void
+ terminal_set_encoding_callback (GtkToggleAction *action,
+                                 TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   const char *name, *charset;
+   
+@@ -719,6 +732,7 @@ terminal_set_encoding_callback (GtkToggleAction *action,
+ static void
+ terminal_window_update_encoding_menu (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkActionGroup *action_group;
+   GSList *group;
+@@ -797,6 +811,7 @@ terminal_window_update_encoding_menu (TerminalWindow *window)
+ static void
+ terminal_window_update_encoding_menu_active_encoding (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkAction *action;
+   char name[128];
+@@ -821,6 +836,7 @@ static void
+ terminal_size_to_cb (GtkAction *action,
+                      TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   const char *name;
+   char *end = NULL;
+@@ -843,6 +859,7 @@ terminal_size_to_cb (GtkAction *action,
+ static void
+ terminal_window_update_size_to_menu (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static const struct {
+     guint grid_width;
+     guint grid_height;
+@@ -897,6 +914,7 @@ static void
+ terminal_window_update_copy_sensitivity (TerminalScreen *screen,
+                                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkAction *action;
+   gboolean can_copy;
+@@ -913,6 +931,7 @@ terminal_window_update_copy_sensitivity (TerminalScreen *screen,
+ static void
+ terminal_window_update_zoom_sensitivity (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreen *screen;
+   GtkAction *action;
+@@ -936,6 +955,7 @@ update_edit_menu_cb (GtkClipboard *clipboard,
+                      int n_targets,
+                      TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkAction *action;
+   gboolean can_paste, can_paste_uris;
+@@ -957,6 +977,7 @@ static void
+ edit_menu_activate_callback (GtkMenuItem *menuitem,
+                              gpointer     user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window = (TerminalWindow *) user_data;
+   GtkClipboard *clipboard;
+ 
+@@ -972,6 +993,7 @@ screen_resize_window_cb (TerminalScreen *screen,
+                          guint height,
+                          TerminalWindow* window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   VteTerminal *terminal = VTE_TERMINAL (screen);
+   GtkWidget *widget = GTK_WIDGET (screen);
+@@ -1005,6 +1027,7 @@ screen_resize_window_cb (TerminalScreen *screen,
+ static void
+ terminal_window_update_tabs_menu_sensitivity (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkNotebook *notebook = GTK_NOTEBOOK (priv->notebook);
+   GtkActionGroup *action_group = priv->action_group;
+@@ -1056,6 +1079,7 @@ terminal_window_update_tabs_menu_sensitivity (TerminalWindow *window)
+ gboolean
+ terminal_window_uses_argb_visual (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   return priv->have_argb_visual;
+ }
+@@ -1064,6 +1088,7 @@ static void
+ update_tab_visibility (TerminalWindow *window,
+                        int             change)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   gboolean show_tabs;
+   guint num;
+@@ -1081,6 +1106,7 @@ handle_tab_droped_on_desktop (GtkNotebook *source_notebook,
+                               gint         y,
+                               gpointer     data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen;
+   TerminalWindow *source_window;
+   TerminalWindow *new_window;
+@@ -1107,6 +1133,7 @@ static void
+ popup_open_url_callback (GtkAction *action,
+                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreenPopupInfo *info = priv->popup_info;
+ 
+@@ -1121,6 +1148,7 @@ static void
+ popup_copy_url_callback (GtkAction *action,
+                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreenPopupInfo *info = priv->popup_info;
+   GtkClipboard *clipboard;
+@@ -1139,12 +1167,14 @@ static void
+ popup_leave_fullscreen_callback (GtkAction *action,
+                                  TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+     gtk_window_unfullscreen (GTK_WINDOW (window));
+ }
+ 
+ static void
+ remove_popup_info (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (priv->remove_popup_info_idle != 0)
+@@ -1163,6 +1193,7 @@ remove_popup_info (TerminalWindow *window)
+ static gboolean
+ idle_remove_popup_info (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   priv->remove_popup_info_idle = 0;
+@@ -1173,6 +1204,7 @@ idle_remove_popup_info (TerminalWindow *window)
+ static void
+ unset_popup_info (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   /* Unref the event from idle since we still need it
+@@ -1190,6 +1222,7 @@ static void
+ popup_menu_deactivate_callback (GtkWidget *popup,
+                                 TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *im_menu_item;
+ 
+@@ -1209,6 +1242,7 @@ popup_clipboard_targets_received_cb (GtkClipboard *clipboard,
+                                      int n_targets,
+                                      TerminalScreenPopupInfo *info)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window = info->window;
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreen *screen = info->screen;
+@@ -1304,6 +1338,7 @@ screen_show_popup_menu_callback (TerminalScreen *screen,
+                                  TerminalScreenPopupInfo *info,
+                                  TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkClipboard *clipboard;
+ 
+   g_return_if_fail (info->window == window);
+@@ -1321,6 +1356,7 @@ screen_match_clicked_cb (TerminalScreen *screen,
+                          guint state,
+                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (screen != priv->active_screen)
+@@ -1345,6 +1381,7 @@ static void
+ screen_close_cb (TerminalScreen *screen,
+                  TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_window_remove_screen (window, screen);
+ }
+ 
+@@ -1355,6 +1392,7 @@ terminal_window_accel_activate_cb (GtkAccelGroup  *accel_group,
+                                    GdkModifierType modifier,
+                                    TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkAccelGroupEntry *entries;
+   guint n_entries;
+   gboolean retval = FALSE;
+@@ -1400,6 +1438,7 @@ terminal_window_accel_activate_cb (GtkAccelGroup  *accel_group,
+ static void
+ terminal_window_realize (GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ #ifdef GDK_WINDOWING_X11
+   TerminalWindow *window = TERMINAL_WINDOW (widget);
+   TerminalWindowPrivate *priv = window->priv;
+@@ -1428,6 +1467,7 @@ static gboolean
+ terminal_window_state_event (GtkWidget            *widget,
+                              GdkEventWindowState  *event)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gboolean (* window_state_event) (GtkWidget *, GdkEventWindowState *event) =
+       GTK_WIDGET_CLASS (terminal_window_parent_class)->window_state_event;
+ 
+@@ -1457,6 +1497,7 @@ static void
+ terminal_window_window_manager_changed_cb (GdkScreen *screen,
+                                            TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkAction *action;
+   gboolean supports_fs;
+@@ -1473,6 +1514,7 @@ static void
+ terminal_window_composited_changed_cb (GdkScreen *screen,
+                                        TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   gboolean composited;
+ 
+@@ -1500,6 +1542,7 @@ static void
+ terminal_window_screen_update (TerminalWindow *window,
+                                GdkScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalApp *app;
+ 
+   terminal_window_window_manager_changed_cb (screen, window);
+@@ -1529,6 +1572,7 @@ static void
+ terminal_window_screen_changed (GtkWidget *widget,
+                                 GdkScreen *previous_screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window = TERMINAL_WINDOW (widget);
+   void (* screen_changed) (GtkWidget *, GdkScreen *) =
+     GTK_WIDGET_CLASS (terminal_window_parent_class)->screen_changed;
+@@ -1563,6 +1607,7 @@ static void
+ terminal_window_profile_list_changed_cb (TerminalApp *app,
+                                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_window_update_set_profile_menu (window);
+   terminal_window_update_new_terminal_menus (window);
+ }
+@@ -1571,12 +1616,14 @@ static void
+ terminal_window_encoding_list_changed_cb (TerminalApp *app,
+                                           TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_window_update_encoding_menu (window);
+ }
+ 
+ static void
+ terminal_window_init (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   const GtkActionEntry menu_entries[] =
+     {
+       /* Toplevel */
+@@ -1894,6 +1941,7 @@ terminal_window_init (TerminalWindow *window)
+ static void
+ terminal_window_class_init (TerminalWindowClass *klass)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+   
+@@ -1922,6 +1970,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+ static void
+ terminal_window_dispose (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window = TERMINAL_WINDOW (object);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalApp *app;
+@@ -1969,6 +2018,7 @@ terminal_window_dispose (GObject *object)
+ static void
+ terminal_window_finalize (GObject *object)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window = TERMINAL_WINDOW (object);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+@@ -1988,6 +2038,7 @@ terminal_window_delete_event (GtkWidget *widget,
+                               GdkEvent *event,
+                               gpointer data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+    return confirm_close_window_or_tab (TERMINAL_WINDOW (widget), NULL);
+ }
+ 
+@@ -1995,6 +2046,7 @@ static void
+ sn_error_trap_push (SnDisplay *display,
+                     Display   *xdisplay)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gdk_error_trap_push ();
+ }
+ 
+@@ -2002,12 +2054,14 @@ static void
+ sn_error_trap_pop (SnDisplay *display,
+                    Display   *xdisplay)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   gdk_error_trap_pop ();
+ }
+ 
+ static void
+ terminal_window_show (GtkWidget *widget)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindow *window = TERMINAL_WINDOW (widget);
+   TerminalWindowPrivate *priv = window->priv;
+   SnDisplay *sn_display;
+@@ -2071,12 +2125,14 @@ terminal_window_show (GtkWidget *widget)
+ TerminalWindow*
+ terminal_window_new (void)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   return g_object_new (TERMINAL_TYPE_WINDOW, NULL);
+ }
+ 
+ static void
+ update_notebook (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   gboolean single;
+ 
+@@ -2090,6 +2146,7 @@ profile_set_callback (TerminalScreen *screen,
+                       TerminalProfile *old_profile,
+                       TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (screen != priv->active_screen)
+@@ -2103,6 +2160,7 @@ sync_screen_title (TerminalScreen *screen,
+                    GParamSpec *psepc,
+                    TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   
+   if (screen != priv->active_screen)
+@@ -2116,6 +2174,7 @@ sync_screen_icon_title (TerminalScreen *screen,
+                         GParamSpec *psepc,
+                         TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (screen != priv->active_screen)
+@@ -2132,6 +2191,7 @@ sync_screen_icon_title_set (TerminalScreen *screen,
+                             GParamSpec *psepc,
+                             TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (screen != priv->active_screen)
+@@ -2152,6 +2212,7 @@ static void
+ close_button_clicked_cb (GtkWidget *tab_label,
+                          GtkWidget *screen_container)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *toplevel;
+   TerminalWindow *window;
+   TerminalWindowPrivate *priv;
+@@ -2176,6 +2237,7 @@ terminal_window_add_screen (TerminalWindow *window,
+                             TerminalScreen *screen,
+                             int            position)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *old_window;
+   GtkWidget *screen_container, *tab_label;
+@@ -2217,6 +2279,7 @@ void
+ terminal_window_remove_screen (TerminalWindow *window,
+                                TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *scrolled_window;
+   guint num_page;
+@@ -2238,6 +2301,7 @@ terminal_window_move_screen (TerminalWindow *source_window,
+                              TerminalScreen *screen,
+                              int dest_position)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GtkWidget *screen_container;
+ 
+   g_return_if_fail (TERMINAL_IS_WINDOW (source_window));
+@@ -2269,6 +2333,7 @@ terminal_window_move_screen (TerminalWindow *source_window,
+ GList*
+ terminal_window_list_screen_containers (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   
+   /* We are trusting that GtkNotebook will return pages in order */
+@@ -2279,6 +2344,7 @@ void
+ terminal_window_set_menubar_visible (TerminalWindow *window,
+                                      gboolean        setting)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkAction *action;
+ 
+@@ -2310,6 +2376,7 @@ terminal_window_set_menubar_visible (TerminalWindow *window,
+ gboolean
+ terminal_window_get_menubar_visible (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   
+   return priv->menubar_visible;
+@@ -2318,6 +2385,7 @@ terminal_window_get_menubar_visible (TerminalWindow *window)
+ GtkWidget *
+ terminal_window_get_notebook (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 	
+   g_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
+@@ -2330,6 +2398,7 @@ terminal_window_set_size (TerminalWindow *window,
+                           TerminalScreen *screen,
+                           gboolean        even_if_mapped)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_window_set_size_force_grid (window, screen, even_if_mapped, -1, -1);
+ }
+ 
+@@ -2340,6 +2409,7 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
+                                      int             force_grid_width,
+                                      int             force_grid_height)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   /* Owen's hack from gnome-terminal */
+   GtkWidget *widget;
+   GtkWidget *app;
+@@ -2402,6 +2472,7 @@ static void
+ terminal_window_set_active (TerminalWindow *window,
+                             TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *widget;
+   TerminalProfile *profile;
+@@ -2459,6 +2530,7 @@ void
+ terminal_window_switch_screen (TerminalWindow *window,
+                               TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   int page_num;
+ 
+@@ -2470,6 +2542,7 @@ terminal_window_switch_screen (TerminalWindow *window,
+ TerminalScreen*
+ terminal_window_get_active (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   return priv->active_screen;
+@@ -2480,6 +2553,7 @@ notebook_button_press_cb (GtkWidget *widget,
+                           GdkEventButton *event,
+                           TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkNotebook *notebook = GTK_NOTEBOOK (widget);
+   GtkWidget *menu;
+@@ -2513,6 +2587,7 @@ static gboolean
+ notebook_popup_menu_cb (GtkWidget *widget,
+                         TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkNotebook *notebook = GTK_NOTEBOOK (priv->notebook);
+   GtkWidget *focus_widget, *tab, *tab_label, *menu;
+@@ -2546,6 +2621,7 @@ notebook_page_selected_callback (GtkWidget       *notebook,
+                                  guint            page_num,
+                                  TerminalWindow  *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget* page_widget;
+   TerminalScreen *screen;
+@@ -2575,6 +2651,7 @@ notebook_page_added_callback (GtkWidget       *notebook,
+                               guint            page_num,
+                               TerminalWindow  *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreen *screen;
+ 
+@@ -2652,6 +2729,7 @@ notebook_page_removed_callback (GtkWidget       *notebook,
+                                 guint            page_num,
+                                 TerminalWindow  *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreen *screen;
+   int pages;
+@@ -2717,6 +2795,7 @@ notebook_page_removed_callback (GtkWidget       *notebook,
+ void
+ terminal_window_update_geometry (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *widget;
+   GdkGeometry hints;
+@@ -2792,6 +2871,7 @@ static void
+ file_new_window_callback (GtkAction *action,
+                           TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalApp *app;
+   TerminalWindow *new_window;
+@@ -2828,6 +2908,7 @@ static void
+ file_new_tab_callback (GtkAction *action,
+                        TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalApp *app;
+   TerminalProfile *profile;
+@@ -2859,6 +2940,7 @@ confirm_close_response_cb (GtkWidget *dialog,
+                            int response,
+                            TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalScreen *screen;
+ 
+   screen = g_object_get_data (G_OBJECT (dialog), "close-screen");
+@@ -2881,6 +2963,7 @@ static gboolean
+ confirm_close_window_or_tab (TerminalWindow *window,
+                              TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *dialog;
+   GConfClient *client;
+@@ -2973,6 +3056,7 @@ static void
+ file_close_window_callback (GtkAction *action,
+                             TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (confirm_close_window_or_tab (window, NULL))
+     return;
+   
+@@ -2983,6 +3067,7 @@ static void
+ file_close_tab_callback (GtkAction *action,
+                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalScreen *active_screen = priv->active_screen;
+   
+@@ -2999,6 +3084,7 @@ static void
+ edit_copy_callback (GtkAction *action,
+                     TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (!priv->active_screen)
+@@ -3017,6 +3103,7 @@ clipboard_uris_received_cb (GtkClipboard *clipboard,
+                             /* const */ char **uris,
+                             PasteData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *text;
+   gsize len;
+ 
+@@ -3044,6 +3131,7 @@ clipboard_targets_received_cb (GtkClipboard *clipboard,
+                                int n_targets,
+                                PasteData *data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (!targets) {
+     g_object_unref (data->screen);
+     g_slice_free (PasteData, data);
+@@ -3067,6 +3155,7 @@ static void
+ edit_paste_callback (GtkAction *action,
+                      TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkClipboard *clipboard;
+   PasteData *data;
+@@ -3091,6 +3180,7 @@ static void
+ edit_select_all_callback (GtkAction *action,
+                           TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (!priv->active_screen)
+@@ -3103,6 +3193,7 @@ static void
+ edit_keybindings_callback (GtkAction *action,
+                            TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_app_edit_keybindings (terminal_app_get (),
+                                  GTK_WINDOW (window));
+ }
+@@ -3111,6 +3202,7 @@ static void
+ edit_current_profile_callback (GtkAction *action,
+                                TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   
+   terminal_app_edit_profile (terminal_app_get (),
+@@ -3122,6 +3214,7 @@ static void
+ edit_find_callback (GtkAction *action,
+                     TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_find_display (GTK_WINDOW (window));
+ }
+ 
+@@ -3129,6 +3222,7 @@ static void
+ file_new_profile_callback (GtkAction *action,
+                            TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   
+   terminal_app_new_profile (terminal_app_get (),
+@@ -3140,6 +3234,7 @@ static void
+ edit_profiles_callback (GtkAction *action,
+                         TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_app_manage_profiles (terminal_app_get (),
+                                 GTK_WINDOW (window));
+ }
+@@ -3148,6 +3243,7 @@ static void
+ view_menubar_toggled_callback (GtkToggleAction *action,
+                                TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_window_set_menubar_visible (window, gtk_toggle_action_get_active (action));
+ }
+ 
+@@ -3155,6 +3251,7 @@ static void
+ view_fullscreen_toggled_callback (GtkToggleAction *action,
+                                   TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   g_return_if_fail (GTK_WIDGET_REALIZED (window));
+ 
+   if (gtk_toggle_action_get_active (action))
+@@ -3185,6 +3282,7 @@ static gboolean
+ find_larger_zoom_factor (double  current,
+                          double *found)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   guint i;
+ 
+   for (i = 0; i < G_N_ELEMENTS (zoom_factors); ++i)
+@@ -3204,6 +3302,7 @@ static gboolean
+ find_smaller_zoom_factor (double  current,
+                           double *found)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   int i;
+   
+   i = (int) G_N_ELEMENTS (zoom_factors) - 1;
+@@ -3226,6 +3325,7 @@ static void
+ view_zoom_in_callback (GtkAction *action,
+                        TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   double current;
+   
+@@ -3244,6 +3344,7 @@ static void
+ view_zoom_out_callback (GtkAction *action,
+                         TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   double current;
+ 
+@@ -3262,6 +3363,7 @@ static void
+ view_zoom_normal_callback (GtkAction *action,
+                            TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   
+   if (priv->active_screen == NULL)
+@@ -3276,6 +3378,7 @@ terminal_set_title_dialog_response_cb (GtkWidget *dialog,
+                                        int response,
+                                        TerminalScreen *screen)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   if (response == GTK_RESPONSE_OK)
+     {
+       GtkEntry *entry;
+@@ -3293,6 +3396,7 @@ static void
+ terminal_set_title_callback (GtkAction *action,
+                              TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkWidget *dialog, *hbox, *label, *entry;
+ 
+@@ -3347,6 +3451,7 @@ static void
+ terminal_add_encoding_callback (GtkAction *action,
+                                 TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_app_edit_encodings (terminal_app_get (),
+                                GTK_WINDOW (window));
+ }
+@@ -3355,6 +3460,7 @@ static void
+ terminal_reset_callback (GtkAction *action,
+                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (priv->active_screen == NULL)
+@@ -3367,6 +3473,7 @@ static void
+ terminal_reset_clear_callback (GtkAction *action,
+                                TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   if (priv->active_screen == NULL)
+@@ -3379,6 +3486,7 @@ static void
+ tabs_next_or_previous_tab_cb (GtkAction *action,
+                               TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkNotebookClass *klass;
+   GtkBindingSet *binding_set;
+@@ -3404,6 +3512,7 @@ static void
+ tabs_move_left_callback (GtkAction *action,
+                          TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkNotebook *notebook = GTK_NOTEBOOK (priv->notebook);
+   gint page_num,last_page;
+@@ -3420,6 +3529,7 @@ static void
+ tabs_move_right_callback (GtkAction *action,
+                           TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GtkNotebook *notebook = GTK_NOTEBOOK (priv->notebook);
+   gint page_num,last_page;
+@@ -3436,6 +3546,7 @@ static void
+ tabs_detach_tab_callback (GtkAction *action,
+                           TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   TerminalApp *app;
+   TerminalWindow *new_window;
+@@ -3465,6 +3576,7 @@ static void
+ help_contents_callback (GtkAction *action,
+                         TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_util_show_help (NULL, GTK_WINDOW (window));
+ }
+ 
+@@ -3475,6 +3587,7 @@ static void
+ help_about_callback (GtkAction *action,
+                      TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   static const char copyright[] =
+     "Copyright © 2002–2004 Havoc Pennington\n"
+     "Copyright © 2003–2004, 2007 Mariano Suárez-Alvarez\n"
+@@ -3550,6 +3663,7 @@ void
+ terminal_window_set_startup_id (TerminalWindow *window,
+                                 const char     *startup_id)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   g_free (priv->startup_id);
+@@ -3559,6 +3673,7 @@ terminal_window_set_startup_id (TerminalWindow *window,
+ GtkUIManager *
+ terminal_window_get_ui_manager (TerminalWindow *window)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+ 
+   return priv->ui_manager;
+@@ -3569,6 +3684,7 @@ terminal_window_save_state (TerminalWindow *window,
+                             GKeyFile *key_file,
+                             const char *group)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalWindowPrivate *priv = window->priv;
+   GList *tabs, *lt;
+   TerminalScreen *active_screen;
+diff --git a/src/terminal.c b/src/terminal.c
+index 17de783..5b46918 100644
+--- a/src/terminal.c
++++ b/src/terminal.c
+@@ -88,11 +88,13 @@ terminal_factory_handle_arguments (TerminalFactory *factory,
+ static void
+ terminal_factory_class_init (TerminalFactoryClass *factory_class)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ }
+ 
+ static void
+ terminal_factory_init (TerminalFactory *factory)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+ }
+ 
+ static GType terminal_factory_get_type (void);
+@@ -132,6 +134,7 @@ static TerminalFactory *factory = NULL;
+ static Time
+ slowly_and_stupidly_obtain_timestamp (Display *xdisplay)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   Window xwindow;
+   XEvent event;
+ 
+@@ -182,6 +185,7 @@ about_url_hook (GtkAboutDialog *about,
+ 	        const char *link,
+ 	        gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GError *error = NULL;
+ 
+   if (!gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (about)),
+@@ -201,6 +205,7 @@ about_email_hook (GtkAboutDialog *about,
+ 		  const char *email_address,
+ 		  gpointer user_data)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   char *escaped, *uri;
+ 
+   escaped = g_uri_escape_string (email_address, NULL, FALSE);
+@@ -214,6 +219,7 @@ about_email_hook (GtkAboutDialog *about,
+ static char *
+ get_factory_name_for_display (const char *display_name)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   GString *name;
+   const char *p;
+ 
+@@ -240,6 +246,7 @@ extern gboolean gconf_ping_daemon (void);
+ int
+ main (int argc, char **argv)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   int i;
+   char **argv_copy;
+   int argc_copy;
+@@ -499,6 +506,7 @@ factory_disabled:
+ static gboolean
+ handle_new_terminal_event (TerminalOptions *options)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   terminal_app_handle_options (terminal_app_get (), options, FALSE /* no resume */, NULL);
+ 
+   return FALSE;
+@@ -513,6 +521,7 @@ terminal_factory_handle_arguments (TerminalFactory *factory,
+                                    const GArray *argv_array,
+                                    GError **error)
+ {
++	printf ("Entering %s\n", __FUNCTION__);
+   TerminalOptions *options = NULL;
+   char *working_directory = NULL, *display_name = NULL, *startup_id = NULL;
+   char **env = NULL, **argv = NULL, **argv_copy = NULL;

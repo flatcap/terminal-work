@@ -1,0 +1,21 @@
+#0  vte_terminal_expose (...) at vte.c:11172
+#1  _gtk_marshal_BOOLEAN__BOXED (...) at gtkmarshalers.c:84
+#2  IA__g_closure_invoke (...) at gclosure.c:767
+#3  signal_emit_unlocked_R (...) at gsignal.c:3285
+#4  IA__g_signal_emit_valist (...) at gsignal.c:2990
+#5  IA__g_signal_emit (...) at gsignal.c:3037
+#6  gtk_widget_event_internal (...) at gtkwidget.c:4775
+#7  IA__gtk_main_do_event (...) at gtkmain.c:1571
+#8  _gdk_window_process_updates_recurse (...) at gdkwindow.c:5172
+#9  _gdk_window_process_updates_recurse (...) at gdkwindow.c:5145
+#10 gdk_window_process_updates_internal (...) at gdkwindow.c:5331
+#11 IA__gdk_window_process_all_updates (...) at gdkwindow.c:5439
+#12 gdk_window_update_idle (...) at gdkwindow.c:5065
+#13 gdk_threads_dispatch (...) at gdk.c:506
+#14 g_main_dispatch (...) at gmain.c:1960
+#15 IA__g_main_context_dispatch (...) at gmain.c:2513
+#16 g_main_context_iterate (...) at gmain.c:2591
+#17 IA__g_main_loop_run (...) at gmain.c:2799
+#18 IA__gtk_main (...) at gtkmain.c:1218
+#19 main (...) at app.c:112
+

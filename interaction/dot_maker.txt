@@ -1,0 +1,1 @@
+for i in *.dep; do for j in $(cat $i); do echo -e "\t\"${i%%.*}\" -> \"${j##*/}\";"; done; done | LANG=C sort -fu | cat ../header.dot - ../footer.dot > ../deps.vte.dot

@@ -1,0 +1,13 @@
+# Temporary stuff
+
+JIM_FLAGS += -DJIM
+JIM_FLAGS += -I/usr/include/glib-2.0
+JIM_FLAGS += -I/usr/include/gio-unix-2.0
+JIM_FLAGS += -I/usr/lib64/glib-2.0/include
+#JIM_FLAGS += $(CFLAGS_INC)
+JIM_FLAGS += -lgio-2.0
+JIM_FLAGS += -lglib-2.0
+
+jim:	jim.c jim.h vterowdata.h vteunistr.h vtestream.h ring.h
+	$(CC) -o $@ jim.c $(JIM_FLAGS)
+

@@ -1,0 +1,29 @@
+Someone wants these events:
+	KeyPress
+	KeyRelease
+	EnterWindow
+	LeaveWindow
+	Exposure
+	StructureNotify
+	SubstructureNotify
+	SubstructureRedirect
+	FocusChange
+	PropertyChange
+	ColormapChange
+
+Mouse
+	click
+	double_click
+	drag
+	hover (mouse stationary)
+
+Key
+	press
+	release
+	modifiers
+
+Send the events to
+	app
+	tabs
+	view
+

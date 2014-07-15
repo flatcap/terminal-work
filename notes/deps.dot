@@ -1,0 +1,139 @@
+digraph bla {
+	rankdir=LR;
+
+	"vteapp" -> "ld-linux-x86-64.so.2"
+	"vteapp" -> "libatk-1.0.so.0"
+	"vteapp" -> "libcairo.so.2"
+	"vteapp" -> "libc.so.6"
+	"vteapp" -> "libdl.so.2"
+	"vteapp" -> "libexpat.so.1"
+	"vteapp" -> "libfontconfig.so.1"
+	"vteapp" -> "libfreetype.so.6"
+	"vteapp" -> "libgdk_pixbuf-2.0.so.0"
+	"vteapp" -> "libgdk-x11-2.0.so.0"
+	"vteapp" -> "libgio-2.0.so.0"
+	"vteapp" -> "libglib-2.0.so.0"
+	"vteapp" -> "libgmodule-2.0.so.0"
+	"vteapp" -> "libgobject-2.0.so.0"
+	"vteapp" -> "libgtk-x11-2.0.so.0"
+	"vteapp" -> "libm.so.6"
+	"vteapp" -> "libncurses.so.5"
+	"vteapp" -> "libpango-1.0.so.0"
+	"vteapp" -> "libpangocairo-1.0.so.0"
+	"vteapp" -> "libpangoft2-1.0.so.0"
+	"vteapp" -> "libpixman-1.so.0"
+	"vteapp" -> "libpng12.so.0"
+	"vteapp" -> "libresolv.so.2"
+	"vteapp" -> "libselinux.so.1"
+	"vteapp" -> "libtinfo.so.5"
+	"vteapp" -> "libvte.so.9.12.1"
+	"vteapp" -> "libX11.so.6"
+	"vteapp" -> "libXau.so.6"
+	"vteapp" -> "libxcb.so.1"
+	"vteapp" -> "libXcomposite.so.1"
+	"vteapp" -> "libXcursor.so.1"
+	"vteapp" -> "libXdamage.so.1"
+	"vteapp" -> "libXext.so.6"
+	"vteapp" -> "libXfixes.so.3"
+	"vteapp" -> "libXinerama.so.1"
+	"vteapp" -> "libXi.so.6"
+	"vteapp" -> "libXrandr.so.2"
+	"vteapp" -> "libXrender.so.1"
+	"vteapp" -> "libz.so.1"
+	"vteapp" -> "linux-vdso.so.1"
+
+	"libvte.so.9.12.1" -> "libm.so.6"
+	"libvte.so.9.12.1" -> "libc.so.6"
+
+	"libc.so.6" -> "ld-linux-x86-64.so.2"
+
+	"libgdk-x11-2.0.so.0" -> "libm.so.6"
+	"libgdk-x11-2.0.so.0" -> "libc.so.6"
+
+	"libgio-2.0.so.0" -> "libresolv.so.2"
+	"libgio-2.0.so.0" -> "libc.so.6"
+
+	"libglib-2.0.so.0" -> "libc.so.6"
+
+	"libgobject-2.0.so.0" -> "libc.so.6"
+
+	"libgtk-x11-2.0.so.0" -> "libc.so.6"
+	"libgtk-x11-2.0.so.0" -> "libm.so.6"
+
+	"libpango-1.0.so.0" -> "libm.so.6"
+	"libpango-1.0.so.0" -> "libc.so.6"
+
+	"libatk-1.0.so.0" -> "libc.so.6"
+
+	"libcairo.so.2" -> "libm.so.6"
+	"libcairo.so.2" -> "libc.so.6"
+	"libcairo.so.2" -> "libpng12.so.0"
+
+	"libfontconfig.so.1" -> "libc.so.6"
+
+	"libfreetype.so.6" -> "libc.so.6"
+
+	"libgdk_pixbuf-2.0.so.0" -> "libm.so.6"
+	"libgdk_pixbuf-2.0.so.0" -> "libc.so.6"
+	"libgdk_pixbuf-2.0.so.0" -> "libpng12.so.0"
+
+	"libgmodule-2.0.so.0" -> "libdl.so.2"
+	"libgmodule-2.0.so.0" -> "libc.so.6"
+
+	"libm.so.6" -> "libc.so.6"
+
+	"libncurses.so.5" -> "libdl.so.2"
+	"libncurses.so.5" -> "libc.so.6"
+
+	"libpangocairo-1.0.so.0" -> "libc.so.6"
+	"libpangocairo-1.0.so.0" -> "libm.so.6"
+
+	"libpangoft2-1.0.so.0" -> "libm.so.6"
+	"libpangoft2-1.0.so.0" -> "libc.so.6"
+
+	"libXext.so.6" -> "libc.so.6"
+
+	"libXrender.so.1" -> "libc.so.6"
+
+	"libXinerama.so.1" -> "libc.so.6"
+
+	"libXi.so.6" -> "libc.so.6"
+
+	"libXrandr.so.2" -> "libc.so.6"
+
+	"libXcursor.so.1" -> "libc.so.6"
+
+	"libXcomposite.so.1" -> "libc.so.6"
+
+	"libXdamage.so.1" -> "libc.so.6"
+
+	"libXfixes.so.3" -> "libc.so.6"
+
+	"libX11.so.6" -> "libdl.so.2"
+	"libX11.so.6" -> "libc.so.6"
+
+	"libdl.so.2" -> "ld-linux-x86-64.so.2"
+	"libdl.so.2" -> "libc.so.6"
+
+	"libresolv.so.2" -> "libc.so.6"
+
+	"libselinux.so.1" -> "libdl.so.2"
+	"libselinux.so.1" -> "ld-linux-x86-64.so.2"
+	"libselinux.so.1" -> "libc.so.6"
+
+	"libpixman-1.so.0" -> "libc.so.6"
+	"libpixman-1.so.0" -> "libm.so.6"
+
+	"libpng12.so.0" -> "libm.so.6"
+	"libpng12.so.0" -> "libc.so.6"
+
+	"libz.so.1" -> "libc.so.6"
+
+	"libexpat.so.1" -> "libc.so.6"
+
+	"libtinfo.so.5" -> "libc.so.6"
+
+	"libxcb.so.1" -> "libc.so.6"
+
+	"libXau.so.6" -> "libc.so.6"
+};

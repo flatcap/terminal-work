@@ -1,0 +1,16 @@
+VteTerminalPriv
+	termcap
+	matcher
+	flags
+	pty stuff
+	input Q  } piecemeal I/O
+	output Q } rate-limited
+	screen data
+	selection info
+	misc options
+	scrolling options
+	cursor info
+	mouse stuff
+	input methods
+	background info
+	font stuff

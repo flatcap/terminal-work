@@ -1,0 +1,23 @@
+create a view 80x24 (V1)
+clone it (V2)
+
+resize V1 to 132x24
+V2 can
+	resize to match
+	truncate its output
+	add a horizontal scrollbar
+
+if V2 is in a notebook of tabs, it can't resize
+
+need to have a "master" view
+start with the first created view
+if someone clicks "become master", resize the others to match
+
+master view 80x24
+	servant is smaller - truncate lines, follow bottom
+	servant is larger  - display all, wrap at size of master
+		optionally display margin like screen
+
+if a view has a very long line which is wrapped, then the
+cache version needs to have a length which is a multiple of the master width.
+if ncurses writes over a wrapped piece of line, it will have space to work in

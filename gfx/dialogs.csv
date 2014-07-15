@@ -1,0 +1,13 @@
+Name,Glade,Dialog,Owner,Created,Destroyed
+keybindings,keybinding-editor.glade,keybindings-dialog,TerminalProfile,terminal_profile_edit,profile_editor_destroyed
+profile manager,profile-manager.glade,profile-manager,TerminalApp,terminal_app_manage_profiles,profile_list_destroyed_cb
+new profile,profile-new-dialog.glade,new-profile-dialog,TerminalApp,terminal_app_new_profile,new_profile_dialog_destroy_cb
+profile editor,profile-preferences.glade,profile-editor-dialog,TerminalProfile,terminal_profile_edit,profile_editor_destroyed
+encodings,encodings-dialog.glade,encodings-dialog,static,terminal_encoding_dialog_show,none
+skey,skey-challenge.glade,skey-dialog,none (modal to window),terminal_skey_do_popup,none
+find,terminal-find.glade,dialog-find,TerminalFind,.,.
+delete profile
+set title (modal to window)
+about (window-level)
+
+about ought to be app-level

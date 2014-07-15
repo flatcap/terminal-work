@@ -1,0 +1,13 @@
+digraph b {
+	rankdir=LR;
+	need_processing -> _vte_incoming_chunks_length
+	process_timeout -> need_processing
+	process_timeout -> prune_chunks
+	process_timeout -> time_process_incoming
+	process_timeout -> _vte_terminal_enable_input_source
+	process_timeout -> vte_terminal_io_read
+	process_timeout -> vte_terminal_process_incoming
+	time_process_incoming -> vte_terminal_process_incoming
+	_vte_terminal_connect_pty_read -> vte_terminal_io_read
+	vte_terminal_io_read -> vte_terminal_add_process_timeout
+};

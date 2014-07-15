@@ -1,0 +1,23 @@
+Escape sequences
+
+Matcher? Trie?
+Is is recognised by caps.c?
+
+caps.c
+	Maps "Escape seq" to "Seq Name"
+
+vteseq-2.gperf
+vteseq-n.gperf
+	Lookup "Seq Name" to give a "Seq Handler"
+
+vteseq.c
+	"Seq Handler" performs work
+
+
+Possible outcomes for an escape sequence
+	1) It's not in caps.c			echoed to screen
+	2) It's commented out of caps.c		echoed to screen
+	3) It's not in *.gperf			echoed to screen
+	4) It's commented out of *.gperf	echoed to screen
+	5) Handler works			handled
+

@@ -1,0 +1,20 @@
+copy source dir
+remove non-source code
+remove MAIN test code
+remove #if 0
+ctags
+extract functions from ctags
+filter out non-functions from ctags
+set noic
+filter out junk functions & debug
+eliminate any duplicates
+remove functions from orig src
+put function in separate files
+strip out any preproc directives, e.g. #error
+strip out comments gcc -E
+strip out G_CALLBACK (signal_handler)
+check orig src for stuff missed out
+grep function names in functions
+sort & uniq
+remove function name from its own file
+assemble dot file

@@ -1,0 +1,43 @@
+
+terminal-find.glade
+
+	|
+	|  gtk-builder-convert
+	V
+
+terminal-find.ui
+
+	|
+	|
+	V
+
+Dialog
+GtkCheckButton1  (who keeps these refs?)
+GtkCheckButton2
+GtkCheckButton3
+
+	A
+	|	signal_connect x 2
+	|
+	V
+
+Find object properties
+bool check1
+bool check2
+bool check3
+
+	A
+	|	gconf_notification x 2
+	|
+	V
+
+GConf
+  check1
+  check2
+  check3
+
+
+Cleanup
+	Unref all objects
+	Unref builder
+	Disconnect all signal handlers

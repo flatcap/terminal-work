@@ -1,0 +1,55 @@
+g_type_class_add_private
+G_TYPE_INSTANCE_GET_PRIVATE
+
+g_type_class_add_private:
+@g_class: class structure for an instantiatable type
+@private_size: size of private structure.
+
+Registers a private structure for an instantiatable type;
+when an object is allocated, the private structures for
+the type and all of its parent types are allocated
+sequentially in the same memory block as the public
+structures. This function should be called in the
+type's class_init() function. The private structure can
+be retrieved using the G_TYPE_INSTANCE_GET_PRIVATE() macro.
+The following example shows attaching a private structure
+<structname>MyObjectPrivate</structname> to an object
+<structname>MyObject</structname> defined in the standard GObject
+fashion.
+
+typedef struct _MyObjectPrivate MyObjectPrivate;
+
+struct _MyObjectPrivate {
+  int some_field;
+};
+
+#define MY_OBJECT_GET_PRIVATE(o)  \
+   (G_TYPE_INSTANCE_GET_PRIVATE ((o), MY_TYPE_OBJECT, MyObjectPrivate))
+
+static void
+my_object_class_init (MyObjectClass *klass)
+{
+  g_type_class_add_private (klass, sizeof (MyObjectPrivate));
+}
+
+static int
+my_object_get_some_field (MyObject *my_object)
+{
+  MyObjectPrivate *priv = MY_OBJECT_GET_PRIVATE (my_object);
+
+  return priv->some_field;
+}
+
+
+static void
+gtk_scale_button_init (GtkScaleButton *button)
+{
+  GtkScaleButtonPrivate *priv;
+
+  button->priv = priv = GET_PRIVATE (button);
+
+#define GET_PRIVATE(obj)        (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_SCALE_BUTTON, GtkScaleButtonPrivate))
+
+#define G_TYPE_INSTANCE_GET_PRIVATE(instance, g_type, c_type)	\
+	((c_type*) g_type_instance_get_private ((GTypeInstance*) (instance), (g_type)))
+

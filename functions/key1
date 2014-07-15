@@ -1,0 +1,9 @@
+vte_terminal_key_press
+vte_terminal_im_commit
+vte_terminal_feed_child
+vte_terminal_feed_child_using_modes
+vte_terminal_send
+_vte_terminal_insert_char
+_vte_iso2022_process_single
+_vte_terminal_connect_pty_write
+vte_terminal_io_write

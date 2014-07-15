@@ -1,0 +1,65 @@
+Root window id: 0x5e (the root window) (has no name)
+
+   0x1c0073a "Terminal": ()  10x10+-100+-100  +-100+-100
+
+   0x1c00001 "Terminal": ("gnome-terminal" "Gnome-terminal")  10x10+10+10  +10+10
+      1 child:
+      0x1c00002 (has no name): ()  1x1+-1+-1  +9+9
+
+*Right-click menu
+   0x1c0073e "Terminal": ("gnome-terminal" "Gnome-terminal")  197x259+348+405  +348+405
+      2 children:
+      0x1c00741 (has no name): ()  197x259+0+0  +348+405
+         1 child:
+         0x1c00742 (has no name): ()  193x255+2+2  +350+407
+            1 child:
+            0x1c00743 (has no name): ()  193x255+0+0  +350+407
+               13 children:
+               0x1c00750 (has no name): ()  193x23+0+232  +350+639
+               0x1c0074f (has no name): ()  193x23+0+209  +350+616
+               0x1c0074e (has no name): ()  193x12+0+197  +350+604
+               0x1c0074d (has no name): ()  193x23+0+174  +350+581
+               0x1c0074c (has no name): ()  193x23+0+151  +350+558
+               0x1c0074b (has no name): ()  193x12+0+139  +350+546
+               0x1c0074a (has no name): ()  193x23+0+116  +350+523
+               0x1c00749 (has no name): ()  193x12+0+104  +350+511
+               0x1c00748 (has no name): ()  193x23+0+81  +350+488
+               0x1c00747 (has no name): ()  193x23+0+58  +350+465
+               0x1c00746 (has no name): ()  193x12+0+46  +350+453
+               0x1c00745 (has no name): ()  193x23+0+23  +350+430
+               0x1c00744 (has no name): ()  193x23+0+0  +350+407
+      0x1c0073f (has no name): ()  1x1+-1+-1  +347+404
+
+*View menu
+   0x1c00670 "Terminal": ("gnome-terminal" "Gnome-terminal")  197x131+236+311  +236+311
+      2 children:
+      0x1c00673 (has no name): ()  197x131+0+0  +236+311
+         1 child:
+         0x1c00674 (has no name): ()  193x127+2+2  +238+313
+            1 child:
+            0x1c00675 (has no name): ()  193x127+0+0  +238+313
+               6 children:
+               0x1c0067b (has no name): ()  193x23+0+104  +238+417
+               0x1c0067a (has no name): ()  193x23+0+81  +238+394
+               0x1c00679 (has no name): ()  193x23+0+58  +238+371
+               0x1c00678 (has no name): ()  193x12+0+46  +238+359
+               0x1c00677 (has no name): ()  193x23+0+23  +238+336
+               0x1c00676 (has no name): ()  193x23+0+0  +238+313
+      0x1c00671 (has no name): ()  1x1+-1+-1  +235+310
+
+*Exterior gnome frame
+   0x1200406 (has no name): ()  662x415+37+165  +37+165
+      1 child:
+      0x1c00004 "[dev] ~/src": ("gnome-terminal" "Gnome-terminal")  656x387+3+25  +40+190
+         5 children:
+         0x1c0004b (has no name): ()  14x362+642+25  +682+215
+         0x1c0003c "[dev] ~/src": ()  642x362+0+25  +40+215
+         0x1c00040 (has no name): ()  656x25+0+0  +40+190
+            5 children:
+            0x1c0004a (has no name): ()  43x23+188+1  +228+191
+            0x1c00049 (has no name): ()  66x23+122+1  +162+191
+            0x1c00048 (has no name): ()  45x23+77+1  +117+191
+            0x1c00047 (has no name): ()  39x23+38+1  +78+191
+            0x1c00041 (has no name): ()  37x23+1+1  +41+191
+         0x1c00026 (has no name): ()  10x10+0+0  +40+190
+         0x1c00005 (has no name): ()  1x1+-1+-1  +39+189

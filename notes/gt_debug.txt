@@ -1,0 +1,10 @@
+GNOME_TERMINAL_DEBUG="accels,encodings,factory,geometry,profile"
+VTE_DEBUG="misc,io,adj,updates,events,parse,signals,selection,substitution,ring,pty,cursor,keyboard,lifecycle,trie,work,cells,timeout,draw,ally,pangocairo,widget-size"
+
+wmctrl
+xev -id
+xlsclients -l
+xwininfo -id (-tree/-children) --all
+xdpyinfo
+xprop
+

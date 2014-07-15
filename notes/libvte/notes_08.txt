@@ -1,0 +1,28 @@
+Key
+	gtk_window_keypress_event
+	vte_terminal_key_press		check if anyone wants to handle it
+	gtk_im_context_simple_filter_keypress
+	...
+	vte_terminal_im_commit
+	vte_terminal_feed_child_using_modes
+	vte_terminal_send
+	_vte_terminal_connect_pty_write
+	vte_terminal_io_write
+
+
+vte.c	process_timeout		vte_terminal_add_process_timeout
+	either			vte_terminal_io_read
+	or			vte_terminal_start_processing
+	g_timeout_add		cursor update, autoscroll, text buffering
+	g_timeout_add_full
+		|
+		V
+	add_cursor timeout			process_timeout
+	add_update_timeout			startup_notification_timeout
+	set_startup_notification_timeout	update_repeat_timeout
+	update_timeout				update_timeout
+	vte_invalidate_cursor_periodic		vte_invalidate_cursor_periodic
+	vte_terminal_add_process_timeout	vte_terminal_autoscroll
+	vte_terminal_start_autoscroll
+
+

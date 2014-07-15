@@ -1,0 +1,21 @@
+Interaction diagram between
+        keyboard
+        readline
+        bash, ncurses, application (vim)
+        vte
+        gnome-terminal
+        cairo
+
+Taking into account
+        multiple tabs
+        current directory
+        current (executing) command
+        accessibility
+        input methods
+        (translation from XYZ -> [chinese char]
+        termcap / terminfo
+
+Who talks to whom?
+What data passes? Signals, etc?
+What files are used (if any)?
+

@@ -1,0 +1,9 @@
+#0  vte_reaper_child_watch_cb (...) at reaper.c:29
+#1  g_child_watch_dispatch (...) at gmain.c:3774
+#2  g_main_dispatch (...) at gmain.c:1960
+#3  IA__g_main_context_dispatch (...) at gmain.c:2513
+#4  g_main_context_iterate (...) at gmain.c:2591
+#5  IA__g_main_loop_run (...) at gmain.c:2799
+#6  IA__gtk_main (...) at gtkmain.c:1218
+#7  main (...) at app.c:112
+

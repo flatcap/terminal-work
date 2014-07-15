@@ -1,0 +1,29 @@
+/*
+ * VteCellAttr: A single cell style attributes
+ *
+ * Ordered by most commonly changed attributes, to
+ * optimize the compact representation.
+ */
+
+typedef struct _VteCellAttr {
+	guint32 fragment: 1;	/* A continuation cell. */
+	guint32 columns: 4;	/* Number of visible columns (as determined by g_unicode_iswide(c)).
+				   Also abused for tabs; bug 353610 Keep at least 4 for tabs to work */
+	guint32 bold: 1;
+	guint32 fore: 9;	/* Index into color palette */
+	guint32 back: 9;	/* Index into color palette. */
+
+	guint32 standout: 1;
+	guint32 underline: 1;
+	guint32 strikethrough: 1;
+
+	guint32 reverse: 1;
+	guint32 blink: 1;
+	guint32 half: 1;
+
+	guint32 invisible: 1;
+	//guint32 protect: 1; //unused; bug 499893
+
+	/* 30 bits */
+} VteCellAttr;
+

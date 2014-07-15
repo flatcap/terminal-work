@@ -1,0 +1,6 @@
+LC_ALL=C /usr/bin/intltool-merge -s -u -c ../po/.intltool-merge-cache ../po gnome-terminal.schemas.in gnome-terminal.schemas
+
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-install-rule \
+	%{_sysconfdir}/gconf/schemas/gnome-terminal.schemas > /dev/null || :
+
